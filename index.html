@@ -6,118 +6,165 @@
     <title>Inicio | DASH México</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f8f9fa; }
+        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f8f9fa; --oscuro: #001a15; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         
-        /* HEADER IGUAL AL ANTERIOR */
+        /* HEADER */
         header { 
-            background: var(--blanco); padding: 10px 5%; position: sticky; top: 0; z-index: 1000; 
+            background: rgba(255, 255, 255, 0.95); padding: 10px 5%; position: sticky; top: 0; z-index: 1000; 
             display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
         .logo-container { display: flex; align-items: center; text-decoration: none; }
         .logo-img { height: 50px; margin-right: 12px; }
         .logo-text { font-weight: 700; color: var(--turquesa); font-size: 1.2rem; }
-        nav a { text-decoration: none; color: #555; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover, nav a.active { color: var(--turquesa); font-weight: 600; }
+        nav a { text-decoration: none; color: #555; margin-left: 25px; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
+        nav a:hover, nav a.active { color: var(--turquesa); }
 
-        /* SECCIÓN HERO INMERSIVA */
+        /* ANIMACIONES */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HERO SECTION CORPORATIVO */
         .hero { 
-            background: linear-gradient(135deg, var(--turquesa) 0%, #004d3f 100%);
-            color: var(--blanco);
-            padding: 120px 10%;
-            text-align: center;
+            background: linear-gradient(rgba(0, 26, 21, 0.85), rgba(0, 115, 94, 0.6)), url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            height: 90vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
+            color: var(--blanco);
+            padding: 0 10%;
         }
-        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px; font-weight: 700; }
-        .hero h2 { font-size: 1.5rem; color: var(--cian); margin-bottom: 40px; font-weight: 400; }
-        .hero p { max-width: 800px; font-size: 1.1rem; line-height: 1.8; margin-bottom: 40px; font-weight: 300; }
+        .hero-content {
+            animation: fadeUp 1.2s ease-out forwards;
+            max-width: 900px;
+        }
+        .hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; font-weight: 700; letter-spacing: -1px; }
+        .hero h2 { font-size: 1.6rem; color: #e0ece9; margin-bottom: 40px; font-weight: 400; letter-spacing: 1px; }
+        .hero p { font-size: 1.15rem; line-height: 1.8; margin-bottom: 40px; font-weight: 300; opacity: 0.9; }
         
         .btn-conocenos {
-            background-color: var(--blanco);
-            color: var(--turquesa);
-            padding: 15px 40px;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
+            background-color: var(--blanco); color: var(--turquesa); padding: 18px 45px;
+            text-decoration: none; font-weight: 600; border-radius: 40px;
+            transition: all 0.3s ease; font-size: 1.1rem; display: inline-block;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
-        .btn-conocenos:hover { background-color: var(--cian); color: var(--blanco); transform: translateY(-3px); }
+        .btn-conocenos:hover { background-color: var(--cian); color: var(--blanco); transform: translateY(-3px); box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
 
-        /* SECCIÓN PILARES */
-        .pilares-section { padding: 100px 10%; background: var(--blanco); }
-        .pilares-title { text-align: center; color: var(--turquesa); font-size: 2.5rem; margin-bottom: 60px; }
-        .pilares-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        
-        .pilar-card {
-            background: var(--gris-fondo);
-            padding: 40px;
-            border-radius: 12px;
-            border-top: 5px solid var(--turquesa);
-            transition: 0.3s;
-        }
-        .pilar-card.ac { border-top-color: var(--cian); }
-        .pilar-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        
-        .pilar-card a {
-            font-size: 1.8rem; color: var(--turquesa); text-decoration: none; 
-            font-weight: 700; display: inline-block; margin-bottom: 25px; transition: 0.3s;
-        }
-        .pilar-card.ac a { color: var(--cian); }
-        .pilar-card a:hover { opacity: 0.8; }
-
-        .pilar-card ul { list-style: none; }
-        .pilar-card li {
-            position: relative; padding-left: 25px; margin-bottom: 15px;
-            font-size: 1.05rem; color: #444; line-height: 1.6;
-        }
-        .pilar-card li::before {
-            content: "•"; position: absolute; left: 0; color: var(--turquesa); font-size: 1.5rem; line-height: 1; top: 0;
-        }
-        .pilar-card.ac li::before { color: var(--cian); }
-
-        /* SECCIÓN CONTACTO DIVIDIDA */
-        .contacto-section {
+        /* CINTILLO DE AUTORIDAD */
+        .trust-bar {
             background: var(--turquesa);
             color: var(--blanco);
-            padding: 80px 10%;
+            display: flex;
+            justify-content: space-around;
+            padding: 25px 5%;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            flex-wrap: wrap;
+            gap: 15px;
         }
-        .contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .trust-item { display: flex; align-items: center; gap: 10px; }
+        .trust-item::before { content: "•"; color: var(--cian); font-size: 1.5rem; line-height: 0; }
+
+        /* SECCIÓN PILARES (SPLIT DESIGN) */
+        .pilares-section { padding: 100px 5%; background: var(--blanco); }
+        .pilares-title { text-align: center; color: var(--oscuro); font-size: 2.8rem; margin-bottom: 70px; font-weight: 700; }
         
-        .contacto-info h3 { font-size: 2.5rem; margin-bottom: 30px; }
-        .contacto-info p { font-size: 1.2rem; margin-bottom: 15px; font-weight: 300; display: flex; align-items: center; }
-        .contacto-info a { color: var(--cian); text-decoration: none; font-weight: 600; }
+        .pilares-container {
+            display: flex;
+            max-width: 1300px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .pilar-card {
+            flex: 1;
+            padding: 60px 50px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            background: var(--gris-fondo);
+            transition: all 0.4s ease;
+            border: 1px solid #eaeaea;
+        }
+        .pilar-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
         
-        .formulario { background: var(--blanco); padding: 40px; border-radius: 12px; }
+        .pilar-card.consultoria { border-top: 6px solid var(--turquesa); }
+        .pilar-card.ac { border-top: 6px solid var(--marron); }
+
+        .pilar-card a {
+            font-size: 2.2rem; color: var(--oscuro); text-decoration: none; 
+            font-weight: 700; display: inline-block; margin-bottom: 30px; transition: 0.3s;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .pilar-card a:hover { color: var(--turquesa); }
+        .pilar-card.ac a:hover { color: var(--marron); }
+        .arrow-icon { font-size: 1.8rem; font-weight: 300; }
+
+        .pilar-card ul { list-style: none; margin-top: 20px; }
+        .pilar-card li {
+            position: relative; padding-left: 30px; margin-bottom: 20px;
+            font-size: 1.05rem; color: #555; line-height: 1.6;
+        }
+        .pilar-card li::before {
+            content: "✓"; position: absolute; left: 0; color: var(--turquesa); font-weight: bold; font-size: 1.1rem;
+        }
+        .pilar-card.ac li::before { color: var(--marron); }
+
+        /* SECCIÓN CONTACTO INICIO */
+        .contacto-section {
+            background: var(--oscuro);
+            color: var(--blanco);
+            padding: 100px 10%;
+        }
+        .contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; }
+        
+        .contacto-info h3 { font-size: 2.8rem; margin-bottom: 30px; color: var(--blanco); }
+        .contacto-info p { font-size: 1.2rem; margin-bottom: 20px; font-weight: 300; display: flex; align-items: center; color: #ccc; }
+        .contacto-info p span { margin-right: 15px; font-size: 1.5rem; }
+        .contacto-info a { color: var(--cian); text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .contacto-info a:hover { color: var(--blanco); }
+        
+        .formulario { background: var(--blanco); padding: 50px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
         .form-group { margin-bottom: 20px; }
         .formulario input, .formulario textarea {
-            width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px;
-            font-family: 'Poppins', sans-serif; font-size: 1rem; transition: 0.3s;
+            width: 100%; padding: 16px; border: 1px solid #ddd; border-radius: 10px;
+            font-family: 'Poppins', sans-serif; font-size: 1rem; transition: 0.3s; background: #f9f9f9;
         }
-        .formulario input:focus, .formulario textarea:focus { border-color: var(--turquesa); outline: none; }
+        .formulario input:focus, .formulario textarea:focus { border-color: var(--turquesa); outline: none; background: var(--blanco); box-shadow: 0 0 0 3px rgba(0, 115, 94, 0.1); }
         .formulario textarea { resize: vertical; min-height: 120px; }
         
         .btn-enviar {
             background: var(--turquesa); color: var(--blanco); border: none;
-            padding: 15px 30px; font-size: 1.1rem; font-weight: 600; border-radius: 8px;
-            cursor: pointer; width: 100%; transition: 0.3s;
+            padding: 16px 30px; font-size: 1.1rem; font-weight: 600; border-radius: 10px;
+            cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px;
         }
-        .btn-enviar:hover { background: var(--marron); }
+        .btn-enviar:hover { background: var(--cian); }
 
-        footer { background: #001a15; color: #aaa; text-align: center; padding: 20px; font-size: 0.8rem; }
+        footer { background: #000; color: #888; text-align: center; padding: 25px; font-size: 0.85rem; }
 
         /* RESPONSIVO MÓVIL */
+        @media (max-width: 900px) {
+            .pilares-container { flex-direction: column; }
+            .contacto-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3rem; }
+        }
         @media (max-width: 768px) {
             header { flex-direction: column; }
             nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
             nav a { margin: 5px 10px; }
-            .hero h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.5rem; }
             .hero h2 { font-size: 1.2rem; }
-            .pilares-grid, .contacto-grid { grid-template-columns: 1fr; }
+            .trust-bar { flex-direction: column; align-items: center; text-align: center; }
             .hero, .pilares-section, .contacto-section { padding: 60px 5%; }
+            .pilar-card, .formulario { padding: 30px; }
         }
     </style>
 </head>
@@ -138,30 +185,39 @@
     </header>
 
     <section class="hero">
-        <h1>Desarrollo Ambiental,<br>Social y Humano</h1>
-        <h2>Llevando la consultoría a otro nivel.</h2>
-        <p>En un entorno cada vez más exigente y consciente, las organizaciones que trascienden son aquellas capaces de alinear sus objetivos con los grandes retos sociales y ambientales de nuestro tiempo.<br><br>En DASH, te ofrecemos un acompañamiento estratégico para lograrlo.</p>
-        <a href="quienes-somos.html" class="btn-conocenos">Conócenos</a>
+        <div class="hero-content">
+            <h1>Desarrollo Ambiental,<br>Social y Humano</h1>
+            <h2>Llevando la consultoría a otro nivel.</h2>
+            <p>En un entorno cada vez más exigente y consciente, las organizaciones que trascienden son aquellas capaces de alinear sus objetivos con los grandes retos sociales y ambientales de nuestro tiempo.<br><br>En DASH, ofrecemos un acompañamiento estratégico para lograrlo.</p>
+            <a href="quienes-somos.html" class="btn-conocenos">Conócenos</a>
+        </div>
     </section>
+
+    <div class="trust-bar">
+        <div class="trust-item">Ecosistema Multidisciplinario</div>
+        <div class="trust-item">Visión Biocéntrica</div>
+        <div class="trust-item">Rigor Técnico</div>
+        <div class="trust-item">Impacto Social</div>
+    </div>
 
     <section class="pilares-section">
         <h2 class="pilares-title">Nuestros pilares</h2>
-        <div class="pilares-grid">
+        <div class="pilares-container">
             
-            <div class="pilar-card">
-                <a href="consultoria.html">Consultoría ➔</a>
+            <div class="pilar-card consultoria">
+                <a href="consultoria.html">DASH Consultoría <span class="arrow-icon">→</span></a>
                 <ul>
                     <li>Implementación y mantenimiento de normas ISO (14001, 26000, 50001, 20121).</li>
                     <li>Diagnóstico, cumplimiento y auditorías ambientales.</li>
                     <li>Diseño e implementación de indicadores ESG.</li>
-                    <li>Capacitación con valor curricular (DC3) en temas ambientales y sociales.</li>
+                    <li>Capacitación con validez oficial (DC3) en temas ambientales y sociales.</li>
                     <li>Talleres de liderazgo, comunicación efectiva, trabajo en equipo y desarrollo organizacional con enfoque humano.</li>
                     <li>Elaboración de reglamentos, programas municipales y política pública participativa.</li>
                 </ul>
             </div>
 
             <div class="pilar-card ac">
-                <a href="ac.html">DASH A.C. ➔</a>
+                <a href="ac.html">DASH A.C. <span class="arrow-icon">→</span></a>
                 <ul>
                     <li>Proyectos de fortalecimiento comunitario.</li>
                     <li>Gestión de infraestructura verde.</li>
@@ -178,19 +234,19 @@
         <div class="contacto-grid">
             
             <div class="contacto-info">
-                <h3>Contáctanos</h3>
-                <p>📞 (442) 383 5199</p>
-                <p>✉️ <a href="mailto:hola@dashmexico.com">hola@dashmexico.com</a></p>
-                <p>📍 Querétaro, México.</p>
+                <h3>Iniciemos la conversación</h3>
+                <p><span>📞</span> (442) 383 5199</p>
+                <p><span>✉️</span> <a href="mailto:hola@dashmexico.com">hola@dashmexico.com</a></p>
+                <p><span>📍</span> Querétaro, México.</p>
             </div>
 
             <div class="formulario">
-                <form action="https://formspree.io/f/TU_ENLACE_DE_FORMSPREE" method="POST">
+                <form action="https://formspree.io/f/mvoeqzqy" method="POST">
                     <div class="form-group">
                         <input type="text" name="nombre" placeholder="Nombre completo" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="empresa" placeholder="Empresa / Institución (Opcional)">
+                        <input type="email" name="correo" placeholder="Correo electrónico" required>
                     </div>
                     <div class="form-group">
                         <textarea name="mensaje" placeholder="¿En qué podemos apoyarte?" required></textarea>
