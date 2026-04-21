@@ -3,49 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DASH México | Consultoría e Innovación</title>
+    <title>DASH México | Desarrollo Ambiental, Social y Humano</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: sans-serif;
+        :root {
+            --turquesa-negro: #00735E;
+            --cian: #828EC3;
+            --marron: #6A3F28;
+            --blanco: #FFFFFF;
+            --gris-claro: #f4f7f6;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Navegación */
+        header {
+            background-color: var(--blanco);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--turquesa-negro);
+            text-decoration: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            margin-left: 20px;
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--turquesa-negro);
+        }
+
+        /* Secciones Generales */
+        section {
+            padding: 100px 10%;
+            min-height: 80vh;
+        }
+
+        h2 {
+            color: var(--turquesa-negro);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--cian);
+            margin-top: 10px;
+        }
+
+        /* Sección Inicio (Hero) */
+        #inicio {
+            background-color: var(--gris-claro);
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f8f9fa;
-            color: #333;
             text-align: center;
         }
-        .container {
-            max-width: 600px;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #666;
-        }
-        .badge {
-            display: inline-block;
-            padding: 5px 15px;
-            background: #000;
-            color: #fff;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 20px;
+
+        .hero-tag {
+            color: var(--marron);
+            font-weight: 600;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        #inicio h1 {
+            font-size: 3.5rem;
+            color: var(--turquesa-negro);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        /* Sección Quiénes Somos */
+        #quienes-somos {
+            background-color: var(--blanco);
+        }
+
+        /* Secciones DASH */
+        #dash-consultoria { background-color: var(--gris-claro); }
+        #dash-ac { background-color: var(--blanco); }
+
+        .service-placeholder {
+            border-left: 4px solid var(--cian);
+            padding-left: 20px;
+            margin-top: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--turquesa-negro);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { flex-direction: column; }
+            nav { margin-top: 15px; }
+            nav a { margin: 0 10px; font-size: 0.8rem; }
+            #inicio h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Próximamente</div>
-        <h1>DASH México</h1>
-        <p>Estamos construyendo nuestro catálogo de servicios profesionales. Muy pronto estará disponible el nuevo ecosistema multidisciplinario.</p>
-    </div>
+
+    <header>
+        <a href="#inicio" class="logo">DASH MÉXICO</a>
+        <nav>
+            <a href="#quienes-somos">Quiénes somos</a>
+            <a href="#dash-consultoria">Consultoría</a>
+            <a href="#dash-ac">A.C.</a>
+            <a href="#contacto">Contáctanos</a>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <span class="hero-tag">Ecosistema Multidisciplinario</span>
+        <h1>Desarrollo Ambiental,<br>Social y Humano</h1>
+        <p style="max-width: 600px; color: var(--marron);">Impulsando soluciones sostenibles con una visión biocéntrica para un futuro equilibrado.</p>
+    </section>
+
+    <section id="quienes-somos">
+        <h2>Quiénes somos</h2>
+        <p>En DASH México, creemos que la naturaleza no es solo un recurso, sino el centro de nuestro sistema. Nuestra filosofía biocéntrica guía cada proyecto, asegurando que el desarrollo humano camine de la mano con la preservación de la vida.</p>
+    </section>
+
+    <section id="dash-consultoria">
+        <h2>DASH Consultoría</h2>
+        <div class="service-placeholder">
+            <p>Servicios especializados en ingeniería ambiental, cumplimiento normativo y seguridad industrial.</p>
+        </div>
+    </section>
+
+    <section id="dash-ac">
+        <h2>DASH A.C.</h2>
+        <div class="service-placeholder" style="border-color: var(--marron);">
+            <p>Proyectos de impacto social, educación ambiental y fortalecimiento comunitario.</p>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contáctanos</h2>
+        <p>¿Tienes un proyecto en mente o necesitas asesoría técnica? Estamos listos para colaborar.</p>
+        <p style="margin-top: 20px; font-weight: 600;">contacto@dashmexico.com</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DASH México. Todos los derechos reservados.</p>
+    </footer>
+
 </body>
 </html>
