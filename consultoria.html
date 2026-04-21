@@ -1,6 +1,48 @@
-<section style="padding: 100px 10%; min-height: 70vh;">
-        <h2 style="color: var(--turquesa); font-size: 2.5rem; margin-bottom: 30px;">Consultoría</h2>
-        <p style="font-size: 1.1rem; color: #444; max-width: 800px;">
-            Ofrecemos servicios técnicos especializados en ingeniería ambiental, cumplimiento normativo y seguridad industrial (DC3).
-        </p>
-        </section>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoría | DASH México</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        header { 
+            background: var(--blanco); padding: 10px 5%; position: sticky; top: 0; z-index: 1000; 
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo-container { display: flex; align-items: center; text-decoration: none; }
+        .logo-img { height: 50px; margin-right: 12px; }
+        .logo-text { font-weight: 700; color: var(--turquesa); font-size: 1.2rem; }
+        nav a { text-decoration: none; color: #555; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover, nav a.active { color: var(--turquesa); font-weight: 600; }
+        section { padding: 80px 10%; min-height: 80vh; }
+        h2 { color: var(--turquesa); font-size: 2.5rem; margin-bottom: 20px; }
+        .intro { font-size: 1.2rem; color: #666; margin-bottom: 40px; max-width: 800px; }
+        footer { background: var(--turquesa); color: white; text-align: center; padding: 30px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Logo DASH México" class="logo-img">
+            <div class="logo-text">DASH MÉXICO</div>
+        </a>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="quienes-somos.html">Quiénes somos</a>
+            <a href="consultoria.html" class="active">Consultoría</a>
+            <a href="ac.html">DASH A.C.</a>
+            <a href="contacto.html">Contáctanos</a>
+        </nav>
+    </header>
+    <section>
+        <h2>DASH Consultoría</h2>
+        <p class="intro">Soluciones técnicas y normativas con rigor profesional para el sector industrial y gubernamental.</p>
+        <p>Estamos preparando nuestro catálogo detallado de servicios, incluyendo ingeniería ambiental, gestión de residuos y certificaciones DC3.</p>
+    </section>
+    <footer>&copy; 2026 DASH México | hola@dashmexico.com</footer>
+</body>
+</html>
