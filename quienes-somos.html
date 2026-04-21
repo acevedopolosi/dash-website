@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes somos | DASH México</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        
+        header { 
+            background: var(--blanco); padding: 10px 5%; position: sticky; top: 0; z-index: 1000; 
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo-container { display: flex; align-items: center; text-decoration: none; }
+        .logo-text { font-weight: 700; color: var(--turquesa); font-size: 1.2rem; }
+        
+        nav a { text-decoration: none; color: #555; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover, nav a.active { color: var(--turquesa); font-weight: 600; }
+
+        section { padding: 100px 10%; min-height: 80vh; max-width: 1000px; margin: auto; }
+        h2 { color: var(--turquesa); font-size: 2.5rem; margin-bottom: 30px; }
+        p { font-size: 1.1rem; color: #444; margin-bottom: 20px; text-align: justify; }
+        .vision-box { border-left: 5px solid var(--cian); padding-left: 20px; margin: 40px 0; font-style: italic; color: var(--marron); }
+
+        footer { background: var(--turquesa); color: white; text-align: center; padding: 30px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <div class="logo-text">DASH MÉXICO</div>
+        </a>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="quienes-somos.html" class="active">Quiénes somos</a>
+            <a href="consultoria.html">Consultoría</a>
+            <a href="ac.html">DASH A.C.</a>
+            <a href="contacto.html">Contáctanos</a>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Quiénes somos</h2>
+        <p>DASH México nace como un ecosistema multidisciplinario diseñado para abordar los retos ambientales contemporáneos desde una perspectiva integral. No somos solo una consultoría técnica; somos un agente de cambio que busca equilibrar el desarrollo humano con la salud de nuestro entorno.</p>
+        
+        <div class="vision-box">
+            "Nuestra filosofía es biocéntrica: entendemos que la naturaleza no es un recurso a nuestra disposición, sino el centro de la vida que debemos proteger y restaurar."
+        </div>
+
+        <p>Con un equipo liderado por expertos en ingeniería ambiental y gestión social, en DASH México unimos la precisión técnica con el compromiso comunitario para ofrecer soluciones que trasciendan lo administrativo y generen un impacto real en el planeta.</p>
+    </section>
+
+    <footer>&copy; 2026 DASH México | hola@dashmexico.com</footer>
+</body>
+</html>
