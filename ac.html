@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DASH A.C. | DASH México</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; }
+        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f4f7f6; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        
+        /* HEADER - Idéntico para mantener navegación */
         header { 
             background: var(--blanco); padding: 10px 5%; position: sticky; top: 0; z-index: 1000; 
             display: flex; justify-content: space-between; align-items: center;
@@ -18,12 +20,98 @@
         .logo-text { font-weight: 700; color: var(--turquesa); font-size: 1.2rem; }
         nav a { text-decoration: none; color: #555; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover, nav a.active { color: var(--turquesa); font-weight: 600; }
-        section { padding: 80px 10%; min-height: 80vh; }
-        h2 { color: var(--turquesa); font-size: 2.5rem; margin-bottom: 20px; }
-        footer { background: var(--turquesa); color: white; text-align: center; padding: 30px; font-size: 0.8rem; }
+
+        /* HERO DASH A.C. - Inmersivo y oscuro */
+        .hero-ac { 
+            background: linear-gradient(rgba(0, 26, 21, 0.8), rgba(0, 26, 21, 0.9)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 100px 10%;
+            text-align: center;
+            color: var(--blanco);
+        }
+        .img-hero-ac { max-width: 320px; margin-bottom: 30px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
+        .hero-ac h1 { font-size: 3rem; margin-bottom: 20px; font-weight: 700; letter-spacing: -1px; }
+        .hero-ac p { font-size: 1.3rem; max-width: 800px; margin: 0 auto; font-weight: 300; color: #e0e0e0; }
+
+        /* CINTILLO VALOR AGREGADO (Deducible y Marketing) */
+        .cintillo-valor {
+            background: var(--cian);
+            color: var(--blanco);
+            padding: 40px 10%;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            text-align: center;
+        }
+        .valor-item { flex: 1; min-width: 250px; }
+        .valor-item h3 { font-size: 1.2rem; margin-bottom: 10px; font-weight: 600; color: #001a15; }
+        .valor-item p { font-size: 0.95rem; font-weight: 400; line-height: 1.5; }
+
+        /* SECCIÓN DE EJES (GRID DE TARJETAS) */
+        .ejes-section { background: var(--gris-fondo); padding: 80px 10%; }
+        .ejes-header { text-align: center; margin-bottom: 60px; }
+        .ejes-header h2 { color: var(--turquesa); font-size: 2.5rem; margin-bottom: 15px; }
+        .ejes-header p { color: var(--marron); font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+
+        .grid-impacto {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        /* TARJETA DE IMPACTO */
+        .card-eje {
+            background: var(--blanco);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-eje:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        
+        .card-img { width: 100%; height: 250px; object-fit: cover; }
+        
+        .card-body { padding: 40px 30px; flex-grow: 1; border-top: 4px solid var(--marron); }
+        .card-eje:nth-child(even) .card-body { border-top-color: var(--cian); }
+
+        .card-body h3 { color: var(--turquesa); font-size: 1.6rem; margin-bottom: 10px; }
+        .slogan-eje { color: var(--marron); font-style: italic; font-size: 1rem; margin-bottom: 25px; display: block; }
+        
+        .card-body ul { list-style: none; }
+        .card-body li { position: relative; padding-left: 20px; margin-bottom: 12px; color: #555; font-size: 0.95rem; line-height: 1.5; }
+        .card-body li::before { content: "•"; position: absolute; left: 0; color: var(--turquesa); font-size: 1.5rem; line-height: 1; top: -2px; }
+
+        /* CTA FINAL */
+        .cta-ac { 
+            background: var(--marron);
+            color: var(--blanco); padding: 80px 10%; text-align: center;
+        }
+        .cta-ac h3 { font-size: 2.5rem; margin-bottom: 20px; }
+        .btn-cta-ac {
+            background-color: var(--blanco); color: var(--marron); padding: 15px 40px;
+            text-decoration: none; font-weight: 600; border-radius: 30px;
+            transition: 0.3s; font-size: 1.1rem; display: inline-block; margin-top: 20px;
+        }
+        .btn-cta-ac:hover { background-color: var(--turquesa); color: var(--blanco); }
+
+        footer { background: #001a15; color: #aaa; text-align: center; padding: 20px; font-size: 0.8rem; }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            header { flex-direction: column; }
+            nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
+            nav a { margin: 5px 10px; }
+            .hero-ac h1 { font-size: 2.2rem; }
+            .hero-ac p { font-size: 1.1rem; }
+            .grid-impacto { grid-template-columns: 1fr; }
+            .ejes-section { padding: 60px 5%; }
+        }
     </style>
 </head>
 <body>
+
     <header>
         <a href="index.html" class="logo-container">
             <img src="logo.png" alt="Logo DASH México" class="logo-img">
@@ -37,10 +125,103 @@
             <a href="contacto.html">Contáctanos</a>
         </nav>
     </header>
-    <section>
-        <h2>DASH Asociación Civil</h2>
-        <p style="font-size: 1.2rem; color: #666; max-width: 800px;">El brazo social de nuestro ecosistema, dedicado a proyectos comunitarios y la defensa activa de los derechos de la naturaleza.</p>
+
+    <section class="hero-ac">
+        <img src="logoac.png" alt="DASH A.C." class="img-hero-ac">
+        <h1>Acción colectiva para un futuro regenerativo.</h1>
+        <p>Proyectos diseñados para transformar realidades concretas, conectando el propósito de tu organización con las necesidades de nuestra comunidad y entorno.</p>
     </section>
-    <footer>&copy; 2026 DASH México | hola@dashmexico.com</footer>
+
+    <section class="cintillo-valor">
+        <div class="valor-item">
+            <h3>🤝 Inversión Social Transparente</h3>
+            <p>Capacidad legal para emitir <strong>comprobantes fiscales deducibles de impuestos</strong> por cada aportación.</p>
+        </div>
+        <div class="valor-item">
+            <h3>📢 Marketing con Causa</h3>
+            <p>Alineamos tu estrategia de comunicación con acciones reales que fortalecen la reputación y el <em>storytelling</em> corporativo.</p>
+        </div>
+        <div class="valor-item">
+            <h3>🌱 Impacto Medible</h3>
+            <p>Generamos indicadores claros y reportes de resultados para tus estrategias de Responsabilidad Social.</p>
+        </div>
+    </section>
+
+    <section class="ejes-section">
+        <div class="ejes-header">
+            <h2>Nuestros Programas de Impacto</h2>
+            <p>Iniciativas estructuradas para empresas que desean dejar un legado positivo en el tejido social y ambiental.</p>
+        </div>
+
+        <div class="grid-impacto">
+            
+            <div class="card-eje">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="Educación Infantil" class="card-img">
+                <div class="card-body">
+                    <h3>Educación para la Regeneración</h3>
+                    <span class="slogan-eje">"Sembramos conciencia en las generaciones que liderarán el mañana."</span>
+                    <ul>
+                        <li><strong>Mi cuaderno del planeta:</strong> Cuadernos educativos y personalizados para vincular a la niñez con el medio ambiente.</li>
+                        <li><strong>Escuelas que inspiran:</strong> Intervención estética escolar con murales y señalética con valores.</li>
+                        <li><strong>Mi mochila, mi futuro:</strong> Kits escolares sostenibles para promover la equidad educativa.</li>
+                        <li><strong>Guardianes del planeta:</strong> Adopción simbólica de árboles fomentando la responsabilidad ambiental.</li>
+                        <li><strong>Así veo el mundo:</strong> Recopilación y publicación de arte infantil para dar voz a sus derechos y emociones.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-eje">
+                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" alt="Reforestación" class="card-img">
+                <div class="card-body">
+                    <h3>Ciudadanía y Territorio</h3>
+                    <span class="slogan-eje">"Reconectando a la comunidad con su entorno natural."</span>
+                    <ul>
+                        <li><strong>Reforestación comunitaria:</strong> Recuperación de áreas degradadas con especies nativas y participación ciudadana.</li>
+                        <li><strong>Adopción de áreas verdes:</strong> Mejora y mantenimiento de espacios urbanos, parques y camellones.</li>
+                        <li><strong>Senderos interpretativos:</strong> Educación ambiental en parques mediante señalética de biodiversidad.</li>
+                        <li><strong>Jardines polinizadores:</strong> Creación de espacios que aumentan la biodiversidad urbana.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-eje">
+                <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=800&q=80" alt="Bienestar Corporativo" class="card-img">
+                <div class="card-body">
+                    <h3>Bienestar y Cultura con Propósito</h3>
+                    <span class="slogan-eje">"Sostenibilidad que nace desde el corazón de la organización."</span>
+                    <ul>
+                        <li><strong>Juntos por el planeta:</strong> Concursos de arte ambiental para vincular a las familias de los colaboradores.</li>
+                        <li><strong>Día DASH para las familias:</strong> Encuentros tipo picnic sustentable, siembra y círculos de gratitud.</li>
+                        <li><strong>Huerto en la empresa:</strong> Espacios de cultivo institucionales para la salud mental del equipo.</li>
+                        <li><strong>Kits verdes para familias:</strong> Recursos prácticos para fomentar hábitos sostenibles en el hogar.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-eje">
+                <img src="https://images.unsplash.com/photo-1519336367661-eba9c1dfa5e9?auto=format&fit=crop&w=800&q=80" alt="Soluciones Hídricas" class="card-img">
+                <div class="card-body">
+                    <h3>Soluciones Hídricas y Soberanía</h3>
+                    <span class="slogan-eje">"Resiliencia hídrica y alimentaria para comunidades vulnerables."</span>
+                    <ul>
+                        <li><strong>Captación de agua en escuelas:</strong> Instalación de infraestructura pluvial básica y talleres educativos ante la escasez.</li>
+                        <li><strong>Escuelas que alimentan:</strong> Instalación de huertos escolares con talleres de nutrición y cocina saludable.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="cta-ac">
+        <h3>Haz que tu marca deje una huella imborrable.</h3>
+        <p style="font-size: 1.2rem; margin-bottom: 20px;">Diseñemos juntos un proyecto de impacto a la medida de tus objetivos.</p>
+        <a href="contacto.html" class="btn-cta-ac">Quiero ser aliado DASH</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DASH México. Todos los derechos reservados.</p>
+    </footer>
+
 </body>
 </html>
