@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto | DASH México</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; }
+        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f8f9fa; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        
+        /* HEADER */
         header { 
             background: var(--blanco); padding: 10px 5%; position: sticky; top: 0; z-index: 1000; 
             display: flex; justify-content: space-between; align-items: center;
@@ -18,14 +20,99 @@
         .logo-text { font-weight: 700; color: var(--turquesa); font-size: 1.2rem; }
         nav a { text-decoration: none; color: #555; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover, nav a.active { color: var(--turquesa); font-weight: 600; }
-        section { padding: 100px 10%; min-height: 80vh; text-align: center; }
-        h2 { color: var(--turquesa); font-size: 2.5rem; margin-bottom: 20px; }
-        .email-link { font-size: 2rem; color: var(--marron); text-decoration: none; font-weight: 600; transition: 0.3s; }
-        .email-link:hover { color: var(--turquesa); }
-        footer { background: var(--turquesa); color: white; text-align: center; padding: 30px; font-size: 0.8rem; }
+
+        /* CONTENEDOR PRINCIPAL */
+        .contacto-wrapper {
+            background: var(--gris-fondo);
+            min-height: calc(100vh - 140px);
+            padding: 80px 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            background: var(--blanco);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        /* PANEL DE INFORMACIÓN (IZQUIERDA) */
+        .info-panel {
+            background: linear-gradient(135deg, var(--turquesa) 0%, #004d3f 100%);
+            color: var(--blanco);
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .info-panel h2 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 700; }
+        .info-panel p.subtitulo { font-size: 1.1rem; margin-bottom: 50px; font-weight: 300; opacity: 0.9; line-height: 1.6; }
+        
+        .info-item { display: flex; align-items: center; margin-bottom: 30px; }
+        .info-icon { 
+            font-size: 1.5rem; margin-right: 20px; background: rgba(255,255,255,0.1); 
+            width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; border-radius: 50%;
+        }
+        .info-texto h4 { font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .info-texto p, .info-texto a { font-size: 1.2rem; font-weight: 600; color: var(--blanco); text-decoration: none; }
+        .info-texto a:hover { color: var(--cian); }
+
+        /* PANEL DEL FORMULARIO (DERECHA) */
+        .form-panel {
+            padding: 60px 50px;
+            background: var(--blanco);
+        }
+        .form-panel h3 { color: var(--turquesa); font-size: 1.8rem; margin-bottom: 30px; }
+
+        .form-group { margin-bottom: 25px; }
+        .form-label { display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95rem; }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            background: #fdfdfd;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus { border-color: var(--turquesa); outline: none; box-shadow: 0 0 0 4px rgba(0, 115, 94, 0.1); background: var(--blanco); }
+        textarea.form-input { resize: vertical; min-height: 150px; }
+
+        .btn-enviar {
+            background: var(--turquesa); color: var(--blanco); border: none;
+            padding: 16px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px;
+            cursor: pointer; transition: 0.3s; width: 100%; margin-top: 10px;
+        }
+        .btn-enviar:hover { background: var(--marron); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(106, 63, 40, 0.2); }
+
+        footer { background: #001a15; color: #aaa; text-align: center; padding: 20px; font-size: 0.8rem; }
+
+        /* RESPONSIVO */
+        @media (max-width: 900px) {
+            .contacto-grid { grid-template-columns: 1fr; }
+            .info-panel { padding: 40px 30px; text-align: center; }
+            .info-item { flex-direction: column; text-align: center; margin-bottom: 40px; }
+            .info-icon { margin-right: 0; margin-bottom: 15px; }
+            .form-panel { padding: 40px 30px; }
+        }
+        @media (max-width: 768px) {
+            header { flex-direction: column; }
+            nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
+            nav a { margin: 5px 10px; }
+            .contacto-wrapper { padding: 40px 5%; }
+        }
     </style>
 </head>
 <body>
+
     <header>
         <a href="index.html" class="logo-container">
             <img src="logo.png" alt="Logo DASH México" class="logo-img">
@@ -39,11 +126,69 @@
             <a href="contacto.html" class="active">Contáctanos</a>
         </nav>
     </header>
-    <section>
-        <h2>¿Cómo podemos colaborar?</h2>
-        <p style="margin-bottom: 40px; color: #666;">Estamos listos para escuchar tu propuesta o resolver tus dudas técnicas.</p>
-        <a href="mailto:hola@dashmexico.com" class="email-link">hola@dashmexico.com</a>
+
+    <section class="contacto-wrapper">
+        <div class="contacto-grid">
+            
+            <div class="info-panel">
+                <h2>Hablemos</h2>
+                <p class="subtitulo">Ya sea para un proyecto de cumplimiento técnico o una iniciativa de impacto social, en DASH México estamos listos para colaborar contigo.</p>
+                
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-texto">
+                        <h4>Teléfono</h4>
+                        <p>(442) 383 5199</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-texto">
+                        <h4>Correo Electrónico</h4>
+                        <a href="mailto:hola@dashmexico.com">hola@dashmexico.com</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-texto">
+                        <h4>Ubicación</h4>
+                        <p>Querétaro, México</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-panel">
+                <h3>Envíanos un mensaje</h3>
+                <form action="https://formspree.io/f/TU_ENLACE_DE_FORMSPREE" method="POST">
+                    
+                    <div class="form-group">
+                        <label class="form-label">Nombre completo *</label>
+                        <input type="text" name="nombre" class="form-input" placeholder="Ej. Ana Pérez" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Correo electrónico *</label>
+                        <input type="email" name="correo" class="form-input" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿En qué podemos apoyarte? *</label>
+                        <textarea name="mensaje" class="form-input" placeholder="Cuéntanos brevemente sobre tus requerimientos de consultoría o interés en nuestros programas de la A.C." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+                    
+                </form>
+            </div>
+
+        </div>
     </section>
-    <footer>&copy; 2026 DASH México | hola@dashmexico.com</footer>
+
+    <footer>
+        <p>&copy; 2026 DASH México. Todos los derechos reservados.</p>
+    </footer>
+
 </body>
 </html>
