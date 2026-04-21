@@ -9,7 +9,6 @@
         :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f4f7f6; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         
-        /* HEADER - Idéntico para mantener navegación */
         header { 
             background: var(--blanco); padding: 10px 5%; position: sticky; top: 0; z-index: 1000; 
             display: flex; justify-content: space-between; align-items: center;
@@ -21,7 +20,7 @@
         nav a { text-decoration: none; color: #555; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover, nav a.active { color: var(--turquesa); font-weight: 600; }
 
-        /* HERO DASH A.C. - Inmersivo y oscuro */
+        /* HERO DASH A.C. */
         .hero-ac { 
             background: linear-gradient(rgba(0, 26, 21, 0.8), rgba(0, 26, 21, 0.9)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1920&q=80') center/cover;
             padding: 100px 10%;
@@ -32,7 +31,7 @@
         .hero-ac h1 { font-size: 3rem; margin-bottom: 20px; font-weight: 700; letter-spacing: -1px; }
         .hero-ac p { font-size: 1.3rem; max-width: 800px; margin: 0 auto; font-weight: 300; color: #e0e0e0; }
 
-        /* CINTILLO VALOR AGREGADO (Deducible y Marketing) */
+        /* CINTILLO VALOR AGREGADO */
         .cintillo-valor {
             background: var(--cian);
             color: var(--blanco);
@@ -47,7 +46,7 @@
         .valor-item h3 { font-size: 1.2rem; margin-bottom: 10px; font-weight: 600; color: #001a15; }
         .valor-item p { font-size: 0.95rem; font-weight: 400; line-height: 1.5; }
 
-        /* SECCIÓN DE EJES (GRID DE TARJETAS) */
+        /* SECCIÓN DE EJES */
         .ejes-section { background: var(--gris-fondo); padding: 80px 10%; }
         .ejes-header { text-align: center; margin-bottom: 60px; }
         .ejes-header h2 { color: var(--turquesa); font-size: 2.5rem; margin-bottom: 15px; }
@@ -98,7 +97,6 @@
 
         footer { background: #001a15; color: #aaa; text-align: center; padding: 20px; font-size: 0.8rem; }
 
-        /* RESPONSIVO */
         @media (max-width: 768px) {
             header { flex-direction: column; }
             nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
@@ -150,62 +148,62 @@
     <section class="ejes-section">
         <div class="ejes-header">
             <h2>Nuestros Programas de Impacto</h2>
-            <p>Iniciativas estructuradas para empresas que desean dejar un legado positivo en el tejido social y ambiental.</p>
+            <p>Iniciativas estructuradas para organizaciones que desean dejar un legado positivo en el tejido social y ambiental.</p>
         </div>
 
         <div class="grid-impacto">
             
             <div class="card-eje">
-                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="Educación Infantil" class="card-img">
+                <img src="https://images.unsplash.com/photo-1536640712-4d4c36ef0e2c?auto=format&fit=crop&w=800&q=80" alt="Educación Ambiental" class="card-img">
                 <div class="card-body">
                     <h3>Educación para la Regeneración</h3>
                     <span class="slogan-eje">"Sembramos conciencia en las generaciones que liderarán el mañana."</span>
                     <ul>
-                        <li><strong>Mi cuaderno del planeta:</strong> Cuadernos educativos y personalizados para vincular a la niñez con el medio ambiente.</li>
-                        <li><strong>Escuelas que inspiran:</strong> Intervención estética escolar con murales y señalética con valores.</li>
-                        <li><strong>Mi mochila, mi futuro:</strong> Kits escolares sostenibles para promover la equidad educativa.</li>
-                        <li><strong>Guardianes del planeta:</strong> Adopción simbólica de árboles fomentando la responsabilidad ambiental.</li>
-                        <li><strong>Así veo el mundo:</strong> Recopilación y publicación de arte infantil para dar voz a sus derechos y emociones.</li>
+                        <li>Desarrollo de materiales didácticos personalizados sobre educación ambiental.</li>
+                        <li>Intervenciones estéticas y artísticas en espacios escolares vulnerables.</li>
+                        <li>Dotación de kits escolares sostenibles con enfoque de equidad.</li>
+                        <li>Programas de adopción de áreas verdes para la infancia.</li>
+                        <li>Iniciativas editoriales para dar voz a la niñez a través de la expresión artística.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="card-eje">
-                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" alt="Reforestación" class="card-img">
+                <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=800&q=80" alt="Regeneración Territorial" class="card-img">
                 <div class="card-body">
                     <h3>Ciudadanía y Territorio</h3>
                     <span class="slogan-eje">"Reconectando a la comunidad con su entorno natural."</span>
                     <ul>
-                        <li><strong>Reforestación comunitaria:</strong> Recuperación de áreas degradadas con especies nativas y participación ciudadana.</li>
-                        <li><strong>Adopción de áreas verdes:</strong> Mejora y mantenimiento de espacios urbanos, parques y camellones.</li>
-                        <li><strong>Senderos interpretativos:</strong> Educación ambiental en parques mediante señalética de biodiversidad.</li>
-                        <li><strong>Jardines polinizadores:</strong> Creación de espacios que aumentan la biodiversidad urbana.</li>
+                        <li>Organización de jornadas de reforestación comunitaria con especies nativas.</li>
+                        <li>Gestión para la adopción, mejora y mantenimiento de áreas verdes urbanas.</li>
+                        <li>Diseño e instalación de senderos interpretativos en parques públicos.</li>
+                        <li>Creación de jardines polinizadores para el fomento de la biodiversidad local.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="card-eje">
-                <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=800&q=80" alt="Bienestar Corporativo" class="card-img">
+                <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80" alt="Bienestar Corporativo" class="card-img">
                 <div class="card-body">
                     <h3>Bienestar y Cultura con Propósito</h3>
                     <span class="slogan-eje">"Sostenibilidad que nace desde el corazón de la organización."</span>
                     <ul>
-                        <li><strong>Juntos por el planeta:</strong> Concursos de arte ambiental para vincular a las familias de los colaboradores.</li>
-                        <li><strong>Día DASH para las familias:</strong> Encuentros tipo picnic sustentable, siembra y círculos de gratitud.</li>
-                        <li><strong>Huerto en la empresa:</strong> Espacios de cultivo institucionales para la salud mental del equipo.</li>
-                        <li><strong>Kits verdes para familias:</strong> Recursos prácticos para fomentar hábitos sostenibles en el hogar.</li>
+                        <li>Iniciativas artísticas para vincular a las familias de los colaboradores con el medio ambiente.</li>
+                        <li>Encuentros y jornadas familiares de integración con enfoque sustentable.</li>
+                        <li>Diseño y establecimiento de huertos institucionales como espacios de salud mental.</li>
+                        <li>Creación de recursos educativos para el fomento de hábitos sostenibles en el hogar.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="card-eje">
-                <img src="https://images.unsplash.com/photo-1519336367661-eba9c1dfa5e9?auto=format&fit=crop&w=800&q=80" alt="Soluciones Hídricas" class="card-img">
+                <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&q=80" alt="Soluciones Hídricas" class="card-img">
                 <div class="card-body">
                     <h3>Soluciones Hídricas y Soberanía</h3>
-                    <span class="slogan-eje">"Resiliencia hídrica y alimentaria para comunidades vulnerables."</span>
+                    <span class="slogan-eje">"Resiliencia hídrica y alimentaria para comunidades."</span>
                     <ul>
-                        <li><strong>Captación de agua en escuelas:</strong> Instalación de infraestructura pluvial básica y talleres educativos ante la escasez.</li>
-                        <li><strong>Escuelas que alimentan:</strong> Instalación de huertos escolares con talleres de nutrición y cocina saludable.</li>
+                        <li>Instalación de sistemas de captación de agua pluvial en centros educativos y zonas vulnerables.</li>
+                        <li>Desarrollo de huertos escolares comunitarios complementados con educación nutricional.</li>
                     </ul>
                 </div>
             </div>
@@ -214,8 +212,8 @@
     </section>
 
     <section class="cta-ac">
-        <h3>Haz que tu marca deje una huella imborrable.</h3>
-        <p style="font-size: 1.2rem; margin-bottom: 20px;">Diseñemos juntos un proyecto de impacto a la medida de tus objetivos.</p>
+        <h3>Haz que tu organización deje una huella imborrable.</h3>
+        <p style="font-size: 1.2rem; margin-bottom: 20px;">Diseñemos juntos un programa de impacto a la medida de tus objetivos.</p>
         <a href="contacto.html" class="btn-cta-ac">Quiero ser aliado DASH</a>
     </section>
 
