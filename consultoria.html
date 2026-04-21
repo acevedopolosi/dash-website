@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultoría | DASH México</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; }
+        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f8f9fa; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        
         header { 
             background: var(--blanco); padding: 10px 5%; position: sticky; top: 0; z-index: 1000; 
             display: flex; justify-content: space-between; align-items: center;
@@ -18,13 +19,68 @@
         .logo-text { font-weight: 700; color: var(--turquesa); font-size: 1.2rem; }
         nav a { text-decoration: none; color: #555; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover, nav a.active { color: var(--turquesa); font-weight: 600; }
-        section { padding: 80px 10%; min-height: 80vh; }
-        h2 { color: var(--turquesa); font-size: 2.5rem; margin-bottom: 20px; }
-        .intro { font-size: 1.2rem; color: #666; margin-bottom: 40px; max-width: 800px; }
-        footer { background: var(--turquesa); color: white; text-align: center; padding: 30px; font-size: 0.8rem; }
+
+        /* HERO CONSULTORÍA */
+        .hero-consultoria { 
+            background: var(--gris-fondo);
+            padding: 80px 10%;
+            text-align: center;
+        }
+        .img-hero-consultoria { max-width: 300px; margin-bottom: 30px; }
+        .hero-consultoria p { font-size: 1.5rem; color: var(--marron); max-width: 800px; margin: 0 auto; font-weight: 400; line-height: 1.4; }
+
+        /* ZIG-ZAG SECTION */
+        .servicios-container { padding: 60px 10%; background: var(--blanco); }
+        .servicio-row { display: flex; align-items: center; gap: 80px; margin-bottom: 120px; }
+        .servicio-row:nth-child(even) { flex-direction: row-reverse; }
+        
+        .servicio-texto { flex: 1.2; }
+        .servicio-texto h2 { color: var(--turquesa); font-size: 2.2rem; margin-bottom: 10px; }
+        .servicio-texto h3 { color: var(--cian); font-size: 1.1rem; font-weight: 400; margin-bottom: 25px; font-style: italic; }
+        .servicio-texto p { font-size: 1.05rem; color: #555; line-height: 1.7; margin-bottom: 20px; }
+        
+        .servicio-texto ul { list-style: none; margin-top: 20px; }
+        .servicio-texto li { position: relative; padding-left: 25px; margin-bottom: 12px; color: #444; font-size: 0.95rem; }
+        .servicio-texto li::before { content: "→"; position: absolute; left: 0; color: var(--turquesa); font-weight: bold; }
+
+        .servicio-imagen { flex: 0.8; text-align: center; }
+        
+        /* BLOBS ANIMADOS */
+        .blob-img {
+            width: 100%; max-width: 400px; height: 400px;
+            object-fit: cover; transition: all 1.5s ease-in-out;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .blob-1 { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        .blob-2 { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        .blob-3 { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+        .blob-4 { border-radius: 40% 60% 74% 26% / 48% 36% 64% 52%; }
+
+        .servicio-row:hover .blob-img { border-radius: 50%; transform: scale(1.02); }
+
+        /* CTA FINAL */
+        .cta-consultoria { 
+            background: linear-gradient(135deg, var(--turquesa) 0%, #004d3f 100%);
+            color: var(--blanco); padding: 80px 10%; text-align: center;
+        }
+        .btn-cta {
+            background-color: var(--blanco); color: var(--turquesa); padding: 15px 40px;
+            text-decoration: none; font-weight: 600; border-radius: 30px;
+            transition: 0.3s; font-size: 1.1rem; display: inline-block; margin-top: 30px;
+        }
+        .btn-cta:hover { background-color: var(--cian); color: var(--blanco); transform: translateY(-3px); }
+
+        footer { background: #001a15; color: #aaa; text-align: center; padding: 20px; font-size: 0.8rem; }
+
+        @media (max-width: 900px) {
+            .servicio-row, .servicio-row:nth-child(even) { flex-direction: column-reverse; gap: 40px; text-align: center; }
+            .servicio-texto li { text-align: left; }
+            .blob-img { height: 300px; width: 300px; }
+        }
     </style>
 </head>
 <body>
+
     <header>
         <a href="index.html" class="logo-container">
             <img src="logo.png" alt="Logo DASH México" class="logo-img">
@@ -38,11 +94,94 @@
             <a href="contacto.html">Contáctanos</a>
         </nav>
     </header>
-    <section>
-        <h2>DASH Consultoría</h2>
-        <p class="intro">Soluciones técnicas y normativas con rigor profesional para el sector industrial y gubernamental.</p>
-        <p>Estamos preparando nuestro catálogo detallado de servicios, incluyendo ingeniería ambiental, gestión de residuos y certificaciones DC3.</p>
+
+    <section class="hero-consultoria">
+        <img src="logoconsultoria.png" alt="DASH Consultoría" class="img-hero-consultoria">
+        <p>Más allá del cumplimiento: estrategia técnica con impacto real.</p>
     </section>
-    <footer>&copy; 2026 DASH México | hola@dashmexico.com</footer>
+
+    <section class="servicios-container">
+        
+        <div class="servicio-row">
+            <div class="servicio-texto">
+                <h2>Ingeniería Ambiental y Cumplimiento Normativo</h2>
+                <h3>El rigor técnico al servicio de la continuidad operativa.</h3>
+                <p>No solo gestionamos trámites; aseguramos la "licencia para operar" de tu organización mediante soluciones de ingeniería de vanguardia.</p>
+                <ul>
+                    <li>Cédula de Operación Anual (COA).</li>
+                    <li>Licencia Ambiental Única (LAU).</li>
+                    <li>Inventario de Emisiones GEI (Huella de Carbono).</li>
+                    <li>Estudios de Riesgo Ambiental (ERA) y PPA.</li>
+                    <li>Planes de Manejo de Residuos y Economía Circular.</li>
+                    <li>Atención técnica en visitas de inspección.</li>
+                </ul>
+            </div>
+            <div class="servicio-imagen">
+                <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80" alt="Ingeniería Ambiental" class="blob-img blob-1">
+            </div>
+        </div>
+
+        <div class="servicio-row">
+            <div class="servicio-texto">
+                <h2>Estrategia ESG y Responsabilidad Social</h2>
+                <h3>Transformamos el compromiso en indicadores de valor.</h3>
+                <p>Alineamos la operación con estándares globales para fortalecer la reputación y el acceso a mercados exigentes.</p>
+                <ul>
+                    <li>Sistemas de Gestión ISO (14001, 50001, 26000, 20121).</li>
+                    <li>Diagnóstico de materialidad y hojas de ruta ESG.</li>
+                    <li>Reportes de Sostenibilidad (GRI, SASB).</li>
+                    <li>Programas de voluntariado corporativo y desarrollo territorial.</li>
+                    <li>Políticas de ética y derechos humanos corporativos.</li>
+                </ul>
+            </div>
+            <div class="servicio-imagen">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="ESG y RSE" class="blob-img blob-2">
+            </div>
+        </div>
+
+        <div class="servicio-row">
+            <div class="servicio-texto">
+                <h2>Formación y Liderazgo</h2>
+                <h3>Impulsando equipos conscientes con propósito.</h3>
+                <p>El conocimiento es la base del cambio. Ofrecemos experiencias formativas que transforman la cultura organizacional.</p>
+                <ul>
+                    <li><strong>Capacitación con validez oficial (DC3):</strong> Normatividad ambiental, huella de carbono, ODS y economía circular.</li>
+                    <li><strong>Derechos Humanos:</strong> Formación en igualdad, no discriminación y prevención de violencia de género en el entorno laboral.</li>
+                    <li>Talleres de liderazgo transformacional y cohesión de equipos de alto desempeño.</li>
+                </ul>
+            </div>
+            <div class="servicio-imagen">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="Formación" class="blob-img blob-3">
+            </div>
+        </div>
+
+        <div class="servicio-row">
+            <div class="servicio-texto">
+                <h2>Gobernanza y Política Pública</h2>
+                <h3>Fortaleciendo instituciones para transformar territorios.</h3>
+                <p>Colaboramos con gobiernos para crear instrumentos normativos técnica de excelencia y socialmente legítimos.</p>
+                <ul>
+                    <li>Diseño y actualización de reglamentos municipales (Ambiente, Residuos, Cambio Climático).</li>
+                    <li>Planeación ambiental estratégica y programas municipales ODS.</li>
+                    <li>Procesos de participación ciudadana y consultas públicas deliberativas.</li>
+                </ul>
+            </div>
+            <div class="servicio-imagen">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80" alt="Gobernanza" class="blob-img blob-4">
+            </div>
+        </div>
+
+    </section>
+
+    <section class="cta-consultoria">
+        <h3>¿Listo para llevar tu organización al siguiente nivel?</h3>
+        <p>Hablemos de cómo transformar tus retos normativos en una estrategia de éxito.</p>
+        <a href="contacto.html" class="btn-cta">Iniciar conversación</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DASH México. Todos los derechos reservados.</p>
+    </footer>
+
 </body>
 </html>
