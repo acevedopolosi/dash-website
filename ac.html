@@ -58,7 +58,7 @@
             gap: 40px;
         }
 
-        /* TARJETA DE IMPACTO */
+        /* TARJETA DE IMPACTO STORYTELLING */
         .card-eje {
             background: var(--blanco);
             border-radius: 16px;
@@ -70,7 +70,7 @@
         }
         .card-eje:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
         
-        .card-img { width: 100%; height: 250px; object-fit: cover; }
+        .card-img { width: 100%; height: 280px; object-fit: cover; }
         
         .card-body { padding: 40px 30px; flex-grow: 1; border-top: 4px solid var(--marron); }
         .card-eje:nth-child(even) .card-body { border-top-color: var(--cian); }
@@ -78,14 +78,15 @@
         .card-body h3 { color: var(--turquesa); font-size: 1.6rem; margin-bottom: 10px; }
         .slogan-eje { color: var(--marron); font-style: italic; font-size: 1rem; margin-bottom: 25px; display: block; }
         
-        .card-body ul { list-style: none; }
-        .card-body li { position: relative; padding-left: 20px; margin-bottom: 12px; color: #555; font-size: 0.95rem; line-height: 1.5; }
-        .card-body li::before { content: "•"; position: absolute; left: 0; color: var(--turquesa); font-size: 1.5rem; line-height: 1; top: -2px; }
+        .storytelling-text { color: #555; font-size: 1.05rem; line-height: 1.7; text-align: justify; }
 
-        /* CTA FINAL */
+        /* CTA FINAL CON FONDO DE HUELLAS Y MÁSCARA CAFÉ */
         .cta-ac { 
-            background: var(--marron);
-            color: var(--blanco); padding: 80px 10%; text-align: center;
+            /* Se usa rgba(106, 63, 40, 0.85) que es el equivalente RGB de var(--marron) con 85% de opacidad */
+            background: linear-gradient(rgba(106, 63, 40, 0.85), rgba(106, 63, 40, 0.95)), url('https://images.unsplash.com/photo-1534293230397-c067fc201ab8?auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: var(--blanco); 
+            padding: 100px 10%; 
+            text-align: center;
         }
         .cta-ac h3 { font-size: 2.5rem; margin-bottom: 20px; }
         .btn-cta-ac {
@@ -105,6 +106,7 @@
             .hero-ac p { font-size: 1.1rem; }
             .grid-impacto { grid-template-columns: 1fr; }
             .ejes-section { padding: 60px 5%; }
+            .cta-ac { padding: 80px 5%; }
         }
     </style>
 </head>
@@ -154,57 +156,38 @@
         <div class="grid-impacto">
             
             <div class="card-eje">
-                <img src="https://images.unsplash.com/photo-1536640712-4d4c36ef0e2c?auto=format&fit=crop&w=800&q=80" alt="Educación Ambiental" class="card-img">
+                <img src="https://source.unsplash.com/_qqlFMNINwI/800x600" alt="Educación Ambiental" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80'">
                 <div class="card-body">
                     <h3>Educación para la Regeneración</h3>
                     <span class="slogan-eje">"Sembramos conciencia en las generaciones que liderarán el mañana."</span>
-                    <ul>
-                        <li>Desarrollo de materiales didácticos personalizados sobre educación ambiental.</li>
-                        <li>Intervenciones estéticas y artísticas en espacios escolares vulnerables.</li>
-                        <li>Dotación de kits escolares sostenibles con enfoque de equidad.</li>
-                        <li>Programas de adopción de áreas verdes para la infancia.</li>
-                        <li>Iniciativas editoriales para dar voz a la niñez a través de la expresión artística.</li>
-                    </ul>
+                    <p class="storytelling-text">Imagina un salón de clases donde el entorno natural es el principal maestro. A través de este programa, convertimos escuelas vulnerables en espacios vivos. Creamos materiales educativos personalizados e inspiramos a la niñez a convertirse en guardianes activos de su entorno. Ya sea transformando muros grises en murales llenos de color o dotando de kits escolares sostenibles, no solo entregamos herramientas; forjamos una conexión profunda y duradera entre las infancias y la tierra que habitan.</p>
                 </div>
             </div>
 
             <div class="card-eje">
-                <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=800&q=80" alt="Regeneración Territorial" class="card-img">
+                <img src="https://source.unsplash.com/7_ZubDD__q8/800x600" alt="Regeneración Territorial" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=800&q=80'">
                 <div class="card-body">
                     <h3>Ciudadanía y Territorio</h3>
                     <span class="slogan-eje">"Reconectando a la comunidad con su entorno natural."</span>
-                    <ul>
-                        <li>Organización de jornadas de reforestación comunitaria con especies nativas.</li>
-                        <li>Gestión para la adopción, mejora y mantenimiento de áreas verdes urbanas.</li>
-                        <li>Diseño e instalación de senderos interpretativos en parques públicos.</li>
-                        <li>Creación de jardines polinizadores para el fomento de la biodiversidad local.</li>
-                    </ul>
+                    <p class="storytelling-text">Creemos que el espacio público debe ser un refugio para la vida. Nuestras iniciativas invitan a empresas y ciudadanos a ensuciarse las manos para sembrar esperanza. Desde jornadas de reforestación comunitaria con especies nativas hasta la creación de jardines polinizadores que devuelven el color a las calles. Transformamos camellones y parques olvidados en senderos interpretativos donde cada planta cuenta una historia, recuperando así el latido natural de nuestras ciudades.</p>
                 </div>
             </div>
 
             <div class="card-eje">
-                <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80" alt="Bienestar Corporativo" class="card-img">
+                <img src="https://source.unsplash.com/Zyx1bK9mqmA/800x600" alt="Bienestar Corporativo" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80'">
                 <div class="card-body">
                     <h3>Bienestar y Cultura con Propósito</h3>
                     <span class="slogan-eje">"Sostenibilidad que nace desde el corazón de la organización."</span>
-                    <ul>
-                        <li>Iniciativas artísticas para vincular a las familias de los colaboradores con el medio ambiente.</li>
-                        <li>Encuentros y jornadas familiares de integración con enfoque sustentable.</li>
-                        <li>Diseño y establecimiento de huertos institucionales como espacios de salud mental.</li>
-                        <li>Creación de recursos educativos para el fomento de hábitos sostenibles en el hogar.</li>
-                    </ul>
+                    <p class="storytelling-text">La verdadera sostenibilidad comienza desde adentro. Diseñamos experiencias memorables donde los colaboradores y sus familias se reconectan con la naturaleza. A través de encuentros de integración al aire libre, dinámicas de arte ambiental y la instalación de huertos orgánicos directamente en los espacios de trabajo, logramos transformar la cultura organizacional. Fomentamos el sentido de pertenencia, la salud mental y la unión bajo un propósito inspirador: cuidar juntos nuestro hogar compartido.</p>
                 </div>
             </div>
 
             <div class="card-eje">
-                <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&q=80" alt="Soluciones Hídricas" class="card-img">
+                <img src="https://source.unsplash.com/8xni8cdjZtA/800x600" alt="Ecotecnias" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&q=80'">
                 <div class="card-body">
-                    <h3>Soluciones Hídricas y Soberanía</h3>
-                    <span class="slogan-eje">"Resiliencia hídrica y alimentaria para comunidades."</span>
-                    <ul>
-                        <li>Instalación de sistemas de captación de agua pluvial en centros educativos y zonas vulnerables.</li>
-                        <li>Desarrollo de huertos escolares comunitarios complementados con educación nutricional.</li>
-                    </ul>
+                    <h3>Ecotecnias para Comunidades Vulnerables</h3>
+                    <span class="slogan-eje">"Resiliencia y soberanía para quienes más lo necesitan."</span>
+                    <p class="storytelling-text">El acceso al agua limpia y a la alimentación digna no debería ser un privilegio. Con este programa, intervenimos en comunidades e instituciones educativas que enfrentan escasez hídrica, instalando sistemas de captación de agua de lluvia y ecotecnias accesibles. Acompañamos esta infraestructura crítica con la creación de huertos comunitarios y educación nutricional. De esta manera, vamos más allá de resolver una carencia técnica: sembramos resiliencia comunitaria frente a los retos del futuro.</p>
                 </div>
             </div>
 
