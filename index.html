@@ -70,12 +70,13 @@
             align-items: center;
             margin-top: 50px; /* Compensa el header fijo */
         }
-        .hero-main-logo {
+   .hero-main-logo {
             max-width: 600px; /* Tamaño masivo para impacto */
             width: 100%;
             height: auto;
             margin-bottom: 50px;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4));
+            /* CAMBIO: Sombra de luz blanca (glow) para resaltar las letras oscuras */
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8));
         }
         .hero h2 { 
             font-size: clamp(1.5rem, 3vw, 2.2rem); /* Tipografía fluida */
@@ -108,7 +109,7 @@
             margin-bottom: 100px;
         }
 
-        /* Bloque Asimétrico Base */
+  /* Bloque Asimétrico Base */
         .bloque-pilar {
             display: flex;
             align-items: center;
@@ -117,6 +118,13 @@
             margin: 0 auto 120px auto;
             padding: 0 6%;
             gap: 80px;
+            /* CAMBIO: Agregamos la transición para que el movimiento sea suave */
+            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        /* CAMBIO: Efecto de elevación de todo el bloque al pasar el cursor */
+        .bloque-pilar:hover {
+            transform: translateY(-15px);
+        }
         }
         /* Bloque A.C. invertido */
         .bloque-pilar.invertido {
