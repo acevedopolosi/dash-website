@@ -6,234 +6,337 @@
     <title>Inicio | DASH México</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* =========================================
-           1. ESTILOS GLOBALES Y VARIABLES
-           ========================================= */
+        /* ========================================================
+           VARIABLES Y RESET PREMIUM
+        ======================================================== */
         :root { 
             --turquesa: #00735E; 
             --cian: #828EC3; 
             --marron: #6A3F28; 
             --blanco: #FFFFFF; 
-            --gris-fondo: #f5f7f9; /* Gris muy elegante y limpio */
-            --oscuro: #001a15; 
+            --gris-fondo: #F9FAFB; /* Gris ultra claro, casi blanco */
+            --oscuro: #0B1311; /* Negro entintado con verde */
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--gris-fondo); color: #333; }
+        body { background-color: var(--gris-fondo); color: #333; overflow-x: hidden; }
 
-        /* =========================================
-           2. ENCABEZADO (HEADER)
-           ========================================= */
+        /* ========================================================
+           HEADER GLASSMORPHISM
+        ======================================================== */
         header { 
-            background: rgba(255, 255, 255, 0.98); padding: 15px 5%; position: sticky; 
-            top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04); backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85); 
+            padding: 15px 6%; 
+            position: fixed; /* Fijo siempre arriba */
+            width: 100%;
+            top: 0; 
+            z-index: 1000; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            backdrop-filter: blur(15px); /* Efecto cristal premium */
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 45px; margin-right: 12px; }
-        .logo-text { font-weight: 700; color: var(--turquesa); font-size: 1.3rem; letter-spacing: -0.5px; }
-        nav a { text-decoration: none; color: #444; margin-left: 30px; font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
+        .logo-img { height: 40px; margin-right: 15px; }
+        .logo-text { font-weight: 700; color: var(--turquesa); font-size: 1.2rem; letter-spacing: 1px; }
+        
+        nav a { 
+            text-decoration: none; color: #555; margin-left: 35px; 
+            font-size: 0.9rem; font-weight: 500; transition: color 0.3s ease; 
+        }
         nav a:hover, nav a.active { color: var(--turquesa); }
 
-        /* =========================================
-           3. HERO SECTION (IMPACTO INICIAL)
-           ========================================= */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* ========================================================
+           HERO 100VH FULLSCREEN
+        ======================================================== */
         .hero { 
-            background: linear-gradient(rgba(0, 30, 25, 0.85), rgba(0, 115, 94, 0.7)), url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            min-height: 85vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; color: var(--blanco); padding: 80px 10%;
-        }
-        .hero-content { animation: fadeUp 1s ease-out forwards; max-width: 850px; display: flex; flex-direction: column; align-items: center; }
-        
-        /* LOGO MÁS GRANDE */
-        .hero-main-logo {
-            max-width: 550px; /* Creció de 380px a 550px */
-            width: 100%; height: auto; margin-bottom: 40px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
-        }
-        .hero h2 { font-size: 1.8rem; color: #e0ece9; margin-bottom: 30px; font-weight: 300; }
-        .hero p { font-size: 1.15rem; line-height: 1.8; margin-bottom: 50px; font-weight: 300; opacity: 0.9; }
-        
-        .btn-conocenos {
-            background-color: var(--turquesa); color: var(--blanco); padding: 16px 45px;
-            text-decoration: none; font-weight: 600; border-radius: 50px; transition: all 0.3s ease;
-            font-size: 1.1rem; display: inline-block; border: 2px solid var(--turquesa);
-        }
-        .btn-conocenos:hover { background-color: transparent; color: var(--blanco); border-color: var(--blanco); }
-
-        /* =========================================
-           4. SECCIÓN PILARES (ESTILO PREMIUM REFERENCE)
-           ========================================= */
-        .pilar-wrapper { padding: 100px 5%; background: var(--gris-fondo); }
-        .pilar-title-main { text-align: center; color: var(--turquesa); font-size: 2.8rem; margin-bottom: 80px; font-weight: 600; letter-spacing: -1px; }
-        
-        .pilar-grid-wrapper {
-            display: grid; grid-template-columns: 1fr 1fr; max-width: 1200px; margin: 0 auto; gap: 50px;
-        }
-
-        /* DISEÑO DE TARJETA AVANZADO */
-        .pilar-block {
-            background: var(--blanco);
-            border-radius: 40px; /* Borde muy redondeado como en la imagen */
-            padding: 60px 50px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.03); /* Sombra súper suave */
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Transición más fluida */
             position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.02);
-        }
-        
-        /* Efecto Hover Premium */
-        .pilar-block:hover { 
-            transform: translateY(-12px); 
-            box-shadow: 0 30px 60px rgba(0, 115, 94, 0.08); /* La sombra se tiñe un poco de turquesa */
-        }
-        .pilar-block.ac:hover {
-            box-shadow: 0 30px 60px rgba(106, 63, 40, 0.08); /* Sombra marrón para la AC */
-        }
-        
-        /* Acento superior sutil */
-        .pilar-block::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 8px;
-        }
-        .pilar-block.consultoria::before { background: linear-gradient(90deg, var(--turquesa), var(--cian)); }
-        .pilar-block.ac::before { background: linear-gradient(90deg, var(--marron), #8a573b); }
-
-        .pilar-block h3 { font-size: 2.2rem; font-weight: 700; color: var(--oscuro); margin-bottom: 15px; }
-        .pilar-intro-p { font-size: 1.1rem; color: #666; font-weight: 400; margin-bottom: 35px; line-height: 1.7; }
-        
-        .pilar-block ul { list-style: none; }
-        .pilar-block li { 
-            position: relative; padding-left: 35px; margin-bottom: 20px; 
-            color: #555; font-size: 1.05rem; line-height: 1.6; font-weight: 300;
-        }
-        
-        /* Bullet points elegantes */
-        .pilar-block li::before { 
-            content: ""; position: absolute; left: 0; top: 8px; width: 20px; height: 2px;
-            background-color: var(--turquesa); 
-        }
-        .pilar-block.ac li::before { background-color: var(--marron); }
-
-        .btn-pilar {
-            display: inline-flex; align-items: center; margin-top: 30px; color: var(--oscuro); text-decoration: none;
-            font-weight: 600; font-size: 1.1rem; transition: 0.3s;
-        }
-        .btn-pilar span { margin-left: 10px; transition: transform 0.3s; }
-        .btn-pilar:hover { color: var(--turquesa); }
-        .btn-pilar:hover span { transform: translateX(8px); }
-        .pilar-block.ac .btn-pilar:hover { color: var(--marron); }
-
-        /* RESPONSIVO */
-        @media (max-width: 900px) {
-            .pilar-grid-wrapper { grid-template-columns: 1fr; }
-            .hero-main-logo { max-width: 400px; }
-        }
-        @media (max-width: 768px) {
-            header { flex-direction: column; }
-            nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
-            nav a { margin: 5px 10px; }
-            .hero, .pilar-wrapper { padding: 60px 5%; }
-            .hero-main-logo { max-width: 320px; }
-            .pilar-block { padding: 40px 30px; border-radius: 30px; }
-            .pilar-title-main { font-size: 2.2rem; }
-        }
-    /* =========================================
-           5. SECCIÓN CONTACTO Y FOOTER
-           ========================================= */
-        .contacto-start {
-            background: var(--oscuro);
+            height: 100vh; /* Ocupa toda la pantalla al abrir */
+            min-height: 700px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(11, 19, 17, 0.7), rgba(0, 115, 94, 0.8)), url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background-attachment: fixed; /* Efecto Parallax */
             color: var(--blanco);
-            padding: 100px 10%;
-            border-top: 6px solid var(--turquesa);
+            padding: 0 5%;
         }
-        .contacto-grid-start { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; 
+        .hero-content {
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px; /* Compensa el header fijo */
         }
-        
-        .contact-info-block h3 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 600; color: var(--blanco); }
-        .contact-info-block p.intro-contact { font-size: 1.1rem; color: #aaa; margin-bottom: 40px; line-height: 1.6; }
-        
-        .contact-details { list-style: none; }
-        .contact-details li { font-size: 1.1rem; color: #ddd; margin-bottom: 25px; display: flex; align-items: center; }
-        .contact-details li span { 
-            margin-right: 20px; font-size: 1.2rem; background: rgba(255,255,255,0.1); 
-            width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; border-radius: 50%;
+        .hero-main-logo {
+            max-width: 600px; /* Tamaño masivo para impacto */
+            width: 100%;
+            height: auto;
+            margin-bottom: 50px;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4));
         }
-        .contact-details a { color: var(--blanco); text-decoration: none; transition: 0.3s; }
-        .contact-details a:hover { color: var(--cian); }
-        
-        .form-block-home { background: var(--blanco); padding: 45px; border-radius: 30px; }
-        .form-block-home h4 { color: var(--turquesa); font-size: 1.5rem; margin-bottom: 25px; font-weight: 600; }
-        .form-group-home { margin-bottom: 20px; }
-        .form-block-home input, .form-block-home textarea {
-            width: 100%; padding: 15px 20px; border: 1px solid #eee; border-radius: 15px;
-            font-family: 'Poppins', sans-serif; font-size: 1rem; background: #fafafa; transition: 0.3s;
+        .hero h2 { 
+            font-size: clamp(1.5rem, 3vw, 2.2rem); /* Tipografía fluida */
+            font-weight: 300; 
+            margin-bottom: 25px; 
+            letter-spacing: 2px; 
         }
-        .form-block-home input:focus, .form-block-home textarea:focus { 
-            border-color: var(--turquesa); outline: none; background: var(--blanco); box-shadow: 0 0 0 3px rgba(0, 115, 94, 0.1);
+        .hero p { 
+            font-size: clamp(1rem, 2vw, 1.2rem); 
+            line-height: 1.8; 
+            font-weight: 300; 
+            opacity: 0.85; 
+            max-width: 700px;
+            margin-bottom: 40px;
         }
-        .form-block-home textarea { resize: vertical; min-height: 120px; }
-        
-        .btn-enviar-home {
-            background: var(--turquesa); color: var(--blanco); border: none;
-            padding: 15px 30px; font-size: 1.1rem; font-weight: 600; border-radius: 50px;
-            cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px;
-        }
-        .btn-enviar-home:hover { background: var(--marron); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(106, 63, 40, 0.2); }
 
-        footer { background: #000; color: #666; text-align: center; padding: 25px; font-size: 0.85rem; }
+        /* ========================================================
+           ECOSISTEMA (DISEÑO ASIMÉTRICO)
+        ======================================================== */
+        .ecosistema-section {
+            padding: 120px 0;
+            background-color: var(--blanco);
+        }
+        .ecosistema-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--oscuro);
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 100px;
+        }
 
-        /* AJUSTES RESPONSIVOS EXTRA */
-        @media (max-width: 900px) {
-            .contacto-grid-start { grid-template-columns: 1fr; gap: 50px; }
+        /* Bloque Asimétrico Base */
+        .bloque-pilar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto 120px auto;
+            padding: 0 6%;
+            gap: 80px;
+        }
+        /* Bloque A.C. invertido */
+        .bloque-pilar.invertido {
+            flex-direction: row-reverse;
+        }
+
+        /* Contenido de Texto */
+        .pilar-texto {
+            flex: 1;
+            max-width: 600px;
+        }
+        .pilar-etiqueta {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .consultoria .pilar-etiqueta { color: var(--turquesa); }
+        .ac .pilar-etiqueta { color: var(--marron); }
+
+        .pilar-texto h3 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--oscuro);
+            line-height: 1.1;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        .pilar-texto p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .pilar-lista { list-style: none; margin-bottom: 40px; }
+        .pilar-lista li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: #444;
+        }
+        .pilar-lista li::before {
+            content: "—"; /* Viñetas minimalistas */
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .consultoria .pilar-lista li::before { color: var(--turquesa); }
+        .ac .pilar-lista li::before { color: var(--marron); }
+
+        .btn-link {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: gap 0.3s ease;
+        }
+        .consultoria .btn-link { color: var(--turquesa); }
+        .ac .btn-link { color: var(--marron); }
+        .btn-link:hover { gap: 15px; }
+
+        /* Elemento Visual (Imagen / Tarjeta) */
+        .pilar-visual {
+            flex: 1;
+            width: 100%;
+            height: 600px;
+            border-radius: 40px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+        }
+        .visual-consultoria {
+            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80');
+        }
+        .visual-ac {
+            background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80');
+        }
+
+        /* ========================================================
+           CONTACTO (FORMULARIO FLOTANTE SOBRE FONDO OSCURO)
+        ======================================================== */
+        .contacto-wrapper {
+            background-color: var(--oscuro);
+            padding: 150px 6% 100px 6%;
+            position: relative;
+        }
+        .contacto-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .contacto-info {
+            flex: 1;
+            color: var(--blanco);
+        }
+        .contacto-info h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+        .contacto-info p {
+            font-size: 1.1rem;
+            color: #A0AAB2;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+        .info-dato {
+            margin-bottom: 25px;
+        }
+        .info-dato span {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--turquesa);
+            margin-bottom: 5px;
+        }
+        .info-dato a, .info-dato p.texto-dato {
+            font-size: 1.2rem;
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Formulario flotante */
+        .contacto-form-card {
+            flex: 1;
+            background: var(--blanco);
+            padding: 60px 50px;
+            border-radius: 30px;
+            /* Esta sombra hace que parezca flotar sobre lo oscuro */
+            box-shadow: 0 -20px 80px rgba(0,0,0,0.5); 
+            transform: translateY(-80px); /* Lo empuja hacia arriba rompiendo la línea */
+        }
+        
+        .form-group { margin-bottom: 25px; }
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 18px 20px;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            background: #F9FAFB;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--turquesa);
+            background: var(--blanco);
+            box-shadow: 0 0 0 4px rgba(0, 115, 94, 0.1);
+        }
+        textarea.form-input { resize: vertical; min-height: 140px; }
+
+        .btn-submit {
+            background-color: var(--turquesa);
+            color: var(--blanco);
+            border: none;
+            padding: 20px;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .btn-submit:hover { background-color: var(--oscuro); }
+
+        /* FOOTER MINIMALISTA */
+        footer {
+            background: var(--oscuro);
+            color: #666;
+            text-align: center;
+            padding: 30px 6%;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ========================================================
+           RESPONSIVO
+        ======================================================== */
+        @media (max-width: 1024px) {
+            .bloque-pilar, .bloque-pilar.invertido {
+                flex-direction: column;
+                gap: 50px;
+                text-align: center;
+            }
+            .pilar-lista li { text-align: left; } /* Mantiene la lista alineada a la izquierda */
+            .pilar-visual { height: 400px; }
+            .contacto-container { flex-direction: column; }
+            .contacto-form-card { transform: translateY(0); width: 100%; padding: 40px; }
+            .contacto-wrapper { padding-top: 80px; }
         }
         @media (max-width: 768px) {
-            .contacto-start { padding: 60px 5%; }
-            .form-block-home { padding: 35px 25px; border-radius: 20px; }
-            .contact-info-block h3 { font-size: 2.2rem; }
+            header { padding: 15px 5%; }
+            nav { display: none; } /* En un diseño real aquí iría un menú hamburguesa, por ahora lo ocultamos para limpieza */
+            .hero-main-logo { max-width: 80%; }
+            .ecosistema-section { padding: 80px 0; }
+            .pilar-visual { height: 300px; border-radius: 20px; }
+            .contacto-form-card { padding: 30px 20px; }
         }
     </style>
 </head>
-<section class="contacto-start">
-        <div class="contacto-grid-start">
-            
-            <div class="contact-info-block">
-                <h3>Iniciemos la conversación</h3>
-                <p class="intro-contact">Ya sea para un proyecto de cumplimiento técnico o una iniciativa de impacto social, estamos listos para colaborar contigo.</p>
-                <ul class="contact-details">
-                    <li><span>📞</span> <a href="tel:4423835199">(442) 383 5199</a></li>
-                    <li><span>✉️</span> <a href="mailto:hola@dashmexico.com">hola@dashmexico.com</a></li>
-                    <li><span>📍</span> Querétaro, México.</li>
-                </ul>
-            </div>
-
-            <div class="form-block-home">
-                <h4>Envíanos un mensaje</h4>
-                <form action="https://formspree.io/f/mvoeqzqy" method="POST">
-                    <div class="form-group-home">
-                        <input type="text" name="nombre" placeholder="Nombre completo" required>
-                    </div>
-                    <div class="form-group-home">
-                        <input type="email" name="correo" placeholder="Correo electrónico" required>
-                    </div>
-                    <div class="form-group-home">
-                        <textarea name="mensaje" placeholder="¿En qué podemos apoyarte?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-enviar-home">Enviar Mensaje</button>
-                </form>
-            </div>
-
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 DASH México. Todos los derechos reservados.</p>
-    </footer>
 <body>
 
     <header>
@@ -254,43 +357,91 @@
         <div class="hero-content">
             <img src="logodashmexico.png" alt="DASH México" class="hero-main-logo">
             <h2>Llevando la consultoría a otro nivel.</h2>
-            <p>En un entorno cada vez más exigente y consciente, las organizaciones que trascienden son aquellas capaces de alinear sus objetivos con los grandes retos sociales y ambientales de nuestro tiempo.</p>
-            <a href="quienes-somos.html" class="btn-conocenos">Conócenos</a>
+            <p>En un entorno cada vez más exigente, las organizaciones que trascienden son aquellas capaces de alinear sus objetivos con los grandes retos sociales y ambientales de nuestro tiempo.</p>
         </div>
     </section>
 
-    <section class="pilar-wrapper">
-        <h2 class="pilar-title-main">Nuestro Ecosistema Híbrido</h2>
+    <section class="ecosistema-section">
+        <h2 class="ecosistema-title">Nuestro Ecosistema Híbrido</h2>
         
-        <div class="pilar-grid-wrapper">
-            
-            <div class="pilar-block consultoria">
+        <div class="bloque-pilar consultoria">
+            <div class="pilar-texto">
+                <span class="pilar-etiqueta">Precisión Técnica</span>
                 <h3>DASH Consultoría</h3>
-                <p class="pilar-intro-p">Estrategia técnica y cumplimiento institucional para transformar la complejidad normativa en tu mayor ventaja competitiva.</p>
-                <ul>
-                    <li>Implementación y auditorías de normas ISO (14001, 26000, 50001, 20121).</li>
-                    <li>Diagnóstico de cumplimiento y evaluaciones de impacto ambiental.</li>
-                    <li>Diseño e implementación de hojas de ruta e indicadores ESG.</li>
-                    <li>Capacitación con validez oficial (DC3) en temas ambientales y sociales.</li>
-                    <li>Elaboración de reglamentos, programas municipales y política pública participativa.</li>
+                <p>Transformamos la complejidad normativa en tu mayor ventaja competitiva. Brindamos certeza técnica e institucional para blindar y potenciar las operaciones de tu organización.</p>
+                <ul class="pilar-lista">
+                    <li>Sistemas de gestión y normas ISO (14001, 26000, 50001, 20121).</li>
+                    <li>Auditorías ambientales y evaluación de impacto.</li>
+                    <li>Estrategia corporativa y reportes ESG (GRI, SASB).</li>
+                    <li>Capacitación oficial DC3 y desarrollo organizacional.</li>
                 </ul>
-                <a href="consultoria.html" class="btn-pilar">Explorar servicios <span>➔</span></a>
+                <a href="consultoria.html" class="btn-link">Explorar servicios <span>→</span></a>
+            </div>
+            <div class="pilar-visual visual-consultoria"></div>
+        </div>
+
+        <div class="bloque-pilar invertido ac">
+            <div class="pilar-texto">
+                <span class="pilar-etiqueta">Impacto Social</span>
+                <h3>DASH A.C.</h3>
+                <p>Nuestra fuerza operativa en territorio. Ejecutamos proyectos diseñados para transformar realidades concretas, con la capacidad legal de emitir comprobantes fiscales deducibles.</p>
+                <ul class="pilar-lista">
+                    <li>Proyectos de educación y niñez vulnerable.</li>
+                    <li>Regeneración ecosistémica y reforestación.</li>
+                    <li>Diseño e instalación de infraestructura verde urbana.</li>
+                    <li>Vinculación comunitaria y alianzas estratégicas.</li>
+                </ul>
+                <a href="ac.html" class="btn-link">Conocer programas <span>→</span></a>
+            </div>
+            <div class="pilar-visual visual-ac"></div>
+        </div>
+    </section>
+
+    <section class="contacto-wrapper">
+        <div class="contacto-container">
+            
+            <div class="contacto-info">
+                <h2>Comencemos<br>un proyecto.</h2>
+                <p>Ya sea para un requerimiento de cumplimiento normativo o una iniciativa de alto impacto social, nuestro equipo multidisciplinario está listo para diseñar la estrategia correcta.</p>
+                
+                <div class="info-dato">
+                    <span>Llámanos</span>
+                    <a href="tel:4423835199">(442) 383 5199</a>
+                </div>
+                <div class="info-dato">
+                    <span>Escríbenos</span>
+                    <a href="mailto:hola@dashmexico.com">hola@dashmexico.com</a>
+                </div>
+                <div class="info-dato">
+                    <span>Visítanos</span>
+                    <p class="texto-dato">Querétaro, México.</p>
+                </div>
             </div>
 
-            <div class="pilar-block ac">
-                <h3>DASH A.C.</h3>
-                <p class="pilar-intro-p">Nuestra fuerza operativa en territorio. Proyectos diseñados para transformar realidades con impacto social y ambiental medible.</p>
-                <ul>
-                    <li><strong>Educación para la Regeneración:</strong> Sembramos conciencia ambiental desde la infancia vulnerable.</li>
-                    <li><strong>Ciudadanía y Territorio:</strong> Reforestación y recuperación de espacios públicos con la comunidad.</li>
-                    <li><strong>Bienestar y Cultura:</strong> Programas de integración corporativa y huertos urbanos para empresas.</li>
-                    <li><strong>Soluciones Hídricas:</strong> Ecotecnias e infraestructura pluvial para comunidades con escasez.</li>
-                </ul>
-                <a href="ac.html" class="btn-pilar">Conocer proyectos <span>➔</span></a>
+            <div class="contacto-form-card">
+                <form action="https://formspree.io/f/mvoeqzqy" method="POST">
+                    <div class="form-group">
+                        <label class="form-label">Nombre completo</label>
+                        <input type="text" name="nombre" class="form-input" placeholder="Ej. Ana Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Correo electrónico</label>
+                        <input type="email" name="correo" class="form-input" placeholder="ana@empresa.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">¿En qué podemos apoyarte?</label>
+                        <textarea name="mensaje" class="form-input" placeholder="Cuéntanos brevemente sobre tus necesidades..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar mensaje</button>
+                </form>
             </div>
 
         </div>
     </section>
 
-    </body>
+    <footer>
+        <p>&copy; 2026 DASH México. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
 </html>
