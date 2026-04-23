@@ -6,7 +6,7 @@
     <title>DASH A.C. | DASH México</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f4f7f6; }
+        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f4f7f6; --oscuro: #001a15; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         
         header { 
@@ -43,46 +43,103 @@
             text-align: center;
         }
         .valor-item { flex: 1; min-width: 250px; }
-        .valor-item h3 { font-size: 1.2rem; margin-bottom: 10px; font-weight: 600; color: #001a15; }
+        .valor-item h3 { font-size: 1.2rem; margin-bottom: 10px; font-weight: 600; color: var(--oscuro); }
         .valor-item p { font-size: 0.95rem; font-weight: 400; line-height: 1.5; }
 
-        /* SECCIÓN DE EJES */
+        /* SECCIÓN DE EJES (NUEVO DISEÑO INTERACTIVO) */
         .ejes-section { background: var(--gris-fondo); padding: 80px 10%; }
         .ejes-header { text-align: center; margin-bottom: 60px; }
         .ejes-header h2 { color: var(--turquesa); font-size: 2.5rem; margin-bottom: 15px; }
         .ejes-header p { color: var(--marron); font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
 
-        .grid-impacto {
+        /* LAYOUT SPLIT (Izquierda lista, Derecha contenido) */
+        .impacto-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: 1fr 1.3fr;
             gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* TARJETA DE IMPACTO STORYTELLING */
-        .card-eje {
-            background: var(--blanco);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* LADO IZQUIERDO: LISTA DE BOTONES */
+        .lista-ejes {
             display: flex;
             flex-direction: column;
+            gap: 20px;
         }
-        .card-eje:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
-        
-        .card-img { width: 100%; height: 280px; object-fit: cover; }
-        
-        .card-body { padding: 40px 30px; flex-grow: 1; border-top: 4px solid var(--marron); }
-        .card-eje:nth-child(even) .card-body { border-top-color: var(--cian); }
 
-        .card-body h3 { color: var(--turquesa); font-size: 1.6rem; margin-bottom: 10px; }
-        .slogan-eje { color: var(--marron); font-style: italic; font-size: 1rem; margin-bottom: 25px; display: block; }
+        .eje-btn {
+            background: var(--blanco);
+            padding: 30px 35px;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Indicador lateral del botón activo */
+        .eje-btn::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%;
+            background: var(--turquesa); opacity: 0; transition: 0.3s;
+        }
+        .eje-btn:hover { 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
+            transform: translateX(5px); 
+        }
+        .eje-btn.active {
+            background: #ffffff;
+            border: 1px solid rgba(0, 115, 94, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 115, 94, 0.08);
+            transform: translateX(10px);
+        }
+        .eje-btn.active::before { opacity: 1; }
         
-        .storytelling-text { color: #555; font-size: 1.05rem; line-height: 1.7; text-align: justify; }
+        .eje-btn h3 { color: var(--turquesa); font-size: 1.3rem; margin-bottom: 8px; transition: 0.3s; }
+        .eje-btn.active h3 { color: var(--marron); }
+        .eje-btn p { color: #666; font-size: 0.95rem; margin: 0; font-style: italic; line-height: 1.4; }
+
+        /* LADO DERECHO: PANEL DE STORYTELLING Y FONDO */
+        .contenido-ejes {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            background: var(--oscuro);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            min-height: 550px;
+        }
+
+        .pane-eje {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            display: flex;
+            align-items: center;
+            padding: 60px 50px;
+            background-size: cover;
+            background-position: center;
+        }
+        .pane-eje.active {
+            opacity: 1; visibility: visible; position: relative;
+        }
+
+        /* Filtro oscuro para garantizar lectura perfecta sobre cualquier imagen */
+        .pane-eje::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(0, 26, 21, 0.95) 0%, rgba(0, 26, 21, 0.6) 100%);
+            z-index: 1;
+        }
+
+        /* TEXTO DEL STORYTELLING */
+        .pane-text { position: relative; z-index: 2; color: var(--blanco); }
+        .pane-text h2 { font-size: 2.2rem; margin-bottom: 25px; color: var(--blanco); font-weight: 700; line-height: 1.2; }
+        .pane-text p { font-size: 1.15rem; line-height: 1.8; color: #e0e0e0; text-align: justify; font-weight: 300; }
+
 
         /* CTA FINAL CON FONDO DE HUELLAS Y MÁSCARA CAFÉ */
         .cta-ac { 
-            /* Se usa rgba(106, 63, 40, 0.85) que es el equivalente RGB de var(--marron) con 85% de opacidad */
             background: linear-gradient(rgba(106, 63, 40, 0.85), rgba(106, 63, 40, 0.95)), url('https://images.unsplash.com/photo-1534293230397-c067fc201ab8?auto=format&fit=crop&w=1920&q=80') center/cover;
             color: var(--blanco); 
             padding: 100px 10%; 
@@ -98,15 +155,21 @@
 
         footer { background: #001a15; color: #aaa; text-align: center; padding: 20px; font-size: 0.8rem; }
 
+        @media (max-width: 950px) {
+            .impacto-layout { grid-template-columns: 1fr; }
+            .eje-btn.active { transform: translateX(0); }
+            .eje-btn:hover { transform: translateX(0); }
+            .contenido-ejes { min-height: auto; }
+            .pane-eje { padding: 50px 30px; }
+        }
         @media (max-width: 768px) {
             header { flex-direction: column; }
             nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
             nav a { margin: 5px 10px; }
             .hero-ac h1 { font-size: 2.2rem; }
-            .hero-ac p { font-size: 1.1rem; }
-            .grid-impacto { grid-template-columns: 1fr; }
             .ejes-section { padding: 60px 5%; }
             .cta-ac { padding: 80px 5%; }
+            .pane-text h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -153,42 +216,62 @@
             <p>Iniciativas estructuradas para organizaciones que desean dejar un legado positivo en el tejido social y ambiental.</p>
         </div>
 
-        <div class="grid-impacto">
+        <div class="impacto-layout">
             
-            <div class="card-eje">
-                <img src="https://source.unsplash.com/_qqlFMNINwI/800x600" alt="Educación Ambiental" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80'">
-                <div class="card-body">
+            <div class="lista-ejes">
+                
+                <div class="eje-btn active" onclick="abrirPestana(event, 'tab-educacion')">
                     <h3>Educación para la Regeneración</h3>
-                    <span class="slogan-eje">"Sembramos conciencia en las generaciones que liderarán el mañana."</span>
-                    <p class="storytelling-text">Imagina un salón de clases donde el entorno natural es el principal maestro. A través de este programa, convertimos escuelas vulnerables en espacios vivos. Creamos materiales educativos personalizados e inspiramos a la niñez a convertirse en guardianes activos de su entorno. Ya sea transformando muros grises en murales llenos de color o dotando de kits escolares sostenibles, no solo entregamos herramientas; forjamos una conexión profunda y duradera entre las infancias y la tierra que habitan.</p>
+                    <p>"Sembramos conciencia en las generaciones que liderarán el mañana."</p>
                 </div>
-            </div>
 
-            <div class="card-eje">
-                <img src="https://source.unsplash.com/7_ZubDD__q8/800x600" alt="Regeneración Territorial" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=800&q=80'">
-                <div class="card-body">
+                <div class="eje-btn" onclick="abrirPestana(event, 'tab-ciudadania')">
                     <h3>Ciudadanía y Territorio</h3>
-                    <span class="slogan-eje">"Reconectando a la comunidad con su entorno natural."</span>
-                    <p class="storytelling-text">Creemos que el espacio público debe ser un refugio para la vida. Nuestras iniciativas invitan a empresas y ciudadanos a ensuciarse las manos para sembrar esperanza. Desde jornadas de reforestación comunitaria con especies nativas hasta la creación de jardines polinizadores que devuelven el color a las calles. Transformamos camellones y parques olvidados en senderos interpretativos donde cada planta cuenta una historia, recuperando así el latido natural de nuestras ciudades.</p>
+                    <p>"Reconectando a la comunidad con su entorno natural."</p>
                 </div>
-            </div>
 
-            <div class="card-eje">
-                <img src="https://source.unsplash.com/Zyx1bK9mqmA/800x600" alt="Bienestar Corporativo" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80'">
-                <div class="card-body">
+                <div class="eje-btn" onclick="abrirPestana(event, 'tab-bienestar')">
                     <h3>Bienestar y Cultura con Propósito</h3>
-                    <span class="slogan-eje">"Sostenibilidad que nace desde el corazón de la organización."</span>
-                    <p class="storytelling-text">La verdadera sostenibilidad comienza desde adentro. Diseñamos experiencias memorables donde los colaboradores y sus familias se reconectan con la naturaleza. A través de encuentros de integración al aire libre, dinámicas de arte ambiental y la instalación de huertos orgánicos directamente en los espacios de trabajo, logramos transformar la cultura organizacional. Fomentamos el sentido de pertenencia, la salud mental y la unión bajo un propósito inspirador: cuidar juntos nuestro hogar compartido.</p>
+                    <p>"Sostenibilidad que nace desde el corazón de la organización."</p>
                 </div>
+
+                <div class="eje-btn" onclick="abrirPestana(event, 'tab-ecotecnias')">
+                    <h3>Ecotecnias para Vulnerables</h3>
+                    <p>"Resiliencia y soberanía para quienes más lo necesitan."</p>
+                </div>
+
             </div>
 
-            <div class="card-eje">
-                <img src="https://source.unsplash.com/8xni8cdjZtA/800x600" alt="Ecotecnias" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&q=80'">
-                <div class="card-body">
-                    <h3>Ecotecnias para Comunidades Vulnerables</h3>
-                    <span class="slogan-eje">"Resiliencia y soberanía para quienes más lo necesitan."</span>
-                    <p class="storytelling-text">El acceso al agua limpia y a la alimentación digna no debería ser un privilegio. Con este programa, intervenimos en comunidades e instituciones educativas que enfrentan escasez hídrica, instalando sistemas de captación de agua de lluvia y ecotecnias accesibles. Acompañamos esta infraestructura crítica con la creación de huertos comunitarios y educación nutricional. De esta manera, vamos más allá de resolver una carencia técnica: sembramos resiliencia comunitaria frente a los retos del futuro.</p>
+            <div class="contenido-ejes">
+                
+                <div id="tab-educacion" class="pane-eje active" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80');">
+                    <div class="pane-text">
+                        <h2>Educación para la Regeneración</h2>
+                        <p>Imagina un salón de clases donde el entorno natural es el principal maestro. A través de este programa, convertimos escuelas vulnerables en espacios vivos. Creamos materiales educativos personalizados e inspiramos a la niñez a convertirse en guardianes activos de su entorno. Ya sea transformando muros grises en murales llenos de color o dotando de kits escolares sostenibles, no solo entregamos herramientas; forjamos una conexión profunda y duradera entre las infancias y la tierra que habitan.</p>
+                    </div>
                 </div>
+
+                <div id="tab-ciudadania" class="pane-eje" style="background-image: url('https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=1200&q=80');">
+                    <div class="pane-text">
+                        <h2>Ciudadanía y Territorio</h2>
+                        <p>Creemos que el espacio público debe ser un refugio para la vida. Nuestras iniciativas invitan a empresas y ciudadanos a ensuciarse las manos para sembrar esperanza. Desde jornadas de reforestación comunitaria con especies nativas hasta la creación de jardines polinizadores que devuelven el color a las calles. Transformamos camellones y parques olvidados en senderos interpretativos donde cada planta cuenta una historia, recuperando así el latido natural de nuestras ciudades.</p>
+                    </div>
+                </div>
+
+                <div id="tab-bienestar" class="pane-eje" style="background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80');">
+                    <div class="pane-text">
+                        <h2>Bienestar y Cultura con Propósito</h2>
+                        <p>La verdadera sostenibilidad comienza desde adentro. Diseñamos experiencias memorables donde los colaboradores y sus familias se reconectan con la naturaleza. A través de encuentros de integración al aire libre, dinámicas de arte ambiental y la instalación de huertos orgánicos directamente en los espacios de trabajo, logramos transformar la cultura organizacional. Fomentamos el sentido de pertenencia, la salud mental y la unión bajo un propósito inspirador: cuidar juntos nuestro hogar compartido.</p>
+                    </div>
+                </div>
+
+                <div id="tab-ecotecnias" class="pane-eje" style="background-image: url('https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=1200&q=80');">
+                    <div class="pane-text">
+                        <h2>Ecotecnias para Comunidades Vulnerables</h2>
+                        <p>El acceso al agua limpia y a la alimentación digna no debería ser un privilegio. Con este programa, intervenimos en comunidades e instituciones educativas que enfrentan escasez hídrica, instalando sistemas de captación de agua de lluvia y ecotecnias accesibles. Acompañamos esta infraestructura crítica con la creación de huertos comunitarios y educación nutricional. De esta manera, vamos más allá de resolver una carencia técnica: sembramos resiliencia comunitaria frente a los retos del futuro.</p>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -203,6 +286,26 @@
     <footer>
         <p>&copy; 2026 DASH México. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        function abrirPestana(evento, idPanel) {
+            // 1. Quitar clase "active" de todos los botones de la izquierda
+            let botones = document.getElementsByClassName("eje-btn");
+            for (let i = 0; i < botones.length; i++) {
+                botones[i].classList.remove("active");
+            }
+            
+            // 2. Quitar clase "active" de todos los paneles de la derecha
+            let paneles = document.getElementsByClassName("pane-eje");
+            for (let i = 0; i < paneles.length; i++) {
+                paneles[i].classList.remove("active");
+            }
+            
+            // 3. Añadir la clase "active" al botón clicado y al panel correspondiente
+            evento.currentTarget.classList.add("active");
+            document.getElementById(idPanel).classList.add("active");
+        }
+    </script>
 
 </body>
 </html>
