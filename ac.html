@@ -46,13 +46,12 @@
         .valor-item h3 { font-size: 1.2rem; margin-bottom: 10px; font-weight: 600; color: var(--oscuro); }
         .valor-item p { font-size: 0.95rem; font-weight: 400; line-height: 1.5; }
 
-        /* SECCIÓN DE EJES (NUEVO DISEÑO INTERACTIVO) */
+        /* SECCIÓN DE EJES (LAYOUT SPLIT) */
         .ejes-section { background: var(--gris-fondo); padding: 80px 10%; }
         .ejes-header { text-align: center; margin-bottom: 60px; }
         .ejes-header h2 { color: var(--turquesa); font-size: 2.5rem; margin-bottom: 15px; }
         .ejes-header p { color: var(--marron); font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
 
-        /* LAYOUT SPLIT (Izquierda lista, Derecha contenido) */
         .impacto-layout {
             display: grid;
             grid-template-columns: 1fr 1.3fr;
@@ -61,89 +60,76 @@
             margin: 0 auto;
         }
 
-        /* LADO IZQUIERDO: LISTA DE BOTONES */
-        .lista-ejes {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
+        .lista-ejes { display: flex; flex-direction: column; gap: 20px; }
         .eje-btn {
-            background: var(--blanco);
-            padding: 30px 35px;
-            border-radius: 16px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background: var(--blanco); padding: 30px 35px; border-radius: 16px;
+            cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border: 1px solid transparent;
+            transition: all 0.3s ease; position: relative; overflow: hidden;
         }
-        /* Indicador lateral del botón activo */
-        .eje-btn::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%;
-            background: var(--turquesa); opacity: 0; transition: 0.3s;
-        }
-        .eje-btn:hover { 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
-            transform: translateX(5px); 
-        }
-        .eje-btn.active {
-            background: #ffffff;
-            border: 1px solid rgba(0, 115, 94, 0.2);
-            box-shadow: 0 15px 35px rgba(0, 115, 94, 0.08);
-            transform: translateX(10px);
-        }
+        .eje-btn::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--turquesa); opacity: 0; transition: 0.3s; }
+        .eje-btn:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.08); transform: translateX(5px); }
+        .eje-btn.active { background: #ffffff; border: 1px solid rgba(0, 115, 94, 0.2); box-shadow: 0 15px 35px rgba(0, 115, 94, 0.08); transform: translateX(10px); }
         .eje-btn.active::before { opacity: 1; }
-        
         .eje-btn h3 { color: var(--turquesa); font-size: 1.3rem; margin-bottom: 8px; transition: 0.3s; }
         .eje-btn.active h3 { color: var(--marron); }
         .eje-btn p { color: #666; font-size: 0.95rem; margin: 0; font-style: italic; line-height: 1.4; }
 
-        /* LADO DERECHO: PANEL DE STORYTELLING Y FONDO */
-        .contenido-ejes {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            background: var(--oscuro);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            min-height: 550px;
-        }
-
+        .contenido-ejes { position: relative; border-radius: 24px; overflow: hidden; background: var(--oscuro); box-shadow: 0 20px 40px rgba(0,0,0,0.15); min-height: 550px; }
         .pane-eje {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0; visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-            display: flex;
-            align-items: center;
-            padding: 60px 50px;
-            background-size: cover;
-            background-position: center;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease;
+            display: flex; align-items: center; padding: 60px 50px; background-size: cover; background-position: center;
         }
-        .pane-eje.active {
-            opacity: 1; visibility: visible; position: relative;
-        }
-
-        /* Filtro oscuro para garantizar lectura perfecta sobre cualquier imagen */
-        .pane-eje::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(0, 26, 21, 0.95) 0%, rgba(0, 26, 21, 0.6) 100%);
-            z-index: 1;
-        }
-
-        /* TEXTO DEL STORYTELLING */
+        .pane-eje.active { opacity: 1; visibility: visible; position: relative; }
+        .pane-eje::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 26, 21, 0.95) 0%, rgba(0, 26, 21, 0.6) 100%); z-index: 1; }
         .pane-text { position: relative; z-index: 2; color: var(--blanco); }
         .pane-text h2 { font-size: 2.2rem; margin-bottom: 25px; color: var(--blanco); font-weight: 700; line-height: 1.2; }
         .pane-text p { font-size: 1.15rem; line-height: 1.8; color: #e0e0e0; text-align: justify; font-weight: 300; }
 
+        /* SECCIÓN CARRUSEL DE PROYECTOS PROPUESTOS */
+        .carrusel-section { padding: 80px 10% 100px 10%; background: var(--blanco); overflow: hidden; }
+        .carrusel-header { margin-bottom: 40px; }
+        .carrusel-header h2 { color: var(--turquesa); font-size: 2.2rem; margin-bottom: 10px; }
+        .carrusel-header p { color: #666; font-size: 1.1rem; }
 
-        /* CTA FINAL CON FONDO DE HUELLAS Y MÁSCARA CAFÉ */
+        .carrusel-container {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding-bottom: 30px;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none; /* Oculta barra de scroll en IE/Edge */
+            scrollbar-width: none; /* Oculta barra de scroll en Firefox */
+        }
+        .carrusel-container::-webkit-scrollbar { display: none; /* Oculta barra de scroll en Chrome/Safari */ }
+
+        .card-proyecto {
+            flex: 0 0 350px; /* Ancho fijo de las tarjetas */
+            background: var(--blanco);
+            border: 1px solid #eaeaea;
+            border-radius: 20px;
+            overflow: hidden;
+            scroll-snap-align: start; /* Se alinea perfectamente al hacer scroll */
+            transition: 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-proyecto:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.08); transform: translateY(-5px); border-color: transparent; }
+        
+        .card-proyecto img { width: 100%; height: 200px; object-fit: cover; }
+        .proyecto-body { padding: 30px 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .proyecto-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--cian); font-weight: 700; margin-bottom: 12px; }
+        .proyecto-body h3 { font-size: 1.3rem; color: var(--oscuro); margin-bottom: 15px; line-height: 1.3; font-weight: 600; }
+        .proyecto-body p { font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 10px; }
+        
+        .proyecto-meta { font-size: 0.85rem; color: #777; border-top: 1px solid #f0f0f0; padding-top: 15px; margin-top: 20px; }
+        .proyecto-meta strong { color: var(--marron); font-weight: 500; }
+
+        /* CTA FINAL */
         .cta-ac { 
             background: linear-gradient(rgba(106, 63, 40, 0.85), rgba(106, 63, 40, 0.95)), url('https://images.unsplash.com/photo-1534293230397-c067fc201ab8?auto=format&fit=crop&w=1920&q=80') center/cover;
-            color: var(--blanco); 
-            padding: 100px 10%; 
-            text-align: center;
+            color: var(--blanco); padding: 100px 10%; text-align: center;
         }
         .cta-ac h3 { font-size: 2.5rem; margin-bottom: 20px; }
         .btn-cta-ac {
@@ -167,9 +153,10 @@
             nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
             nav a { margin: 5px 10px; }
             .hero-ac h1 { font-size: 2.2rem; }
-            .ejes-section { padding: 60px 5%; }
+            .ejes-section, .carrusel-section { padding: 60px 5%; }
             .cta-ac { padding: 80px 5%; }
             .pane-text h2 { font-size: 1.8rem; }
+            .card-proyecto { flex: 0 0 300px; } /* Tarjetas más angostas en celular */
         }
     </style>
 </head>
@@ -217,61 +204,125 @@
         </div>
 
         <div class="impacto-layout">
-            
             <div class="lista-ejes">
-                
                 <div class="eje-btn active" onclick="abrirPestana(event, 'tab-educacion')">
                     <h3>Educación para la Regeneración</h3>
-                    <p>Sembramos conciencia en las generaciones que liderarán el mañana.</p>
+                    <p>"Sembramos conciencia en las generaciones que liderarán el mañana."</p>
                 </div>
-
                 <div class="eje-btn" onclick="abrirPestana(event, 'tab-ciudadania')">
                     <h3>Ciudadanía y Territorio</h3>
-                    <p>Reconectando a la comunidad con su entorno natural.</p>
+                    <p>"Reconectando a la comunidad con su entorno natural."</p>
                 </div>
-
                 <div class="eje-btn" onclick="abrirPestana(event, 'tab-bienestar')">
                     <h3>Bienestar y Cultura con Propósito</h3>
-                    <p>Sostenibilidad que nace desde el corazón de la organización.</p>
+                    <p>"Sostenibilidad que nace desde el corazón de la organización."</p>
                 </div>
-
                 <div class="eje-btn" onclick="abrirPestana(event, 'tab-ecotecnias')">
                     <h3>Ecotecnias para Vulnerables</h3>
-                    <p>Resiliencia y soberanía para quienes más lo necesitan.</p>
+                    <p>"Resiliencia y soberanía para quienes más lo necesitan."</p>
                 </div>
-
             </div>
 
             <div class="contenido-ejes">
-                
                 <div id="tab-educacion" class="pane-eje active" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80');">
                     <div class="pane-text">
                         <h2>Educación para la Regeneración</h2>
                         <p>Imagina un salón de clases donde el entorno natural es el principal maestro. A través de este programa, convertimos escuelas vulnerables en espacios vivos. Creamos materiales educativos personalizados e inspiramos a la niñez a convertirse en guardianes activos de su entorno. Ya sea transformando muros grises en murales llenos de color o dotando de kits escolares sostenibles, no solo entregamos herramientas; forjamos una conexión profunda y duradera entre las infancias y la tierra que habitan.</p>
                     </div>
                 </div>
-
                 <div id="tab-ciudadania" class="pane-eje" style="background-image: url('https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=1200&q=80');">
                     <div class="pane-text">
                         <h2>Ciudadanía y Territorio</h2>
                         <p>Creemos que el espacio público debe ser un refugio para la vida. Nuestras iniciativas invitan a empresas y ciudadanos a ensuciarse las manos para sembrar esperanza. Desde jornadas de reforestación comunitaria con especies nativas hasta la creación de jardines polinizadores que devuelven el color a las calles. Transformamos camellones y parques olvidados en senderos interpretativos donde cada planta cuenta una historia, recuperando así el latido natural de nuestras ciudades.</p>
                     </div>
                 </div>
-
                 <div id="tab-bienestar" class="pane-eje" style="background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80');">
                     <div class="pane-text">
                         <h2>Bienestar y Cultura con Propósito</h2>
                         <p>La verdadera sostenibilidad comienza desde adentro. Diseñamos experiencias memorables donde los colaboradores y sus familias se reconectan con la naturaleza. A través de encuentros de integración al aire libre, dinámicas de arte ambiental y la instalación de huertos orgánicos directamente en los espacios de trabajo, logramos transformar la cultura organizacional. Fomentamos el sentido de pertenencia, la salud mental y la unión bajo un propósito inspirador: cuidar juntos nuestro hogar compartido.</p>
                     </div>
                 </div>
-
                 <div id="tab-ecotecnias" class="pane-eje" style="background-image: url('https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=1200&q=80');">
                     <div class="pane-text">
                         <h2>Ecotecnias para Comunidades Vulnerables</h2>
                         <p>El acceso al agua limpia y a la alimentación digna no debería ser un privilegio. Con este programa, intervenimos en comunidades e instituciones educativas que enfrentan escasez hídrica, instalando sistemas de captación de agua de lluvia y ecotecnias accesibles. Acompañamos esta infraestructura crítica con la creación de huertos comunitarios y educación nutricional. De esta manera, vamos más allá de resolver una carencia técnica: sembramos resiliencia comunitaria frente a los retos del futuro.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="carrusel-section">
+        <div class="carrusel-header">
+            <h2>Portafolio de Proyectos</h2>
+            <p>Conoce nuestras iniciativas listas para implementación y fondeo.</p>
+        </div>
+
+        <div class="carrusel-container">
+            
+            <div class="card-proyecto">
+                <img src="https://images.unsplash.com/photo-1588684266453-29f1fbfa0fa8?auto=format&fit=crop&w=800&q=80" alt="Reforestación">
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Ciudadanía y Territorio</span>
+                    <h3>Reforestación comunitaria</h3>
+                    <p><strong>Objetivo:</strong> Recuperar áreas degradadas con especies nativas y participación ciudadana.</p>
+                    <p><strong>Alcance:</strong> Planeación técnica, jornada de plantación, seguimiento y visibilidad institucional.</p>
+                    <div class="proyecto-meta">
+                        <strong>Presupuesto sugerido:</strong> <br> $30,000 – $120,000 por jornada
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <img src="https://images.unsplash.com/photo-1519897831810-a9a01aceccd1?auto=format&fit=crop&w=800&q=80" alt="Captación de agua">
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Soluciones Hídricas</span>
+                    <h3>Captación de agua en escuelas</h3>
+                    <p><strong>Objetivo:</strong> Atender la escasez hídrica en instituciones educativas con infraestructura básica.</p>
+                    <p><strong>Alcance:</strong> Instalación de sistemas de captación pluvial y talleres educativos.</p>
+                    <div class="proyecto-meta">
+                        <strong>Presupuesto sugerido:</strong> <br> $60,000 – $150,000 por escuela
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80" alt="Áreas verdes">
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Ciudadanía y Territorio</span>
+                    <h3>Adopción de áreas verdes</h3>
+                    <p><strong>Objetivo:</strong> Mejorar espacios urbanos mediante mantenimiento, señalética y educación ambiental.</p>
+                    <p><strong>Alcance:</strong> Adopción temporal o permanente de parques, camellones o jardines.</p>
+                    <div class="proyecto-meta">
+                        <strong>Presupuesto sugerido:</strong> <br> $70,000 – $200,000 por ciclo anual
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" alt="Senderos">
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Educación Ambiental</span>
+                    <h3>Senderos interpretativos</h3>
+                    <p><strong>Objetivo:</strong> Promover la educación ambiental en parques públicos informando sobre biodiversidad.</p>
+                    <p><strong>Alcance:</strong> Instalación de señalética, diseño de contenido físico y digital.</p>
+                    <div class="proyecto-meta">
+                        <strong>Presupuesto estimado:</strong> <br> $50,000 – $100,000 según área
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <img src="https://images.unsplash.com/photo-1587334205562-b91cbb47cd89?auto=format&fit=crop&w=800&q=80" alt="Jardines">
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Bienestar y Biodiversidad</span>
+                    <h3>Jardines polinizadores</h3>
+                    <p><strong>Objetivo:</strong> Aumentar la biodiversidad urbana construyendo espacios seguros que atraen polinizadores.</p>
+                    <p><strong>Alcance:</strong> Diseño, instalación de flora nativa y señalética interpretativa.</p>
+                    <div class="proyecto-meta">
+                        <strong>Presupuesto estimado:</strong> <br> Variable de acuerdo al polígono
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -289,19 +340,14 @@
 
     <script>
         function abrirPestana(evento, idPanel) {
-            // 1. Quitar clase "active" de todos los botones de la izquierda
             let botones = document.getElementsByClassName("eje-btn");
             for (let i = 0; i < botones.length; i++) {
                 botones[i].classList.remove("active");
             }
-            
-            // 2. Quitar clase "active" de todos los paneles de la derecha
             let paneles = document.getElementsByClassName("pane-eje");
             for (let i = 0; i < paneles.length; i++) {
                 paneles[i].classList.remove("active");
             }
-            
-            // 3. Añadir la clase "active" al botón clicado y al panel correspondiente
             evento.currentTarget.classList.add("active");
             document.getElementById(idPanel).classList.add("active");
         }
