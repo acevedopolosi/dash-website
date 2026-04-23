@@ -6,7 +6,7 @@
     <title>Consultoría | DASH México</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f8f9fa; --texto-oscuro: #2c3e50; }
+        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f8f9fa; --oscuro: #001a15; --texto-oscuro: #2c3e50; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         
         /* HEADER INSTITUCIONAL */
@@ -30,10 +30,10 @@
         .hero-logo { max-width: 280px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto; }
         .hero-consultoria h1 { font-size: 1.6rem; color: var(--marron); font-weight: 400; line-height: 1.4; max-width: 800px; margin: 0 auto; font-style: italic; }
 
-        /* SECCIÓN DE SERVICIOS (FORMA DE CUADRANTES SEPARADOS) */
+        /* SECCIÓN DE SERVICIOS CON FONDO OSCURO */
         .servicios-wrapper {
-            background: var(--gris-fondo);
-            padding: 40px 5% 100px 5%;
+            background: var(--oscuro); /* Cambio a fondo oscuro */
+            padding: 80px 5% 120px 5%;
             position: relative;
         }
 
@@ -46,7 +46,7 @@
             position: relative;
         }
 
-        /* EL CÍRCULO CENTRAL (Igual al de tu imagen de referencia) */
+        /* EL CÍRCULO CENTRAL CON EL LOGO */
         .centro-logo {
             position: absolute;
             top: 50%;
@@ -56,33 +56,35 @@
             height: 140px;
             background: var(--blanco);
             border-radius: 50%;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             z-index: 10;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-weight: 700;
-            color: var(--turquesa);
-            font-size: 1.5rem;
-            letter-spacing: 2px;
+        }
+        .centro-logo img {
+            width: 80px; /* Tamaño ajustado para que quepa perfecto en el círculo */
+            height: auto;
         }
 
         /* TARJETAS DE LOS CUADRANTES */
         .cuadrante {
             position: relative;
             background-color: var(--blanco);
-            border-radius: 24px; /* Bordes muy redondeados como en tu foto */
+            border-radius: 24px;
             padding: 50px 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
             transition: all 0.4s ease;
             z-index: 1;
+            min-height: 480px; /* Altura mínima para que no brinquen brusco al revelar el texto */
         }
         .cuadrante:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
         }
 
         /* CAPA DE IMAGEN DE FONDO MUUUY CLARA */
@@ -91,23 +93,38 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover;
             background-position: center;
-            opacity: 0.03; /* Apenas perceptible (3%) */
+            opacity: 0.03; 
             z-index: -1;
             transition: opacity 0.5s ease;
         }
         .cuadrante:hover .bg-imagen {
-            opacity: 0.08; /* Se nota un poquito más al pasar el mouse (8%) */
+            opacity: 0.08; 
         }
 
         /* CONTENIDO DENTRO DE LA TARJETA */
         .contenido-tarjeta { position: relative; z-index: 2; }
         
         .cuadrante h2 { color: var(--turquesa); font-size: 1.6rem; margin-bottom: 10px; font-weight: 700; line-height: 1.3; }
-        .cuadrante h3 { color: var(--cian); font-size: 1rem; font-weight: 500; margin-bottom: 25px; line-height: 1.4; }
-        .cuadrante p { color: var(--texto-oscuro); font-size: 1rem; line-height: 1.7; margin-bottom: 25px; font-weight: 400; }
+        .cuadrante h3 { color: var(--cian); font-size: 1rem; font-weight: 500; margin-bottom: 10px; line-height: 1.4; transition: margin 0.5s ease; }
         
+        /* CONTENIDO OCULTO QUE SE REVELA AL HACER HOVER */
+        .detalles-ocultos {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease, opacity 0.5s ease, margin-top 0.5s ease;
+        }
+        
+        .cuadrante:hover .detalles-ocultos {
+            max-height: 800px; /* Un valor alto para que quepa todo el texto */
+            opacity: 1;
+            margin-top: 25px;
+        }
+        .cuadrante:hover h3 { margin-bottom: 0; }
+
+        .cuadrante p { color: var(--texto-oscuro); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; font-weight: 400; }
         .cuadrante ul { list-style: none; }
-        .cuadrante li { position: relative; padding-left: 20px; margin-bottom: 12px; color: #555; font-size: 0.95rem; font-weight: 400; line-height: 1.5; }
+        .cuadrante li { position: relative; padding-left: 20px; margin-bottom: 12px; color: #555; font-size: 0.9rem; font-weight: 400; line-height: 1.5; }
         .cuadrante li::before { content: "•"; position: absolute; left: 0; color: var(--turquesa); font-weight: bold; font-size: 1.2rem; top: -2px; }
 
         /* CTA FINAL */
@@ -130,6 +147,9 @@
         @media (max-width: 900px) {
             .servicios-grid { grid-template-columns: 1fr; gap: 30px; }
             .centro-logo { display: none; /* Ocultamos el círculo central en celular para que no estorbe */ }
+            /* En móvil mostramos el texto siempre para evitar problemas con pantallas táctiles */
+            .detalles-ocultos { max-height: 1000px; opacity: 1; margin-top: 25px; }
+            .cuadrante { min-height: auto; }
         }
         @media (max-width: 768px) {
             header { flex-direction: column; }
@@ -137,6 +157,7 @@
             nav a { margin: 5px 10px; }
             .hero-consultoria h1 { font-size: 1.3rem; }
             .cuadrante { padding: 40px 25px; }
+            .servicios-wrapper { padding: 60px 5%; }
         }
     </style>
 </head>
@@ -164,22 +185,27 @@
     <section class="servicios-wrapper">
         <div class="servicios-grid">
             
-            <div class="centro-logo">DASH</div>
+            <div class="centro-logo">
+                <img src="logo.png" alt="Icono DASH">
+            </div>
 
             <div class="cuadrante">
                 <div class="bg-imagen" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="contenido-tarjeta">
                     <h2>Ingeniería Ambiental y Cumplimiento Normativo</h2>
                     <h3>El rigor técnico al servicio de la continuidad operativa.</h3>
-                    <p>No solo gestionamos trámites; aseguramos la "licencia para operar" de tu organización mediante soluciones de ingeniería de vanguardia.</p>
-                    <ul>
-                        <li>Cédula de Operación Anual (COA).</li>
-                        <li>Licencia Ambiental Única (LAU).</li>
-                        <li>Inventario de Emisiones GEI (Huella de Carbono).</li>
-                        <li>Estudios de Riesgo Ambiental (ERA) y PPA.</li>
-                        <li>Planes de Manejo de Residuos y Economía Circular.</li>
-                        <li>Atención técnica en visitas de inspección.</li>
-                    </ul>
+                    
+                    <div class="detalles-ocultos">
+                        <p>No solo gestionamos trámites; aseguramos la "licencia para operar" de tu organización mediante soluciones de ingeniería de vanguardia.</p>
+                        <ul>
+                            <li>Cédula de Operación Anual (COA).</li>
+                            <li>Licencia Ambiental Única (LAU).</li>
+                            <li>Inventario de Emisiones GEI (Huella de Carbono).</li>
+                            <li>Estudios de Riesgo Ambiental (ERA) y PPA.</li>
+                            <li>Planes de Manejo de Residuos y Economía Circular.</li>
+                            <li>Atención técnica en visitas de inspección.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -188,57 +214,19 @@
                 <div class="contenido-tarjeta">
                     <h2>Estrategia ESG y Responsabilidad Social</h2>
                     <h3>Transformamos el compromiso en indicadores de valor.</h3>
-                    <p>Alineamos la operación con estándares globales para fortalecer la reputación y el acceso a mercados exigentes.</p>
-                    <ul>
-                        <li>Sistemas de Gestión ISO (14001, 50001, 26000, 20121).</li>
-                        <li>Diagnóstico de materialidad y hojas de ruta ESG.</li>
-                        <li>Reportes de Sostenibilidad (GRI, SASB).</li>
-                        <li>Programas de voluntariado corporativo y desarrollo territorial.</li>
-                        <li>Políticas de ética y derechos humanos corporativos.</li>
-                    </ul>
+                    
+                    <div class="detalles-ocultos">
+                        <p>Alineamos la operación con estándares globales para fortalecer la reputación y el acceso a mercados exigentes.</p>
+                        <ul>
+                            <li>Sistemas de Gestión ISO (14001, 50001, 26000, 20121).</li>
+                            <li>Diagnóstico de materialidad y hojas de ruta ESG.</li>
+                            <li>Reportes de Sostenibilidad (GRI, SASB).</li>
+                            <li>Programas de voluntariado corporativo y desarrollo territorial.</li>
+                            <li>Políticas de ética y derechos humanos corporativos.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <div class="cuadrante">
-                <div class="bg-imagen" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="contenido-tarjeta">
-                    <h2>Formación y Liderazgo</h2>
-                    <h3>Impulsando equipos conscientes con propósito.</h3>
-                    <p>El conocimiento es la base del cambio. Ofrecemos experiencias formativas que transforman la cultura organizacional.</p>
-                    <ul>
-                        <li>Capacitación con validez oficial (DC3): Normatividad ambiental, huella de carbono, ODS y economía circular.</li>
-                        <li>Derechos Humanos: Formación en igualdad, no discriminación y prevención de violencia de género en el entorno laboral.</li>
-                        <li>Talleres de liderazgo transformacional y cohesión de equipos de alto desempeño.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cuadrante">
-                <div class="bg-imagen" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="contenido-tarjeta">
-                    <h2>Gobernanza y Política Pública</h2>
-                    <h3>Fortaleciendo instituciones para transformar territorios.</h3>
-                    <p>Colaboramos con gobiernos para crear instrumentos normativos técnica de excelencia y socialmente legítimos.</p>
-                    <ul>
-                        <li>Diseño y actualización de reglamentos municipales (Ambiente, Residuos, Cambio Climático).</li>
-                        <li>Planeación ambiental estratégica y programas municipales ODS.</li>
-                        <li>Procesos de participación ciudadana y consultas públicas deliberativas.</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="cta-final">
-        <h2>¿Listo para llevar tu organización al siguiente nivel?</h2>
-        <p>Hablemos de cómo transformar tus retos normativos en una estrategia de éxito.</p>
-        <a href="contacto.html" class="btn-contacto">Iniciar conversación</a>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 DASH México. Todos los derechos reservados.</p>
-    </footer>
-
-</body>
-</html>
+                <div class="bg-imagen" style="background-image: url('
