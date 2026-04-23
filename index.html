@@ -6,37 +6,63 @@
     <title>Inicio | DASH México</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* =========================================
+           1. ESTILOS GLOBALES Y VARIABLES
+           ========================================= */
         :root { 
             --turquesa: #00735E; 
             --cian: #828EC3; 
             --marron: #6A3F28; 
             --blanco: #FFFFFF; 
-            --gris-fondo: #f4f7f6; /* Un gris más suave y premium */
+            --gris-fondo: #f4f7f6;
             --oscuro: #001a15; 
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        
-        /* HEADER - Fiel al original */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Poppins', sans-serif; 
+        }
+        body {
+            background-color: var(--gris-fondo);
+            color: #333;
+        }
+
+        /* =========================================
+           2. ENCABEZADO (HEADER)
+           ========================================= */
         header { 
-            background: rgba(255, 255, 255, 0.98); padding: 15px 5%; position: sticky; top: 0; z-index: 1000; 
-            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255, 255, 255, 0.98); 
+            padding: 15px 5%; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            backdrop-filter: blur(10px);
         }
         .logo-container { display: flex; align-items: center; text-decoration: none; }
         .logo-img { height: 45px; margin-right: 12px; }
         .logo-text { font-weight: 700; color: var(--turquesa); font-size: 1.3rem; letter-spacing: -0.5px; }
-        nav a { text-decoration: none; color: #444; margin-left: 30px; font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
+        
+        nav a { 
+            text-decoration: none; color: #444; margin-left: 30px; 
+            font-size: 0.95rem; font-weight: 500; transition: 0.3s; 
+        }
         nav a:hover, nav a.active { color: var(--turquesa); }
 
-        /* ANIMACIÓN DE ENTRADA */
+        /* =========================================
+           3. HERO SECTION (IMPACTO INICIAL)
+           ========================================= */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* HERO SECTION - Inspirado en tu referencia (fondo oscuro topográfico) */
         .hero { 
-            /* Fondo que combina un color oscuro con una imagen sutil de bosque desde arriba */
+            /* Imagen de fondo sutil con gradiente oscuro */
             background: linear-gradient(rgba(0, 30, 25, 0.85), rgba(0, 115, 94, 0.7)), url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             min-height: 85vh;
             display: flex;
@@ -54,8 +80,6 @@
             flex-direction: column;
             align-items: center;
         }
-        
-        /* LOGO DASH MÉXICO AL CENTRO DEL HERO */
         .hero-main-logo {
             max-width: 380px;
             width: 100%;
@@ -63,7 +87,6 @@
             margin-bottom: 40px;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
         }
-
         .hero h2 { font-size: 1.8rem; color: #e0ece9; margin-bottom: 30px; font-weight: 300; }
         .hero p { font-size: 1.15rem; line-height: 1.8; margin-bottom: 50px; font-weight: 300; opacity: 0.9; }
         
@@ -73,124 +96,18 @@
             transition: all 0.3s ease; font-size: 1.1rem; display: inline-block;
             border: 2px solid var(--turquesa);
         }
-        .btn-conocenos:hover { background-color: transparent; color: var(--blanco); border-color: var(--blanco); }
-
-        /* SECCIÓN ECOSISTEMA HÍBRIDO (Diseño inspirado en las tarjetas limpias de la imagen) */
-        .pilar-wrapper { padding: 100px 5%; background: var(--gris-fondo); }
-        .pilar-title-main { text-align: center; color: var(--turquesa); font-size: 2.8rem; margin-bottom: 80px; font-weight: 600; letter-spacing: -1px; }
-        
-        .pilar-grid-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            max-width: 1200px;
-            margin: 0 auto;
-            gap: 50px;
+        .btn-conocenos:hover { 
+            background-color: transparent; color: var(--blanco); border-color: var(--blanco); 
         }
 
-        /* TARJETAS DE PILARES (Estilo limpio, bordes muy redondeados como la referencia) */
-        .pilar-block {
-            background: var(--blanco);
-            border-radius: 30px;
-            padding: 50px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .pilar-block:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
-        
-        /* Pequeño acento de color en la parte superior inspirándose en tu manual */
-        .pilar-block::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
-        }
-        .pilar-block.consultoria::before { background: var(--turquesa); }
-        .pilar-block.ac::before { background: var(--marron); }
-
-        .pilar-block h3 {
-            font-size: 2.2rem; font-weight: 600; color: var(--turquesa); margin-bottom: 15px;
-        }
-        .pilar-block.ac h3 { color: var(--marron); }
-
-        .pilar-intro-p { font-size: 1.1rem; color: #666; font-weight: 400; margin-bottom: 35px; line-height: 1.6; }
-        
-        .pilar-block ul { list-style: none; }
-        .pilar-block li { 
-            position: relative; padding-left: 35px; margin-bottom: 20px; 
-            color: #555; font-size: 1.05rem; line-height: 1.6; 
-        }
-        /* Icono de check personalizado */
-        .pilar-block li::before { 
-            content: "✦"; position: absolute; left: 0; top: 2px;
-            color: var(--turquesa); font-size: 1.2rem; 
-        }
-        .pilar-block.ac li::before { color: var(--marron); }
-
-        .btn-pilar {
-            display: inline-block; margin-top: 20px; color: var(--oscuro); text-decoration: none;
-            font-weight: 600; font-size: 1.1rem; border-bottom: 2px solid var(--cian); padding-bottom: 5px;
-            transition: 0.3s;
-        }
-        .btn-pilar:hover { color: var(--turquesa); border-color: var(--turquesa); }
-        .pilar-block.ac .btn-pilar:hover { color: var(--marron); border-color: var(--marron); }
-
-        /* SECCIÓN CONTACTO INICIO (Bloque final oscuro imitando el footer de la referencia) */
-        .contacto-start {
-            background: var(--oscuro);
-            color: var(--blanco);
-            padding: 100px 10%;
-            border-top: 10px solid var(--turquesa);
-        }
-        .contacto-grid-start { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; 
-        }
-        
-        .contact-info-block h3 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 600; color: var(--blanco); }
-        .contact-info-block p.intro-contact { font-size: 1.1rem; color: #aaa; margin-bottom: 40px; line-height: 1.6; }
-        
-        .contact-details { list-style: none; }
-        .contact-details li { font-size: 1.1rem; color: #ddd; margin-bottom: 25px; display: flex; align-items: center; }
-        .contact-details li span { 
-            margin-right: 20px; font-size: 1.2rem; background: rgba(255,255,255,0.1); 
-            width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; border-radius: 50%;
-        }
-        .contact-details a { color: var(--blanco); text-decoration: none; transition: 0.3s; }
-        .contact-details a:hover { color: var(--cian); }
-        
-        .form-block-home { background: var(--blanco); padding: 45px; border-radius: 24px; }
-        .form-block-home h4 { color: var(--turquesa); font-size: 1.5rem; margin-bottom: 25px; font-weight: 600; }
-        .form-group-home { margin-bottom: 20px; }
-        .form-block-home input, .form-block-home textarea {
-            width: 100%; padding: 15px 20px; border: 1px solid #eee; border-radius: 12px;
-            font-family: 'Poppins', sans-serif; font-size: 1rem; background: #fafafa; transition: 0.3s;
-        }
-        .form-block-home input:focus, .form-block-home textarea:focus { 
-            border-color: var(--turquesa); outline: none; background: var(--blanco); 
-        }
-        .form-block-home textarea { resize: vertical; min-height: 120px; }
-        
-        .btn-enviar-home {
-            background: var(--turquesa); color: var(--blanco); border: none;
-            padding: 15px 30px; font-size: 1.1rem; font-weight: 600; border-radius: 50px;
-            cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px;
-        }
-        .btn-enviar-home:hover { background: var(--marron); }
-
-        footer { background: #000; color: #666; text-align: center; padding: 25px; font-size: 0.85rem; }
-
-        /* RESPONSIVO MÓVIL */
-        @media (max-width: 900px) {
-            .pilar-grid-wrapper { grid-template-columns: 1fr; }
-            .contacto-grid-start { grid-template-columns: 1fr; gap: 50px; }
-            .hero-main-logo { max-width: 300px; }
-        }
+        /* RESPONSIVO BÁSICO PARA HERO Y HEADER */
         @media (max-width: 768px) {
             header { flex-direction: column; }
             nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
             nav a { margin: 5px 10px; }
-            .hero, .pilar-wrapper, .contacto-start { padding: 60px 5%; }
-            .pilar-block, .form-block-home { padding: 30px; }
+            .hero { padding: 60px 5%; min-height: 70vh; }
+            .hero-main-logo { max-width: 280px; }
             .hero h2 { font-size: 1.4rem; }
-            .pilar-title-main { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -219,74 +136,5 @@
         </div>
     </section>
 
-    <section class="pilar-wrapper">
-        <h2 class="pilar-title-main">Nuestro Ecosistema Híbrido</h2>
-        
-        <div class="pilar-grid-wrapper">
-            
-            <div class="pilar-block consultoria">
-                <h3>DASH Consultoría</h3>
-                <p class="pilar-intro-p">Estrategia técnica y cumplimiento institucional para transformar la complejidad normativa en tu mayor ventaja competitiva.</p>
-                <ul>
-                    <li>Implementación y auditorías de normas ISO (14001, 26000, 50001, 20121).</li>
-                    <li>Diagnóstico de cumplimiento y evaluaciones de impacto ambiental.</li>
-                    <li>Diseño e implementación de hojas de ruta e indicadores ESG.</li>
-                    <li>Capacitación con validez oficial (DC3) en temas ambientales y sociales.</li>
-                    <li>Elaboración de reglamentos, programas municipales y política pública participativa.</li>
-                </ul>
-                <a href="consultoria.html" class="btn-pilar">Explorar servicios ➔</a>
-            </div>
-
-            <div class="pilar-block ac">
-                <h3>DASH A.C.</h3>
-                <p class="pilar-intro-p">Nuestra fuerza operativa en territorio. Proyectos diseñados para transformar realidades con impacto social y ambiental medible.</p>
-                <ul>
-                    <li><strong>Educación para la Regeneración:</strong> Sembramos conciencia ambiental desde la infancia vulnerable.</li>
-                    <li><strong>Ciudadanía y Territorio:</strong> Reforestación y recuperación de espacios públicos con la comunidad.</li>
-                    <li><strong>Bienestar y Cultura:</strong> Programas de integración corporativa y huertos urbanos para empresas.</li>
-                    <li><strong>Soluciones Hídricas:</strong> Ecotecnias e infraestructura pluvial para comunidades con escasez.</li>
-                </ul>
-                <a href="ac.html" class="btn-pilar">Conocer proyectos ➔</a>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="contacto-start">
-        <div class="contacto-grid-start">
-            
-            <div class="contact-info-block">
-                <h3>Iniciemos la conversación</h3>
-                <p class="intro-contact">Ya sea para un proyecto de cumplimiento técnico o una iniciativa de impacto social, estamos listos para colaborar contigo.</p>
-                <ul class="contact-details">
-                    <li><span>📞</span> <a href="tel:4423835199">(442) 383 5199</a></li>
-                    <li><span>✉️</span> <a href="mailto:hola@dashmexico.com">hola@dashmexico.com</a></li>
-                    <li><span>📍</span> Querétaro, México.</li>
-                </ul>
-            </div>
-
-            <div class="form-block-home">
-                <h4>Envíanos un mensaje</h4>
-                <form action="https://formspree.io/f/mvoeqzqy" method="POST">
-                    <div class="form-group-home">
-                        <input type="text" name="nombre" placeholder="Nombre completo" required>
-                    </div>
-                    <div class="form-group-home">
-                        <input type="email" name="correo" placeholder="Correo electrónico" required>
-                    </div>
-                    <div class="form-group-home">
-                        <textarea name="mensaje" placeholder="¿En qué podemos apoyarte?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-enviar-home">Enviar Mensaje</button>
-                </form>
-            </div>
-
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 DASH México. Todos los derechos reservados.</p>
-    </footer>
-
-</body>
+    </body>
 </html>
