@@ -14,8 +14,8 @@
             --cian: #828EC3; 
             --marron: #6A3F28; 
             --blanco: #FFFFFF; 
-            --gris-fondo: #F9FAFB; /* Gris ultra claro, casi blanco */
-            --oscuro: #0B1311; /* Negro entintado con verde */
+            --gris-fondo: #F9FAFB;
+            --oscuro: #0B1311;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--gris-fondo); color: #333; overflow-x: hidden; }
@@ -26,14 +26,14 @@
         header { 
             background: rgba(255, 255, 255, 0.85); 
             padding: 15px 6%; 
-            position: fixed; /* Fijo siempre arriba */
+            position: fixed; 
             width: 100%;
             top: 0; 
             z-index: 1000; 
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            backdrop-filter: blur(15px); /* Efecto cristal premium */
+            backdrop-filter: blur(15px); 
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         .logo-container { display: flex; align-items: center; text-decoration: none; }
@@ -51,7 +51,7 @@
         ======================================================== */
         .hero { 
             position: relative;
-            height: 100vh; /* Ocupa toda la pantalla al abrir */
+            height: 100vh; 
             min-height: 700px;
             display: flex;
             flex-direction: column;
@@ -59,7 +59,7 @@
             align-items: center;
             text-align: center;
             background: linear-gradient(to bottom, rgba(11, 19, 17, 0.7), rgba(0, 115, 94, 0.8)), url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            background-attachment: fixed; /* Efecto Parallax */
+            background-attachment: fixed;
             color: var(--blanco);
             padding: 0 5%;
         }
@@ -68,18 +68,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 50px; /* Compensa el header fijo */
+            margin-top: 50px; 
         }
-   .hero-main-logo {
-            max-width: 600px; /* Tamaño masivo para impacto */
+        .hero-main-logo {
+            max-width: 600px; 
             width: 100%;
             height: auto;
             margin-bottom: 50px;
-            /* CAMBIO: Sombra de luz blanca (glow) para resaltar las letras oscuras */
-            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8));
+            /* AQUÍ ESTÁ EL CAMBIO: Sombra clara desplazada a la DERECHA (15px) y ABAJO (15px) */
+            filter: drop-shadow(15px 15px 25px rgba(255, 255, 255, 0.75));
         }
         .hero h2 { 
-            font-size: clamp(1.5rem, 3vw, 2.2rem); /* Tipografía fluida */
+            font-size: clamp(1.5rem, 3vw, 2.2rem); 
             font-weight: 300; 
             margin-bottom: 25px; 
             letter-spacing: 2px; 
@@ -94,48 +94,64 @@
         }
 
         /* ========================================================
-           ECOSISTEMA (DISEÑO ASIMÉTRICO)
+           ECOSISTEMA (DISEÑO SIMÉTRICO Y DINÁMICO)
         ======================================================== */
         .ecosistema-section {
             padding: 120px 0;
-            background-color: var(--blanco);
+            background-color: var(--gris-fondo);
         }
         .ecosistema-title {
             text-align: center;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             color: var(--oscuro);
             font-weight: 700;
-            letter-spacing: -2px;
-            margin-bottom: 100px;
+            letter-spacing: -1px;
+            margin-bottom: 80px;
         }
 
-  /* Bloque Asimétrico Base */
-        .bloque-pilar {
+        .ecosistema-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1300px;
+            margin: 0 auto;
+            gap: 60px;
+            padding: 0 5%;
+        }
+
+        /* Tarjetas Simétricas */
+        .pilar-card {
+            background: var(--blanco);
+            border-radius: 40px;
+            padding: 60px 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            position: relative;
+            /* AQUÍ ESTÁ EL CAMBIO: Transición suave y pronunciada para el hover */
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease;
+            border: 1px solid rgba(0,0,0,0.02);
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1400px;
-            margin: 0 auto 120px auto;
-            padding: 0 6%;
-            gap: 80px;
-            /* CAMBIO: Agregamos la transición para que el movimiento sea suave */
-            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        /* CAMBIO: Efecto de elevación de todo el bloque al pasar el cursor */
-        .bloque-pilar:hover {
-            transform: translateY(-15px);
-        }
-        }
-        /* Bloque A.C. invertido */
-        .bloque-pilar.invertido {
-            flex-direction: row-reverse;
+            flex-direction: column;
         }
 
-        /* Contenido de Texto */
-        .pilar-texto {
-            flex: 1;
-            max-width: 600px;
+        /* MOVIMIENTO NOTORIO AL PASAR EL CURSOR */
+        .pilar-card:hover {
+            transform: translateY(-20px) scale(1.02); /* Sube mucho más y se agranda un poco */
         }
+        /* Sombra intensa Turquesa para Consultoría */
+        .pilar-card.consultoria:hover {
+            box-shadow: 0 40px 80px rgba(0, 115, 94, 0.15); 
+        }
+        /* Sombra intensa Marrón para A.C. */
+        .pilar-card.ac:hover {
+            box-shadow: 0 40px 80px rgba(106, 63, 40, 0.15);
+        }
+
+        /* Decoración superior de la tarjeta */
+        .pilar-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 8px;
+        }
+        .pilar-card.consultoria::before { background: var(--turquesa); }
+        .pilar-card.ac::before { background: var(--marron); }
+
         .pilar-etiqueta {
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -147,33 +163,34 @@
         .consultoria .pilar-etiqueta { color: var(--turquesa); }
         .ac .pilar-etiqueta { color: var(--marron); }
 
-        .pilar-texto h3 {
-            font-size: clamp(2rem, 4vw, 3rem);
+        .pilar-card h3 {
+            font-size: 2.5rem;
             color: var(--oscuro);
-            line-height: 1.1;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-weight: 700;
         }
-        .pilar-texto p {
+        .pilar-card p.desc {
             font-size: 1.1rem;
             color: #666;
             line-height: 1.8;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
-        
-        .pilar-lista { list-style: none; margin-bottom: 40px; }
+
+        .pilar-lista { list-style: none; margin-bottom: 40px; flex-grow: 1; }
         .pilar-lista li {
             position: relative;
-            padding-left: 30px;
+            padding-left: 35px;
             margin-bottom: 15px;
             font-size: 1.05rem;
             color: #444;
+            line-height: 1.6;
         }
         .pilar-lista li::before {
-            content: "—"; /* Viñetas minimalistas */
+            content: "✦";
             position: absolute;
             left: 0;
-            font-weight: bold;
+            top: 2px;
+            font-size: 1.2rem;
         }
         .consultoria .pilar-lista li::before { color: var(--turquesa); }
         .ac .pilar-lista li::before { color: var(--marron); }
@@ -184,28 +201,27 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            transition: gap 0.3s ease;
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            align-self: flex-start;
         }
-        .consultoria .btn-link { color: var(--turquesa); }
-        .ac .btn-link { color: var(--marron); }
-        .btn-link:hover { gap: 15px; }
-
-        /* Elemento Visual (Imagen / Tarjeta) */
-        .pilar-visual {
-            flex: 1;
-            width: 100%;
-            height: 600px;
-            border-radius: 40px;
-            background-size: cover;
-            background-position: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+        .consultoria .btn-link { 
+            color: var(--turquesa); 
+            border-color: var(--turquesa); 
         }
-        .visual-consultoria {
-            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80');
+        .consultoria .btn-link:hover {
+            background-color: var(--turquesa);
+            color: var(--blanco);
         }
-        .visual-ac {
-            background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80');
+        .ac .btn-link { 
+            color: var(--marron); 
+            border-color: var(--marron); 
+        }
+        .ac .btn-link:hover {
+            background-color: var(--marron);
+            color: var(--blanco);
         }
 
         /* ========================================================
@@ -241,9 +257,7 @@
             line-height: 1.8;
             margin-bottom: 50px;
         }
-        .info-dato {
-            margin-bottom: 25px;
-        }
+        .info-dato { margin-bottom: 25px; }
         .info-dato span {
             display: block;
             font-size: 0.85rem;
@@ -259,15 +273,13 @@
             font-weight: 500;
         }
 
-        /* Formulario flotante */
         .contacto-form-card {
             flex: 1;
             background: var(--blanco);
             padding: 60px 50px;
             border-radius: 30px;
-            /* Esta sombra hace que parezca flotar sobre lo oscuro */
             box-shadow: 0 -20px 80px rgba(0,0,0,0.5); 
-            transform: translateY(-80px); /* Lo empuja hacia arriba rompiendo la línea */
+            transform: translateY(-80px); 
         }
         
         .form-group { margin-bottom: 25px; }
@@ -324,23 +336,17 @@
            RESPONSIVO
         ======================================================== */
         @media (max-width: 1024px) {
-            .bloque-pilar, .bloque-pilar.invertido {
-                flex-direction: column;
-                gap: 50px;
-                text-align: center;
-            }
-            .pilar-lista li { text-align: left; } /* Mantiene la lista alineada a la izquierda */
-            .pilar-visual { height: 400px; }
+            .ecosistema-grid { grid-template-columns: 1fr; }
             .contacto-container { flex-direction: column; }
             .contacto-form-card { transform: translateY(0); width: 100%; padding: 40px; }
             .contacto-wrapper { padding-top: 80px; }
         }
         @media (max-width: 768px) {
             header { padding: 15px 5%; }
-            nav { display: none; } /* En un diseño real aquí iría un menú hamburguesa, por ahora lo ocultamos para limpieza */
+            nav { display: none; }
             .hero-main-logo { max-width: 80%; }
             .ecosistema-section { padding: 80px 0; }
-            .pilar-visual { height: 300px; border-radius: 20px; }
+            .pilar-card { padding: 40px 30px; border-radius: 30px; }
             .contacto-form-card { padding: 30px 20px; }
         }
     </style>
@@ -372,36 +378,34 @@
     <section class="ecosistema-section">
         <h2 class="ecosistema-title">Nuestro Ecosistema Híbrido</h2>
         
-        <div class="bloque-pilar consultoria">
-            <div class="pilar-texto">
+        <div class="ecosistema-grid">
+            
+            <div class="pilar-card consultoria">
                 <span class="pilar-etiqueta">Precisión Técnica</span>
                 <h3>DASH Consultoría</h3>
-                <p>Transformamos la complejidad normativa en tu mayor ventaja competitiva. Brindamos certeza técnica e institucional para blindar y potenciar las operaciones de tu organización.</p>
+                <p class="desc">Transformamos la complejidad normativa en tu mayor ventaja competitiva. Brindamos certeza técnica e institucional para blindar y potenciar las operaciones de tu organización.</p>
                 <ul class="pilar-lista">
                     <li>Sistemas de gestión y normas ISO (14001, 26000, 50001, 20121).</li>
                     <li>Auditorías ambientales y evaluación de impacto.</li>
                     <li>Estrategia corporativa y reportes ESG (GRI, SASB).</li>
                     <li>Capacitación oficial DC3 y desarrollo organizacional.</li>
                 </ul>
-                <a href="consultoria.html" class="btn-link">Explorar servicios <span>→</span></a>
+                <a href="consultoria.html" class="btn-link">Explorar servicios</a>
             </div>
-            <div class="pilar-visual visual-consultoria"></div>
-        </div>
 
-        <div class="bloque-pilar invertido ac">
-            <div class="pilar-texto">
+            <div class="pilar-card ac">
                 <span class="pilar-etiqueta">Impacto Social</span>
                 <h3>DASH A.C.</h3>
-                <p>Nuestra fuerza operativa en territorio. Ejecutamos proyectos diseñados para transformar realidades concretas, con la capacidad legal de emitir comprobantes fiscales deducibles.</p>
+                <p class="desc">Nuestra fuerza operativa en territorio. Ejecutamos proyectos diseñados para transformar realidades concretas, con la capacidad legal de emitir comprobantes fiscales deducibles.</p>
                 <ul class="pilar-lista">
                     <li>Proyectos de educación y niñez vulnerable.</li>
                     <li>Regeneración ecosistémica y reforestación.</li>
                     <li>Diseño e instalación de infraestructura verde urbana.</li>
                     <li>Vinculación comunitaria y alianzas estratégicas.</li>
                 </ul>
-                <a href="ac.html" class="btn-link">Conocer programas <span>→</span></a>
+                <a href="ac.html" class="btn-link">Conocer programas</a>
             </div>
-            <div class="pilar-visual visual-ac"></div>
+
         </div>
     </section>
 
