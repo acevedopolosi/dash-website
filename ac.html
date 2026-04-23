@@ -68,10 +68,11 @@
         .pane-text h2 { font-size: 2.2rem; margin-bottom: 25px; font-weight: 700; }
         .pane-text p { font-size: 1.15rem; line-height: 1.8; color: #e0e0e0; text-align: justify; }
 
-        /* SECCIÓN CARRUSEL ORGÁNICO */
+    /* SECCIÓN CARRUSEL ORGÁNICO CON IMÁGENES DE FONDO */
         .carrusel-section { padding: 80px 5% 100px 5%; background: var(--blanco); }
         .carrusel-header { text-align: center; margin-bottom: 50px; }
         .carrusel-header h2 { color: var(--turquesa); font-size: 2.5rem; margin-bottom: 10px; }
+        .carrusel-header p { color: var(--marron); font-size: 1.1rem; }
         
         .carrusel-container {
             display: flex; gap: 40px; overflow-x: auto; padding: 40px 20px;
@@ -80,45 +81,45 @@
         .carrusel-container::-webkit-scrollbar { display: none; }
 
         .card-proyecto {
-            flex: 0 0 380px; background: var(--gris-fondo); padding: 40px;
+            position: relative;
+            flex: 0 0 340px; 
+            min-height: 420px;
             scroll-snap-align: center; transition: all 0.4s ease;
-            /* FORMA ORGÁNICA INICIAL */
-            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-            display: flex; flex-direction: column; justify-content: center;
-            border: 1px solid rgba(0,0,0,0.05);
+            /* Formas orgánicas más suaves para no cortar el texto */
+            border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
-        /* Variaciones de formas para efecto natural */
-        .card-proyecto:nth-child(2n) { border-radius: 58% 42% 38% 62% / 42% 65% 35% 58%; }
-        .card-proyecto:nth-child(3n) { border-radius: 41% 59% 41% 59% / 65% 41% 59% 35%; }
+        .card-proyecto:nth-child(2n) { border-radius: 55% 45% 40% 60% / 45% 60% 40% 55%; }
+        .card-proyecto:nth-child(3n) { border-radius: 45% 55% 60% 40% / 60% 40% 60% 40%; }
         
-        .card-proyecto:hover {
-            transform: scale(1.02); background: var(--blanco);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--cian);
-        }
+        .card-proyecto:hover { transform: scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
 
-        .proyecto-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--cian); font-weight: 700; margin-bottom: 15px; display: block; }
-        .card-proyecto h3 { font-size: 1.4rem; color: var(--turquesa); margin-bottom: 20px; line-height: 1.2; }
-        .card-proyecto p { font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 15px; }
-        .card-proyecto strong { color: var(--marron); font-weight: 600; }
-
-        /* CTA FINAL */
-        .cta-ac { 
-            background: linear-gradient(rgba(106, 63, 40, 0.85), rgba(106, 63, 40, 0.95)), url('https://images.unsplash.com/photo-1534293230397-c067fc201ab8?auto=format&fit=crop&w=1920&q=80') center/cover;
-            color: var(--blanco); padding: 100px 10%; text-align: center;
+        /* Capas de imagen y filtro oscuro */
+        .card-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            z-index: 1; transition: transform 0.8s ease;
         }
-        .cta-ac h3 { font-size: 2.5rem; margin-bottom: 20px; }
-        .btn-cta-ac {
-            background-color: var(--blanco); color: var(--marron); padding: 15px 40px;
-            text-decoration: none; font-weight: 600; border-radius: 30px; transition: 0.3s;
+        .card-proyecto:hover .card-bg { transform: scale(1.1); }
+        
+        .card-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 26, 21, 0.75); /* Filtro oscuro para resaltar el texto */
+            z-index: 2; transition: background 0.4s ease;
         }
-        .btn-cta-ac:hover { background-color: var(--turquesa); color: var(--blanco); }
+        .card-proyecto:hover .card-overlay { background: rgba(0, 26, 21, 0.65); }
 
-        footer { background: #001a15; color: #aaa; text-align: center; padding: 20px; font-size: 0.8rem; }
-
-        @media (max-width: 950px) {
-            .impacto-layout { grid-template-columns: 1fr; }
-            .card-proyecto { flex: 0 0 320px; }
+        /* Contenido de texto centrado */
+        .proyecto-body {
+            position: relative; z-index: 3;
+            padding: 40px 30px; display: flex; flex-direction: column; justify-content: center;
+            height: 100%; text-align: center; color: var(--blanco);
         }
+        
+        .proyecto-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #a9eadc; font-weight: 700; margin-bottom: 15px; display: block; }
+        .proyecto-body h3 { font-size: 1.4rem; color: var(--blanco); margin-bottom: 15px; line-height: 1.2; font-weight: 600; }
+        .proyecto-body p { font-size: 0.95rem; color: #e0e0e0; line-height: 1.6; margin-bottom: 0; font-weight: 300; }
     </style>
 </head>
 <body>
@@ -213,83 +214,181 @@
         </div>
     </section>
 
-    <section class="carrusel-section">
+  <section class="carrusel-section">
         <div class="carrusel-header">
             <h2>Portafolio de Proyectos</h2>
             <p>Iniciativas listas para generar impacto inmediato.</p>
         </div>
+        
         <div class="carrusel-container">
             <div class="card-proyecto">
-                <span class="proyecto-tag">Enfoque Social</span>
-                <h3>Mi cuaderno del planeta</h3>
-                <p><strong>Objetivo:</strong> Fomentar el vínculo entre la niñez y el medio ambiente mediante un cuaderno educativo personalizado.</p>
-                <p><strong>Alcance:</strong> Entrega de cuadernos ilustrados con retos ambientales, nombre personalizado y logos institucionales.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Enfoque Social</span>
+                    <h3>Mi cuaderno del planeta</h3>
+                    <p>Fomentamos el vínculo entre la niñez y el medio ambiente a través de la entrega de cuadernos ilustrados y personalizados con retos ambientales.</p>
+                </div>
             </div>
+
             <div class="card-proyecto">
-                <span class="proyecto-tag">Enfoque Social</span>
-                <h3>Escuelas que inspiran</h3>
-                <p><strong>Objetivo:</strong> Transformar simbólicamente espacios escolares para mejorar la autoestima del alumnado.</p>
-                <p><strong>Alcance:</strong> Intervención estética con murales, jardines motivacionales y señalética con valores.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Enfoque Social</span>
+                    <h3>Escuelas que inspiran</h3>
+                    <p>Transformamos simbólicamente los espacios escolares mediante murales y jardines motivacionales para fortalecer el sentido de pertenencia y la autoestima del alumnado.</p>
+                </div>
             </div>
+
             <div class="card-proyecto">
-                <span class="proyecto-tag">Enfoque Social</span>
-                <h3>Mi mochila, mi futuro</h3>
-                <p><strong>Objetivo:</strong> Dotar a niñas y niños de kits escolares sostenibles, promoviendo la equidad educativa.</p>
-                <p><strong>Alcance:</strong> Entrega de mochilas ecológicas con útiles y actividades educativas.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1546410531-bea5133f28d4?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Enfoque Social</span>
+                    <h3>Mi mochila, mi futuro</h3>
+                    <p>Promovemos la equidad educativa dotando a niñas y niños de mochilas ecológicas equipadas con útiles escolares y actividades didácticas sostenibles.</p>
+                </div>
             </div>
+
             <div class="card-proyecto">
-                <span class="proyecto-tag">Enfoque Social</span>
-                <h3>Guardianes del planeta</h3>
-                <p><strong>Objetivo:</strong> Fomentar la responsabilidad ambiental mediante la adopción simbólica de áreas verdes.</p>
-                <p><strong>Alcance:</strong> Entrega de placas, carnets y tareas de cuidado ambiental escolar.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Enfoque Social</span>
+                    <h3>Guardianes del planeta</h3>
+                    <p>Impulsamos la responsabilidad ambiental infantil mediante la adopción simbólica de áreas verdes, entregando placas y carnets de cuidado a cada participante.</p>
+                </div>
             </div>
+
             <div class="card-proyecto">
-                <span class="proyecto-tag">Enfoque Social</span>
-                <h3>Escuelas que alimentan</h3>
-                <p><strong>Objetivo:</strong> Promover la soberanía alimentaria en edad escolar.</p>
-                <p><strong>Alcance:</strong> Instalación de huertos escolares con talleres de nutrición y cocina saludable.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1593113511333-311894dcf9f5?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Enfoque Social</span>
+                    <h3>Escuelas que alimentan</h3>
+                    <p>Instalamos huertos escolares y brindamos talleres de nutrición para promover la alimentación responsable y la soberanía alimentaria desde la infancia.</p>
+                </div>
             </div>
+
             <div class="card-proyecto">
-                <span class="proyecto-tag">Marketing con Causa</span>
-                <h3>Arte por el planeta</h3>
-                <p><strong>Objetivo:</strong> Visibilizar causas socioambientales a través del arte infantil y juvenil.</p>
-                <p><strong>Alcance:</strong> Concurso en escuelas, exposición pública y evento de premiación institucional.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Enfoque Social</span>
+                    <h3>Así veo el mundo</h3>
+                    <p>Damos voz a niñas y niños publicando sus creaciones artísticas en un cuadernillo impreso, reconociendo su visión sobre los derechos y el entorno.</p>
+                </div>
             </div>
+
             <div class="card-proyecto">
-                <span class="proyecto-tag">Marketing con Causa</span>
-                <h3>Kits verdes para familias</h3>
-                <p><strong>Objetivo:</strong> Fomentar hábitos sostenibles en el hogar mediante recursos prácticos.</p>
-                <p><strong>Alcance:</strong> Entrega de kits con bolsas reutilizables, semillas y guías prácticas mediante QR.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Marketing con Causa</span>
+                    <h3>Arte por el planeta</h3>
+                    <p>Visibilizamos causas socioambientales organizando concursos de arte infantil y juvenil que culminan en exposiciones y eventos de premiación institucionales.</p>
+                </div>
             </div>
+
             <div class="card-proyecto">
-                <span class="proyecto-tag">Cultura y Bienestar</span>
-                <h3>Juntos por el planeta</h3>
-                <p><strong>Objetivo:</strong> Fortalecer el vínculo empresa-familia a través de expresiones artísticas ambientales.</p>
-                <p><strong>Alcance:</strong> Concurso de dibujo y fotografía entre familias, premiación y exposición corporativa.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Marketing con Causa</span>
+                    <h3>Kits verdes para familias</h3>
+                    <p>Llevamos la sostenibilidad al hogar entregando a las familias kits educativos con bolsas reutilizables, semillas y guías prácticas mediante códigos QR.</p>
+                </div>
             </div>
+
             <div class="card-proyecto">
-                <span class="proyecto-tag">Cultura y Bienestar</span>
-                <h3>Huerto en la empresa</h3>
-                <p><strong>Objetivo:</strong> Fomentar la salud mental de los colaboradores mediante conexión con la naturaleza.</p>
-                <p><strong>Alcance:</strong> Diseño e instalación de huerto urbano institucional como espacio de bienestar permanente.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Marketing con Causa</span>
+                    <h3>Formación de líderes</h3>
+                    <p>Desarrollamos el liderazgo social desde la infancia mediante talleres escolares, diseñando campañas y reconociendo a los embajadores con kits básicos.</p>
+                </div>
             </div>
+
             <div class="card-proyecto">
-                <span class="proyecto-tag">Enfoque Ambiental</span>
-                <h3>Reforestación comunitaria</h3>
-                <p><strong>Objetivo:</strong> Recuperar áreas degradadas con especies nativas y participación ciudadana activa.</p>
-                <p><strong>Alcance:</strong> Planeación técnica, jornada de plantación profesional y seguimiento de sobrevivencia.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Cultura y Bienestar</span>
+                    <h3>Juntos por el planeta</h3>
+                    <p>Fortalecemos el vínculo empresa-familia organizando concursos de expresión artística con temática ambiental, culminando en exposiciones corporativas.</p>
+                </div>
             </div>
+
             <div class="card-proyecto">
-                <span class="proyecto-tag">Enfoque Ambiental</span>
-                <h3>Captación de agua en escuelas</h3>
-                <p><strong>Objetivo:</strong> Atender la escasez hídrica con infraestructura de ecotecnia básica.</p>
-                <p><strong>Alcance:</strong> Instalación de sistemas de captación pluvial y capacitación técnica a la comunidad escolar.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Cultura y Bienestar</span>
+                    <h3>Día DASH familiar</h3>
+                    <p>Reforzamos la unión comunitaria mediante encuentros familiares como picnics sustentables, círculos de gratitud y talleres de siembra interactivos.</p>
+                </div>
             </div>
+
             <div class="card-proyecto">
-                <span class="proyecto-tag">Enfoque Ambiental</span>
-                <h3>Senderos interpretativos</h3>
-                <p><strong>Objetivo:</strong> Promover la educación ambiental en parques públicos mediante señalética científica.</p>
-                <p><strong>Alcance:</strong> Diseño de contenido y señalética sobre biodiversidad y servicios ecosistémicos.</p>
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Cultura y Bienestar</span>
+                    <h3>Huerto en la empresa</h3>
+                    <p>Fomentamos la salud mental y la conexión natural de los colaboradores instalando un huerto urbano institucional como espacio permanente de bienestar.</p>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Enfoque Ambiental</span>
+                    <h3>Reforestación comunitaria</h3>
+                    <p>Recuperamos áreas degradadas organizando jornadas profesionales de plantación con especies nativas, involucrando participación técnica y ciudadana.</p>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Enfoque Ambiental</span>
+                    <h3>Captación de agua</h3>
+                    <p>Atendemos la escasez hídrica instalando sistemas de captación pluvial en escuelas vulnerables, acompañados de talleres técnicos comunitarios.</p>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Enfoque Ambiental</span>
+                    <h3>Adopción de áreas verdes</h3>
+                    <p>Mejoramos los espacios de la ciudad mediante el mantenimiento constante, la instalación de señalética y la educación ambiental en parques y camellones.</p>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Enfoque Ambiental</span>
+                    <h3>Senderos interpretativos</h3>
+                    <p>Promovemos la educación ambiental en parques públicos diseñando e instalando señalética informativa sobre la biodiversidad y los servicios ecosistémicos locales.</p>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1587334205562-b91cbb47cd89?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-overlay"></div>
+                <div class="proyecto-body">
+                    <span class="proyecto-tag">Enfoque Ambiental</span>
+                    <h3>Jardines polinizadores</h3>
+                    <p>Aumentamos la biodiversidad urbana construyendo e instalando flora nativa y señalética para crear espacios seguros que atraen polinizadores vitales.</p>
+                </div>
             </div>
         </div>
     </section>
