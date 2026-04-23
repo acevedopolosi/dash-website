@@ -6,76 +6,238 @@
     <title>Consultoría | DASH México</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f8f9fa; }
+        /* ========================================================
+           VARIABLES GLOBALES
+        ======================================================== */
+        :root { 
+            --turquesa: #00735E; 
+            --cian: #828EC3; 
+            --marron: #6A3F28; 
+            --blanco: #FFFFFF; 
+            --gris-fondo: #F4F7F6;
+            --oscuro: #0B1311;
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        
+        body { background-color: var(--gris-fondo); color: #333; overflow-x: hidden; }
+
+        /* ========================================================
+           HEADER
+        ======================================================== */
         header { 
-            background: var(--blanco); padding: 10px 5%; position: sticky; top: 0; z-index: 1000; 
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 15px 6%; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            backdrop-filter: blur(10px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
         .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 50px; margin-right: 12px; }
-        .logo-text { font-weight: 700; color: var(--turquesa); font-size: 1.2rem; }
-        nav a { text-decoration: none; color: #555; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover, nav a.active { color: var(--turquesa); font-weight: 600; }
+        .logo-img { height: 40px; margin-right: 15px; }
+        .logo-text { font-weight: 700; color: var(--turquesa); font-size: 1.2rem; letter-spacing: 1px; }
+        
+        nav a { 
+            text-decoration: none; color: #555; margin-left: 35px; 
+            font-size: 0.9rem; font-weight: 500; transition: color 0.3s ease; 
+        }
+        nav a:hover, nav a.active { color: var(--turquesa); }
 
-        /* HERO CONSULTORÍA */
-        .hero-consultoria { 
-            background: var(--gris-fondo);
-            padding: 80px 10%;
+        /* ========================================================
+           TÍTULO PRINCIPAL DE LA PÁGINA
+        ======================================================== */
+        .page-header {
             text-align: center;
+            padding: 80px 5% 40px 5%;
         }
-        .img-hero-consultoria { max-width: 300px; margin-bottom: 30px; }
-        .hero-consultoria p { font-size: 1.5rem; color: var(--marron); max-width: 800px; margin: 0 auto; font-weight: 400; line-height: 1.4; }
-
-        /* ZIG-ZAG SECTION */
-        .servicios-container { padding: 60px 10%; background: var(--blanco); }
-        .servicio-row { display: flex; align-items: center; gap: 80px; margin-bottom: 120px; }
-        .servicio-row:nth-child(even) { flex-direction: row-reverse; }
-        
-        .servicio-texto { flex: 1.2; }
-        .servicio-texto h2 { color: var(--turquesa); font-size: 2.2rem; margin-bottom: 10px; }
-        .servicio-texto h3 { color: var(--cian); font-size: 1.1rem; font-weight: 400; margin-bottom: 25px; font-style: italic; }
-        .servicio-texto p { font-size: 1.05rem; color: #555; line-height: 1.7; margin-bottom: 20px; }
-        
-        .servicio-texto ul { list-style: none; margin-top: 20px; }
-        .servicio-texto li { position: relative; padding-left: 25px; margin-bottom: 12px; color: #444; font-size: 0.95rem; }
-        .servicio-texto li::before { content: "→"; position: absolute; left: 0; color: var(--turquesa); font-weight: bold; }
-
-        .servicio-imagen { flex: 0.8; text-align: center; }
-        
-        /* BLOBS ANIMADOS */
-        .blob-img {
-            width: 100%; max-width: 400px; height: 400px;
-            object-fit: cover; transition: all 1.5s ease-in-out;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        .page-header h1 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            color: var(--oscuro);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
         }
-        .blob-1 { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-        .blob-2 { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-        .blob-3 { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-        .blob-4 { border-radius: 40% 60% 74% 26% / 48% 36% 64% 52%; }
-
-        .servicio-row:hover .blob-img { border-radius: 50%; transform: scale(1.02); }
-
-        /* CTA FINAL */
-        .cta-consultoria { 
-            background: linear-gradient(135deg, var(--turquesa) 0%, #004d3f 100%);
-            color: var(--blanco); padding: 80px 10%; text-align: center;
+        .page-header p {
+            font-size: 1.15rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
+
+        /* ========================================================
+           GRID DE 4 CUADRANTES CON LOGO CENTRAL (ESTILO DRIBBBLE)
+        ======================================================== */
+        .services-container {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto 100px auto;
+            padding: 20px 5%;
+        }
+
+        /* El Círculo Central Flotante */
+        .center-logo-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background-color: var(--blanco);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            z-index: 10;
+        }
+        .center-logo-circle img {
+            width: 80px; /* Tamaño del logo.png dentro del círculo */
+            height: auto;
+        }
+
+        /* El Grid de Tarjetas */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            position: relative;
+        }
+
+        /* Diseño de cada cuadrante */
+        .service-card {
+            background: var(--blanco);
+            border-radius: 35px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 340px; /* Altura fija para que no salten feo */
+            border: 1px solid rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 115, 94, 0.08);
+        }
+
+        /* Icono representativo arriba de cada tarjeta (usamos un círculo turquesa con estilo) */
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 115, 94, 0.1);
+            color: var(--turquesa);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+        .service-card:hover .card-icon {
+            background: var(--turquesa);
+            color: var(--blanco);
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--oscuro);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* INTERACCIÓN: PREVIEW Y LISTA COMPLETA */
+        .preview-text {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.7;
+            margin: 0;
+            opacity: 1;
+            max-height: 150px;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .full-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            width: 100%;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .full-list li {
+            padding-left: 28px;
+            position: relative;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.5;
+        }
+        .full-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--turquesa);
+            font-weight: 700;
+        }
+
+        /* La Magia del Hover: Oculta el preview, muestra la lista */
+        .service-card:hover .preview-text {
+            opacity: 0;
+            max-height: 0;
+            margin: 0;
+        }
+        .service-card:hover .full-list {
+            opacity: 1;
+            max-height: 300px;
+            margin-top: 10px;
+        }
+
+        /* CONTACTO FOOTER SIMPLIFICADO */
+        .cta-consultoria {
+            background: var(--oscuro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 80px 5%;
+        }
+        .cta-consultoria h2 { font-size: 2.2rem; margin-bottom: 20px; }
         .btn-cta {
-            background-color: var(--blanco); color: var(--turquesa); padding: 15px 40px;
-            text-decoration: none; font-weight: 600; border-radius: 30px;
-            transition: 0.3s; font-size: 1.1rem; display: inline-block; margin-top: 30px;
+            background: var(--turquesa); color: var(--blanco); padding: 15px 40px;
+            text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 1.1rem;
+            display: inline-block; margin-top: 20px; transition: 0.3s;
         }
-        .btn-cta:hover { background-color: var(--cian); color: var(--blanco); transform: translateY(-3px); }
+        .btn-cta:hover { background: var(--blanco); color: var(--oscuro); }
 
-        footer { background: #001a15; color: #aaa; text-align: center; padding: 20px; font-size: 0.8rem; }
+        footer { background: #000; color: #666; text-align: center; padding: 25px; font-size: 0.85rem; }
 
+        /* ========================================================
+           RESPONSIVO
+        ======================================================== */
         @media (max-width: 900px) {
-            .servicio-row, .servicio-row:nth-child(even) { flex-direction: column-reverse; gap: 40px; text-align: center; }
-            .servicio-texto li { text-align: left; }
-            .blob-img { height: 300px; width: 300px; }
+            .grid-4 { grid-template-columns: 1fr; gap: 20px; }
+            /* Ocultamos el logo central en móviles para que no estorbe la lectura de las tarjetas apiladas */
+            .center-logo-circle { display: none; }
+            .service-card { min-height: auto; }
+        }
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px 5%; }
+            nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
+            nav a { margin: 5px 10px; }
+            .page-header { padding-top: 50px; }
+            .page-header h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -83,7 +245,7 @@
 
     <header>
         <a href="index.html" class="logo-container">
-            <img src="logo.png" alt="Logo DASH México" class="logo-img">
+            <img src="logo.png" alt="Logo DASH" class="logo-img">
             <div class="logo-text">DASH MÉXICO</div>
         </a>
         <nav>
@@ -95,88 +257,74 @@
         </nav>
     </header>
 
-    <section class="hero-consultoria">
-        <img src="logoconsultoria.png" alt="DASH Consultoría" class="img-hero-consultoria">
-        <p>Más allá del cumplimiento: estrategia técnica con impacto real.</p>
+    <section class="page-header">
+        <h1>Soluciones a la medida de tu organización</h1>
+        <p>Alineamos el cumplimiento normativo con la innovación operativa para generar valor, mitigar riesgos y asegurar la trascendencia de tu negocio.</p>
     </section>
 
-    <section class="servicios-container">
+    <section class="services-container">
         
-        <div class="servicio-row">
-            <div class="servicio-texto">
-                <h2>Ingeniería Ambiental y Cumplimiento Normativo</h2>
-                <h3>El rigor técnico al servicio de la continuidad operativa.</h3>
-                <p>No solo gestionamos trámites; aseguramos la "licencia para operar" de tu organización mediante soluciones de ingeniería de vanguardia.</p>
-                <ul>
-                    <li>Cédula de Operación Anual (COA).</li>
-                    <li>Licencia Ambiental Única (LAU).</li>
-                    <li>Inventario de Emisiones GEI (Huella de Carbono).</li>
-                    <li>Estudios de Riesgo Ambiental (ERA) y PPA.</li>
-                    <li>Planes de Manejo de Residuos y Economía Circular.</li>
-                    <li>Atención técnica en visitas de inspección.</li>
-                </ul>
-            </div>
-            <div class="servicio-imagen">
-                <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80" alt="Ingeniería Ambiental" class="blob-img blob-1">
-            </div>
+        <div class="center-logo-circle">
+            <img src="logo.png" alt="Icono DASH">
         </div>
 
-        <div class="servicio-row">
-            <div class="servicio-texto">
-                <h2>Estrategia ESG y Responsabilidad Social</h2>
-                <h3>Transformamos el compromiso en indicadores de valor.</h3>
-                <p>Alineamos la operación con estándares globales para fortalecer la reputación y el acceso a mercados exigentes.</p>
-                <ul>
-                    <li>Sistemas de Gestión ISO (14001, 50001, 26000, 20121).</li>
-                    <li>Diagnóstico de materialidad y hojas de ruta ESG.</li>
-                    <li>Reportes de Sostenibilidad (GRI, SASB).</li>
-                    <li>Programas de voluntariado corporativo y desarrollo territorial.</li>
-                    <li>Políticas de ética y derechos humanos corporativos.</li>
+        <div class="grid-4">
+            
+            <div class="service-card">
+                <div class="card-icon">📋</div>
+                <h3>Sistemas de Gestión</h3>
+                <p class="preview-text">Implementación y mantenimiento de normas internacionales para estandarizar la excelencia operativa.</p>
+                <ul class="full-list">
+                    <li>ISO 14001 (Gestión Ambiental)</li>
+                    <li>ISO 26000 (Responsabilidad Social)</li>
+                    <li>ISO 50001 (Eficiencia Energética)</li>
+                    <li>ISO 20121 (Eventos Sostenibles)</li>
                 </ul>
             </div>
-            <div class="servicio-imagen">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="ESG y RSE" class="blob-img blob-2">
-            </div>
-        </div>
 
-        <div class="servicio-row">
-            <div class="servicio-texto">
-                <h2>Formación y Liderazgo</h2>
-                <h3>Impulsando equipos conscientes con propósito.</h3>
-                <p>El conocimiento es la base del cambio. Ofrecemos experiencias formativas que transforman la cultura organizacional.</p>
-                <ul>
-                    <li><strong>Capacitación con validez oficial (DC3):</strong> Normatividad ambiental, huella de carbono, ODS y economía circular.</li>
-                    <li><strong>Derechos Humanos:</strong> Formación en igualdad, no discriminación y prevención de violencia de género en el entorno laboral.</li>
-                    <li>Talleres de liderazgo transformacional y cohesión de equipos de alto desempeño.</li>
+            <div class="service-card">
+                <div class="card-icon">🔍</div>
+                <h3>Auditoría y Cumplimiento</h3>
+                <p class="preview-text">Diagnóstico profundo y evaluación técnica para garantizar el cumplimiento normativo y ambiental.</p>
+                <ul class="full-list">
+                    <li>Diagnósticos de cumplimiento normativo</li>
+                    <li>Evaluaciones de Impacto Ambiental</li>
+                    <li>Auditorías ambientales internas</li>
+                    <li>Regularización de trámites operativos</li>
                 </ul>
             </div>
-            <div class="servicio-imagen">
-                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="Formación" class="blob-img blob-3">
-            </div>
-        </div>
 
-        <div class="servicio-row">
-            <div class="servicio-texto">
-                <h2>Gobernanza y Política Pública</h2>
-                <h3>Fortaleciendo instituciones para transformar territorios.</h3>
-                <p>Colaboramos con gobiernos para crear instrumentos normativos técnica de excelencia y socialmente legítimos.</p>
-                <ul>
-                    <li>Diseño y actualización de reglamentos municipales (Ambiente, Residuos, Cambio Climático).</li>
-                    <li>Planeación ambiental estratégica y programas municipales ODS.</li>
-                    <li>Procesos de participación ciudadana y consultas públicas deliberativas.</li>
+            <div class="service-card">
+                <div class="card-icon">📊</div>
+                <h3>Estrategia ESG</h3>
+                <p class="preview-text">Diseño de hojas de ruta e indicadores de sostenibilidad bajo los más altos estándares globales.</p>
+                <ul class="full-list">
+                    <li>Reportes de Sostenibilidad (GRI, SASB)</li>
+                    <li>Diseño de indicadores ESG a la medida</li>
+                    <li>Análisis de materialidad</li>
+                    <li>Estrategias de descarbonización</li>
                 </ul>
             </div>
-            <div class="servicio-imagen">
-                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80" alt="Gobernanza" class="blob-img blob-4">
-            </div>
-        </div>
 
+            <div class="service-card">
+                <div class="card-icon">🎓</div>
+                <h3>Formación y Gobernanza</h3>
+                <p class="preview-text">Capacitación oficial y desarrollo de políticas públicas participativas con enfoque humano.</p>
+                <ul class="full-list">
+                    <li>Capacitación DC3 (Valor oficial)</li>
+                    <li>Desarrollo de liderazgo organizacional</li>
+                    <li>Elaboración de programas municipales</li>
+                    <li>Diseño de política pública participativa</li>
+                </ul>
+            </div>
+
+        </div>
     </section>
 
     <section class="cta-consultoria">
-        <h3>¿Listo para llevar tu organización al siguiente nivel?</h3>
-        <p>Hablemos de cómo transformar tus retos normativos en una estrategia de éxito.</p>
-        <a href="contacto.html" class="btn-cta">Iniciar conversación</a>
+        <h2>¿Listo para blindar las operaciones de tu empresa?</h2>
+        <p>Hablemos sobre las necesidades técnicas de tu organización.</p>
+        <a href="contacto.html" class="btn-cta">Agendar un diagnóstico</a>
     </section>
 
     <footer>
