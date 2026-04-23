@@ -142,6 +142,61 @@
             .pilar-block { padding: 40px 30px; border-radius: 30px; }
             .pilar-title-main { font-size: 2.2rem; }
         }
+    /* =========================================
+           5. SECCIÓN CONTACTO Y FOOTER
+           ========================================= */
+        .contacto-start {
+            background: var(--oscuro);
+            color: var(--blanco);
+            padding: 100px 10%;
+            border-top: 6px solid var(--turquesa);
+        }
+        .contacto-grid-start { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; 
+        }
+        
+        .contact-info-block h3 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 600; color: var(--blanco); }
+        .contact-info-block p.intro-contact { font-size: 1.1rem; color: #aaa; margin-bottom: 40px; line-height: 1.6; }
+        
+        .contact-details { list-style: none; }
+        .contact-details li { font-size: 1.1rem; color: #ddd; margin-bottom: 25px; display: flex; align-items: center; }
+        .contact-details li span { 
+            margin-right: 20px; font-size: 1.2rem; background: rgba(255,255,255,0.1); 
+            width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; border-radius: 50%;
+        }
+        .contact-details a { color: var(--blanco); text-decoration: none; transition: 0.3s; }
+        .contact-details a:hover { color: var(--cian); }
+        
+        .form-block-home { background: var(--blanco); padding: 45px; border-radius: 30px; }
+        .form-block-home h4 { color: var(--turquesa); font-size: 1.5rem; margin-bottom: 25px; font-weight: 600; }
+        .form-group-home { margin-bottom: 20px; }
+        .form-block-home input, .form-block-home textarea {
+            width: 100%; padding: 15px 20px; border: 1px solid #eee; border-radius: 15px;
+            font-family: 'Poppins', sans-serif; font-size: 1rem; background: #fafafa; transition: 0.3s;
+        }
+        .form-block-home input:focus, .form-block-home textarea:focus { 
+            border-color: var(--turquesa); outline: none; background: var(--blanco); box-shadow: 0 0 0 3px rgba(0, 115, 94, 0.1);
+        }
+        .form-block-home textarea { resize: vertical; min-height: 120px; }
+        
+        .btn-enviar-home {
+            background: var(--turquesa); color: var(--blanco); border: none;
+            padding: 15px 30px; font-size: 1.1rem; font-weight: 600; border-radius: 50px;
+            cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px;
+        }
+        .btn-enviar-home:hover { background: var(--marron); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(106, 63, 40, 0.2); }
+
+        footer { background: #000; color: #666; text-align: center; padding: 25px; font-size: 0.85rem; }
+
+        /* AJUSTES RESPONSIVOS EXTRA */
+        @media (max-width: 900px) {
+            .contacto-grid-start { grid-template-columns: 1fr; gap: 50px; }
+        }
+        @media (max-width: 768px) {
+            .contacto-start { padding: 60px 5%; }
+            .form-block-home { padding: 35px 25px; border-radius: 20px; }
+            .contact-info-block h3 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
