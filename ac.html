@@ -68,7 +68,7 @@
         .pane-text h2 { font-size: 2.2rem; margin-bottom: 25px; font-weight: 700; }
         .pane-text p { font-size: 1.15rem; line-height: 1.8; color: #e0e0e0; text-align: justify; }
 
-    /* SECCIÓN CARRUSEL ORGÁNICO CON IMÁGENES DE FONDO */
+        /* SECCIÓN CARRUSEL ORGÁNICO CON IMÁGENES DE FONDO */
         .carrusel-section { padding: 80px 5% 100px 5%; background: var(--blanco); }
         .carrusel-header { text-align: center; margin-bottom: 50px; }
         .carrusel-header h2 { color: var(--turquesa); font-size: 2.5rem; margin-bottom: 10px; }
@@ -120,6 +120,40 @@
         .proyecto-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #a9eadc; font-weight: 700; margin-bottom: 15px; display: block; }
         .proyecto-body h3 { font-size: 1.4rem; color: var(--blanco); margin-bottom: 15px; line-height: 1.2; font-weight: 600; }
         .proyecto-body p { font-size: 0.95rem; color: #e0e0e0; line-height: 1.6; margin-bottom: 0; font-weight: 300; }
+
+        /* CTA FINAL */
+        .cta-ac { 
+            background: linear-gradient(rgba(106, 63, 40, 0.85), rgba(106, 63, 40, 0.95)), url('https://images.unsplash.com/photo-1534293230397-c067fc201ab8?auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: var(--blanco); padding: 100px 10%; text-align: center;
+        }
+        .cta-ac h3 { font-size: 2.5rem; margin-bottom: 20px; }
+        .btn-cta-ac {
+            background-color: var(--blanco); color: var(--marron); padding: 15px 40px;
+            text-decoration: none; font-weight: 600; border-radius: 30px; transition: 0.3s;
+            display: inline-block;
+        }
+        .btn-cta-ac:hover { background-color: var(--turquesa); color: var(--blanco); }
+
+        footer { background: #001a15; color: #aaa; text-align: center; padding: 20px; font-size: 0.8rem; }
+
+        /* MEDIA QUERIES RESTAURADAS (ADAPTACIÓN A MÓVILES) */
+        @media (max-width: 950px) {
+            .impacto-layout { grid-template-columns: 1fr; }
+            .card-proyecto { flex: 0 0 310px; min-height: 400px; }
+            .proyecto-body { padding: 30px 20px; }
+        }
+        
+        @media (max-width: 768px) {
+            header { flex-direction: column; }
+            nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
+            nav a { margin: 5px 10px; }
+            .hero-ac h1 { font-size: 2.2rem; }
+            .hero-ac p { font-size: 1.1rem; }
+            .ejes-section, .carrusel-section { padding: 60px 5%; }
+            .cta-ac { padding: 80px 5%; }
+            .pane-text h2 { font-size: 1.8rem; }
+            .card-proyecto { flex: 0 0 280px; min-height: 420px; }
+        }
     </style>
 </head>
 <body>
@@ -214,9 +248,9 @@
         </div>
     </section>
 
-  <section class="carrusel-section">
+    <section class="carrusel-section">
         <div class="carrusel-header">
-            <h2>Algunos Proyectos</h2>
+            <h2>Portafolio de Proyectos</h2>
             <p>Iniciativas listas para generar impacto inmediato.</p>
         </div>
         
@@ -237,7 +271,7 @@
                 <div class="proyecto-body">
                     <span class="proyecto-tag">Enfoque Social</span>
                     <h3>Escuelas que inspiran</h3>
-                    <p>Transformamos simbólicamente los espacios escolares mediante murales y jardines motivacionales para fortalecer el sentido de pertenencia y la autoestima del alumnado.</p>
+                    <p>Transformamos simbólicamente los espacios escolares mediante murales y jardines motivacionales para fortalecer el sentido de pertenencia y la autoestima.</p>
                 </div>
             </div>
 
@@ -287,7 +321,7 @@
                 <div class="proyecto-body">
                     <span class="proyecto-tag">Marketing con Causa</span>
                     <h3>Arte por el planeta</h3>
-                    <p>Visibilizamos causas socioambientales organizando concursos de arte infantil y juvenil que culminan en exposiciones y eventos de premiación institucionales.</p>
+                    <p>Visibilizamos causas socioambientales organizando concursos de arte infantil y juvenil que culminan en exposiciones y eventos de premiación.</p>
                 </div>
             </div>
 
@@ -377,7 +411,7 @@
                 <div class="proyecto-body">
                     <span class="proyecto-tag">Enfoque Ambiental</span>
                     <h3>Senderos interpretativos</h3>
-                    <p>Promovemos la educación ambiental en parques públicos diseñando e instalando señalética informativa sobre la biodiversidad y los servicios ecosistémicos locales.</p>
+                    <p>Promovemos la educación ambiental en parques públicos diseñando e instalando señalética informativa sobre la biodiversidad y los servicios ecosistémicos.</p>
                 </div>
             </div>
 
@@ -399,14 +433,20 @@
         <a href="contacto.html" class="btn-cta-ac">Quiero ser aliado DASH</a>
     </section>
 
-    <footer><p>&copy; 2026 DASH México. Todos los derechos reservados.</p></footer>
+    <footer>
+        <p>&copy; 2026 DASH México. Todos los derechos reservados.</p>
+    </footer>
 
     <script>
         function abrirPestana(evento, idPanel) {
             let botones = document.getElementsByClassName("eje-btn");
-            for (let i = 0; i < botones.length; i++) { botones[i].classList.remove("active"); }
+            for (let i = 0; i < botones.length; i++) {
+                botones[i].classList.remove("active");
+            }
             let paneles = document.getElementsByClassName("pane-eje");
-            for (let i = 0; i < paneles.length; i++) { paneles[i].classList.remove("active"); }
+            for (let i = 0; i < paneles.length; i++) {
+                paneles[i].classList.remove("active");
+            }
             evento.currentTarget.classList.add("active");
             document.getElementById(idPanel).classList.add("active");
         }
