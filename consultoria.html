@@ -26,71 +26,99 @@
             background: var(--gris-fondo);
             padding: 80px 10%;
             text-align: center;
-            border-bottom: 1px solid #eee;
         }
         .hero-logo { max-width: 280px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto; }
-        .hero-consultoria h1 { font-size: 1.6rem; color: var(--marron); font-weight: 400; line-height: 1.4; max-width: 800px; margin: 0 auto; }
+        .hero-consultoria h1 { font-size: 1.6rem; color: var(--marron); font-weight: 400; line-height: 1.4; max-width: 800px; margin: 0 auto; font-style: italic; }
 
-        /* GRID DE CUADRANTES */
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2px; /* Crea una línea divisoria fina */
-            background: #eee;
+        /* SECCIÓN DE SERVICIOS (FORMA DE CUADRANTES SEPARADOS) */
+        .servicios-wrapper {
+            background: var(--gris-fondo);
+            padding: 40px 5% 100px 5%;
+            position: relative;
         }
 
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* EL CÍRCULO CENTRAL (Igual al de tu imagen de referencia) */
+        .centro-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            background: var(--blanco);
+            border-radius: 50%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            color: var(--turquesa);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        /* TARJETAS DE LOS CUADRANTES */
         .cuadrante {
             position: relative;
             background-color: var(--blanco);
-            padding: 80px 10%;
-            min-height: 500px;
+            border-radius: 24px; /* Bordes muy redondeados como en tu foto */
+            padding: 50px 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
+            transition: all 0.4s ease;
             z-index: 1;
         }
+        .cuadrante:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
 
-        /* CAPA DE ACLARADO (OPACIDAD ALTA) */
-        .cuadrante::before {
-            content: '';
+        /* CAPA DE IMAGEN DE FONDO MUUUY CLARA */
+        .bg-imagen {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.94); /* Imagen muuuuy clara */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.03; /* Apenas perceptible (3%) */
             z-index: -1;
-            transition: 0.5s ease;
+            transition: opacity 0.5s ease;
+        }
+        .cuadrante:hover .bg-imagen {
+            opacity: 0.08; /* Se nota un poquito más al pasar el mouse (8%) */
         }
 
-        .cuadrante:hover::before {
-            background: rgba(255, 255, 255, 0.88); /* Ligeramente más visible al pasar el cursor */
-        }
-
-        /* CONTENIDO DEL CUADRANTE */
-        .cuadrante h2 { color: var(--turquesa); font-size: 1.8rem; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .cuadrante h3 { color: var(--cian); font-size: 1.1rem; font-weight: 500; margin-bottom: 30px; line-height: 1.4; }
-        .cuadrante p { color: var(--texto-oscuro); font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px; font-weight: 300; }
+        /* CONTENIDO DENTRO DE LA TARJETA */
+        .contenido-tarjeta { position: relative; z-index: 2; }
+        
+        .cuadrante h2 { color: var(--turquesa); font-size: 1.6rem; margin-bottom: 10px; font-weight: 700; line-height: 1.3; }
+        .cuadrante h3 { color: var(--cian); font-size: 1rem; font-weight: 500; margin-bottom: 25px; line-height: 1.4; }
+        .cuadrante p { color: var(--texto-oscuro); font-size: 1rem; line-height: 1.7; margin-bottom: 25px; font-weight: 400; }
         
         .cuadrante ul { list-style: none; }
-        .cuadrante li { position: relative; padding-left: 20px; margin-bottom: 12px; color: #444; font-size: 0.95rem; font-weight: 400; }
-        .cuadrante li::before { content: "•"; position: absolute; left: 0; color: var(--turquesa); font-weight: bold; }
-
-        /* IMÁGENES DE FONDO POR SECCIÓN */
-        .bg-ingenieria { background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80'); }
-        .bg-esg { background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80'); }
-        .bg-formacion { background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80'); }
-        .bg-gobernanza { background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80'); }
+        .cuadrante li { position: relative; padding-left: 20px; margin-bottom: 12px; color: #555; font-size: 0.95rem; font-weight: 400; line-height: 1.5; }
+        .cuadrante li::before { content: "•"; position: absolute; left: 0; color: var(--turquesa); font-weight: bold; font-size: 1.2rem; top: -2px; }
 
         /* CTA FINAL */
         .cta-final { 
             background: linear-gradient(135deg, var(--turquesa) 0%, #004d3f 100%);
-            color: var(--blanco); padding: 100px 10%; text-align: center;
+            color: var(--blanco); padding: 80px 10%; text-align: center;
         }
         .cta-final h2 { font-size: 2.2rem; margin-bottom: 15px; }
         .cta-final p { font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; opacity: 0.9; }
         .btn-contacto {
-            background-color: var(--blanco); color: var(--turquesa); padding: 18px 45px;
+            background-color: var(--blanco); color: var(--turquesa); padding: 16px 40px;
             text-decoration: none; font-weight: 600; border-radius: 40px;
             transition: 0.3s; font-size: 1.1rem; display: inline-block;
         }
@@ -99,16 +127,16 @@
         footer { background: #001a15; color: #888; text-align: center; padding: 20px; font-size: 0.8rem; }
 
         /* RESPONSIVO */
-        @media (max-width: 1024px) {
-            .servicios-grid { grid-template-columns: 1fr; }
-            .cuadrante { min-height: auto; padding: 60px 8%; }
+        @media (max-width: 900px) {
+            .servicios-grid { grid-template-columns: 1fr; gap: 30px; }
+            .centro-logo { display: none; /* Ocultamos el círculo central en celular para que no estorbe */ }
         }
         @media (max-width: 768px) {
             header { flex-direction: column; }
             nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
             nav a { margin: 5px 10px; }
             .hero-consultoria h1 { font-size: 1.3rem; }
-            .cta-final h2 { font-size: 1.8rem; }
+            .cuadrante { padding: 40px 25px; }
         }
     </style>
 </head>
@@ -130,60 +158,76 @@
 
     <section class="hero-consultoria">
         <img src="logoconsultoria.png" alt="DASH Consultoría" class="hero-logo">
-        <h1>Más allá del cumplimiento: estrategia técnica con impacto real.</h1>
+        <h1>"Más allá del cumplimiento: estrategia técnica con impacto real."</h1>
     </section>
 
-    <section class="servicios-grid">
-        
-        <div class="cuadrante bg-ingenieria">
-            <h2>Ingeniería Ambiental y Cumplimiento Normativo</h2>
-            <h3>El rigor técnico al servicio de la continuidad operativa.</h3>
-            <p>No solo gestionamos trámites; aseguramos la "licencia para operar" de tu organización mediante soluciones de ingeniería de vanguardia.</p>
-            <ul>
-                <li>Cédula de Operación Anual (COA).</li>
-                <li>Licencia Ambiental Única (LAU).</li>
-                <li>Inventario de Emisiones GEI (Huella de Carbono).</li>
-                <li>Estudios de Riesgo Ambiental (ERA) y PPA.</li>
-                <li>Planes de Manejo de Residuos y Economía Circular.</li>
-                <li>Atención técnica en visitas de inspección.</li>
-            </ul>
-        </div>
+    <section class="servicios-wrapper">
+        <div class="servicios-grid">
+            
+            <div class="centro-logo">DASH</div>
 
-        <div class="cuadrante bg-esg">
-            <h2>Estrategia ESG y Responsabilidad Social</h2>
-            <h3>Transformamos el compromiso en indicadores de valor.</h3>
-            <p>Alineamos la operación con estándares globales para fortalecer la reputación y el acceso a mercados exigentes.</p>
-            <ul>
-                <li>Sistemas de Gestión ISO (14001, 50001, 26000, 20121).</li>
-                <li>Diagnóstico de materialidad y hojas de ruta ESG.</li>
-                <li>Reportes de Sostenibilidad (GRI, SASB).</li>
-                <li>Programas de voluntariado corporativo y desarrollo territorial.</li>
-                <li>Políticas de ética y derechos humanos corporativos.</li>
-            </ul>
-        </div>
+            <div class="cuadrante">
+                <div class="bg-imagen" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="contenido-tarjeta">
+                    <h2>Ingeniería Ambiental y Cumplimiento Normativo</h2>
+                    <h3>El rigor técnico al servicio de la continuidad operativa.</h3>
+                    <p>No solo gestionamos trámites; aseguramos la "licencia para operar" de tu organización mediante soluciones de ingeniería de vanguardia.</p>
+                    <ul>
+                        <li>Cédula de Operación Anual (COA).</li>
+                        <li>Licencia Ambiental Única (LAU).</li>
+                        <li>Inventario de Emisiones GEI (Huella de Carbono).</li>
+                        <li>Estudios de Riesgo Ambiental (ERA) y PPA.</li>
+                        <li>Planes de Manejo de Residuos y Economía Circular.</li>
+                        <li>Atención técnica en visitas de inspección.</li>
+                    </ul>
+                </div>
+            </div>
 
-        <div class="cuadrante bg-formacion">
-            <h2>Formación y Liderazgo</h2>
-            <h3>Impulsando equipos conscientes con propósito.</h3>
-            <p>El conocimiento es la base del cambio. Ofrecemos experiencias formativas que transforman la cultura organizacional.</p>
-            <ul>
-                <li>Capacitación con validez oficial (DC3): Normatividad ambiental, huella de carbono, ODS y economía circular.</li>
-                <li>Derechos Humanos: Formación en igualdad, no discriminación y prevención de violencia de género en el entorno laboral.</li>
-                <li>Talleres de liderazgo transformacional y cohesión de equipos de alto desempeño.</li>
-            </ul>
-        </div>
+            <div class="cuadrante">
+                <div class="bg-imagen" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="contenido-tarjeta">
+                    <h2>Estrategia ESG y Responsabilidad Social</h2>
+                    <h3>Transformamos el compromiso en indicadores de valor.</h3>
+                    <p>Alineamos la operación con estándares globales para fortalecer la reputación y el acceso a mercados exigentes.</p>
+                    <ul>
+                        <li>Sistemas de Gestión ISO (14001, 50001, 26000, 20121).</li>
+                        <li>Diagnóstico de materialidad y hojas de ruta ESG.</li>
+                        <li>Reportes de Sostenibilidad (GRI, SASB).</li>
+                        <li>Programas de voluntariado corporativo y desarrollo territorial.</li>
+                        <li>Políticas de ética y derechos humanos corporativos.</li>
+                    </ul>
+                </div>
+            </div>
 
-        <div class="cuadrante bg-gobernanza">
-            <h2>Gobernanza y Política Pública</h2>
-            <h3>Fortaleciendo instituciones para transformar territorios.</h3>
-            <p>Colaboramos con gobiernos para crear instrumentos normativos técnica de excelencia y socialmente legítimos.</p>
-            <ul>
-                <li>Diseño y actualización de reglamentos municipales (Ambiente, Residuos, Cambio Climático).</li>
-                <li>Planeación ambiental estratégica y programas municipales ODS.</li>
-                <li>Procesos de participación ciudadana y consultas públicas deliberativas.</li>
-            </ul>
-        </div>
+            <div class="cuadrante">
+                <div class="bg-imagen" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="contenido-tarjeta">
+                    <h2>Formación y Liderazgo</h2>
+                    <h3>Impulsando equipos conscientes con propósito.</h3>
+                    <p>El conocimiento es la base del cambio. Ofrecemos experiencias formativas que transforman la cultura organizacional.</p>
+                    <ul>
+                        <li>Capacitación con validez oficial (DC3): Normatividad ambiental, huella de carbono, ODS y economía circular.</li>
+                        <li>Derechos Humanos: Formación en igualdad, no discriminación y prevención de violencia de género en el entorno laboral.</li>
+                        <li>Talleres de liderazgo transformacional y cohesión de equipos de alto desempeño.</li>
+                    </ul>
+                </div>
+            </div>
 
+            <div class="cuadrante">
+                <div class="bg-imagen" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="contenido-tarjeta">
+                    <h2>Gobernanza y Política Pública</h2>
+                    <h3>Fortaleciendo instituciones para transformar territorios.</h3>
+                    <p>Colaboramos con gobiernos para crear instrumentos normativos técnica de excelencia y socialmente legítimos.</p>
+                    <ul>
+                        <li>Diseño y actualización de reglamentos municipales (Ambiente, Residuos, Cambio Climático).</li>
+                        <li>Planeación ambiental estratégica y programas municipales ODS.</li>
+                        <li>Procesos de participación ciudadana y consultas públicas deliberativas.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <section class="cta-final">
