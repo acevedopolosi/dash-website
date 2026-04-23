@@ -9,7 +9,6 @@
         :root { --turquesa: #00735E; --cian: #828EC3; --marron: #6A3F28; --blanco: #FFFFFF; --gris-fondo: #f8f9fa; --oscuro: #001a15; --texto-oscuro: #2c3e50; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         
-        /* HEADER INSTITUCIONAL */
         header { 
             background: var(--blanco); padding: 10px 5%; position: sticky; top: 0; z-index: 1000; 
             display: flex; justify-content: space-between; align-items: center;
@@ -21,18 +20,16 @@
         nav a { text-decoration: none; color: #555; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover, nav a.active { color: var(--turquesa); font-weight: 600; }
 
-        /* HERO CENTRADO */
         .hero-consultoria { 
             background: var(--gris-fondo);
             padding: 80px 10%;
             text-align: center;
         }
         .hero-logo { max-width: 280px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto; }
-        .hero-consultoria h1 { font-size: 1.6rem; color: var(--marron); font-weight: 400; line-height: 1.4; max-width: 800px; margin: 0 auto; font-style: italic; }
+        .hero-consultoria h1 { font-size: 1.6rem; color: var(--marron); font-weight: 400; line-height: 1.4; max-width: 800px; margin: 0 auto; font-style: italic; text-align: center; }
 
-        /* SECCIÓN DE SERVICIOS CON FONDO OSCURO */
         .servicios-wrapper {
-            background: var(--oscuro); /* Cambio a fondo oscuro */
+            background: var(--oscuro);
             padding: 80px 5% 120px 5%;
             position: relative;
         }
@@ -46,7 +43,6 @@
             position: relative;
         }
 
-        /* EL CÍRCULO CENTRAL CON EL LOGO */
         .centro-logo {
             position: absolute;
             top: 50%;
@@ -63,11 +59,10 @@
             align-items: center;
         }
         .centro-logo img {
-            width: 80px; /* Tamaño ajustado para que quepa perfecto en el círculo */
+            width: 80px;
             height: auto;
         }
 
-        /* TARJETAS DE LOS CUADRANTES */
         .cuadrante {
             position: relative;
             background-color: var(--blanco);
@@ -80,14 +75,14 @@
             justify-content: flex-start;
             transition: all 0.4s ease;
             z-index: 1;
-            min-height: 480px; /* Altura mínima para que no brinquen brusco al revelar el texto */
+            min-height: 480px;
+            text-align: center;
         }
         .cuadrante:hover {
             transform: translateY(-5px);
             box-shadow: 0 25px 50px rgba(0,0,0,0.3);
         }
 
-        /* CAPA DE IMAGEN DE FONDO MUUUY CLARA */
         .bg-imagen {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -101,13 +96,14 @@
             opacity: 0.08; 
         }
 
-        /* CONTENIDO DENTRO DE LA TARJETA */
         .contenido-tarjeta { position: relative; z-index: 2; }
         
-        .cuadrante h2 { color: var(--turquesa); font-size: 1.6rem; margin-bottom: 10px; font-weight: 700; line-height: 1.3; }
-        .cuadrante h3 { color: var(--cian); font-size: 1rem; font-weight: 500; margin-bottom: 10px; line-height: 1.4; transition: margin 0.5s ease; }
+        .cuadrante h2 { color: var(--turquesa); font-size: 1.6rem; margin-bottom: 10px; font-weight: 700; line-height: 1.3; text-align: center; }
+        .cuadrante h3 { color: var(--cian); font-size: 1rem; font-weight: 500; margin-bottom: 10px; line-height: 1.4; transition: margin 0.5s ease; text-align: center; }
         
-        /* CONTENIDO OCULTO QUE SE REVELA AL HACER HOVER */
+        /* LA DESCRIPCIÓN DETALLADA AHORA ES PARTE DEL ESTADO INICIAL */
+        .cuadrante p.subtitulo { font-size: 0.95rem; line-height: 1.7; margin-bottom: 25px; font-weight: 400; color: #666; font-style: italic; text-align: center; }
+
         .detalles-ocultos {
             max-height: 0;
             opacity: 0;
@@ -116,24 +112,23 @@
         }
         
         .cuadrante:hover .detalles-ocultos {
-            max-height: 800px; /* Un valor alto para que quepa todo el texto */
+            max-height: 800px;
             opacity: 1;
             margin-top: 25px;
         }
         .cuadrante:hover h3 { margin-bottom: 0; }
 
-        .cuadrante p { color: var(--texto-oscuro); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; font-weight: 400; }
-        .cuadrante ul { list-style: none; }
+        .cuadrante p.descripcion { color: var(--texto-oscuro); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; font-weight: 400; text-align: center; }
+        .cuadrante ul { list-style: none; text-align: left; }
         .cuadrante li { position: relative; padding-left: 20px; margin-bottom: 12px; color: #555; font-size: 0.9rem; font-weight: 400; line-height: 1.5; }
         .cuadrante li::before { content: "•"; position: absolute; left: 0; color: var(--turquesa); font-weight: bold; font-size: 1.2rem; top: -2px; }
 
-        /* CTA FINAL */
         .cta-final { 
             background: linear-gradient(135deg, var(--turquesa) 0%, #004d3f 100%);
             color: var(--blanco); padding: 80px 10%; text-align: center;
         }
-        .cta-final h2 { font-size: 2.2rem; margin-bottom: 15px; }
-        .cta-final p { font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; opacity: 0.9; }
+        .cta-final h2 { font-size: 2.2rem; margin-bottom: 15px; text-align: center; }
+        .cta-final p { font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; opacity: 0.9; text-align: center; }
         .btn-contacto {
             background-color: var(--blanco); color: var(--turquesa); padding: 16px 40px;
             text-decoration: none; font-weight: 600; border-radius: 40px;
@@ -143,11 +138,9 @@
 
         footer { background: #001a15; color: #888; text-align: center; padding: 20px; font-size: 0.8rem; }
 
-        /* RESPONSIVO */
         @media (max-width: 900px) {
             .servicios-grid { grid-template-columns: 1fr; gap: 30px; }
-            .centro-logo { display: none; /* Ocultamos el círculo central en celular para que no estorbe */ }
-            /* En móvil mostramos el texto siempre para evitar problemas con pantallas táctiles */
+            .centro-logo { display: none; }
             .detalles-ocultos { max-height: 1000px; opacity: 1; margin-top: 25px; }
             .cuadrante { min-height: auto; }
         }
@@ -195,8 +188,9 @@
                     <h2>Ingeniería Ambiental y Cumplimiento Normativo</h2>
                     <h3>El rigor técnico al servicio de la continuidad operativa.</h3>
                     
+                    <p class="subtitulo">No solo gestionamos trámites; aseguramos la "licencia para operar" de tu organización mediante soluciones de ingeniería de vanguardia.</p>
+
                     <div class="detalles-ocultos">
-                        <p>No solo gestionamos trámites; aseguramos la "licencia para operar" de tu organización mediante soluciones de ingeniería de vanguardia.</p>
                         <ul>
                             <li>Cédula de Operación Anual (COA).</li>
                             <li>Licencia Ambiental Única (LAU).</li>
@@ -215,8 +209,9 @@
                     <h2>Estrategia ESG y Responsabilidad Social</h2>
                     <h3>Transformamos el compromiso en indicadores de valor.</h3>
                     
+                    <p class="subtitulo">Alineamos la operación con estándares globales para fortalecer la reputación y el acceso a mercados exigentes.</p>
+
                     <div class="detalles-ocultos">
-                        <p>Alineamos la operación con estándares globales para fortalecer la reputación y el acceso a mercados exigentes.</p>
                         <ul>
                             <li>Sistemas de Gestión ISO (14001, 50001, 26000, 20121).</li>
                             <li>Diagnóstico de materialidad y hojas de ruta ESG.</li>
@@ -234,8 +229,9 @@
                     <h2>Formación y Liderazgo</h2>
                     <h3>Impulsando equipos conscientes con propósito.</h3>
                     
+                    <p class="subtitulo">El conocimiento es la base del cambio. Ofrecemos experiencias formativas que transforman la cultura organizacional.</p>
+
                     <div class="detalles-ocultos">
-                        <p>El conocimiento es la base del cambio. Ofrecemos experiencias formativas que transforman la cultura organizacional.</p>
                         <ul>
                             <li>Capacitación con validez oficial (DC3): Normatividad ambiental, huella de carbono, ODS y economía circular.</li>
                             <li>Derechos Humanos: Formación en igualdad, no discriminación y prevención de violencia de género en el entorno laboral.</li>
@@ -251,8 +247,9 @@
                     <h2>Gobernanza y Política Pública</h2>
                     <h3>Fortaleciendo instituciones para transformar territorios.</h3>
                     
+                    <p class="subtitulo">Colaboramos con gobiernos para crear instrumentos normativos técnica de excelencia y socialmente legítimos.</p>
+
                     <div class="detalles-ocultos">
-                        <p>Colaboramos con gobiernos para crear instrumentos normativos técnica de excelencia y socialmente legítimos.</p>
                         <ul>
                             <li>Diseño y actualización de reglamentos municipales (Ambiente, Residuos, Cambio Climático).</li>
                             <li>Planeación ambiental estratégica y programas municipales ODS.</li>
