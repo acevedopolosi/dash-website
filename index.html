@@ -75,7 +75,7 @@
             align-items: center;
             text-align: center;
             background: linear-gradient(to bottom, rgba(11, 19, 17, 0.6), rgba(0, 115, 94, 0.7)), url('fondohero.jpg') center/cover no-repeat;
-            background-attachment: fixed; /* Se desactiva en móvil */
+            background-attachment: fixed;
             color: var(--blanco);
             padding: 120px 5% 80px 5%;
         }
@@ -234,7 +234,6 @@
         @media (max-width: 768px) {
             header { padding: 15px 5%; }
             
-            /* --- REPARACIÓN DEL MENÚ DE NAVEGACIÓN --- */
             .menu-btn { display: flex; }
             nav {
                 position: absolute; top: 100%; left: 0; width: 100%;
@@ -247,15 +246,12 @@
             nav.open { max-height: 400px; padding: 20px 0; }
             nav a { margin: 15px 0; font-size: 1.1rem; }
             
-            /* Animación de la tachita en el menú */
             .menu-btn.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
             .menu-btn.open span:nth-child(2) { opacity: 0; }
             .menu-btn.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-            /* --- REPARACIÓN DEL FONDO DEL HERO --- */
             .hero { 
                 padding-top: 150px; 
-                /* Se retira el "fixed" que daña el diseño en iOS/Android y se suaviza el negro */
                 background: linear-gradient(to bottom, rgba(11, 19, 17, 0.4), rgba(0, 115, 94, 0.6)), url('fondohero.jpg') center/cover no-repeat !important;
                 background-attachment: scroll !important;
             }
@@ -354,7 +350,7 @@
             </div>
 
             <div class="contacto-form-card">
-                <form action="https://formspree.io/f/mvzlrgjp" method="POST">
+                <form id="dash-contacto" action="https://formspree.io/f/mvzlrgjp" method="POST">
                     <div class="form-group">
                         <label class="form-label">Nombre completo</label>
                         <input type="text" name="nombre" class="form-input" placeholder="Ej. Ana Pérez" required>
@@ -367,7 +363,8 @@
                         <label class="form-label">¿En qué podemos apoyarte?</label>
                         <textarea name="mensaje" class="form-input" placeholder="Cuéntanos brevemente sobre tus necesidades..." required></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">Enviar mensaje</button>
+                    <button type="submit" class="btn-submit" id="btn-enviar">Enviar mensaje</button>
+                    <p id="form-status" style="margin-top: 15px; font-weight: 600; text-align: center; display: none; font-size: 1rem;"></p>
                 </form>
             </div>
 
@@ -379,12 +376,55 @@
     </footer>
 
     <script>
+        // Funcionalidad del Menú Móvil
         const menuBtn = document.getElementById('mobile-menu-btn');
         const nav = document.getElementById('mobile-nav');
 
         menuBtn.addEventListener('click', () => {
             menuBtn.classList.toggle('open');
             nav.classList.toggle('open');
+        });
+
+        // Funcionalidad de envío sin salir de la página (AJAX)
+        var form = document.getElementById("dash-contacto");
+        var statusMessage = document.getElementById("form-status");
+        var btnSubmit = document.getElementById("btn-enviar");
+
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault(); // Evita que abra Formspree en otra ventana
+            
+            // Estado de "Cargando"
+            btnSubmit.innerHTML = "Enviando...";
+            btnSubmit.style.opacity = "0.7";
+            statusMessage.style.display = "none";
+
+            var data = new FormData(event.target);
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    statusMessage.style.display = "block";
+                    statusMessage.style.color = "var(--turquesa)";
+                    statusMessage.innerHTML = "¡Gracias! Tu mensaje ha sido enviado exitosamente.";
+                    form.reset(); // Limpia los campos
+                } else {
+                    statusMessage.style.display = "block";
+                    statusMessage.style.color = "#d9534f";
+                    statusMessage.innerHTML = "Oops! Hubo un problema al enviar tu mensaje.";
+                }
+                btnSubmit.innerHTML = "Enviar mensaje";
+                btnSubmit.style.opacity = "1";
+            }).catch(error => {
+                statusMessage.style.display = "block";
+                statusMessage.style.color = "#d9534f";
+                statusMessage.innerHTML = "Oops! Revisa tu conexión a internet.";
+                btnSubmit.innerHTML = "Enviar mensaje";
+                btnSubmit.style.opacity = "1";
+            });
         });
     </script>
 </body>
